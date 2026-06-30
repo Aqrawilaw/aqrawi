@@ -1,0 +1,123 @@
+.header {
+  background-color: #0B0B0C;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  border-bottom: 1px solid rgba(197, 168, 128, 0.2);
+  width: 100%;
+}
+
+.nav {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1.25rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.logoText {
+  color: #C5A880;
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.navLinks {
+  display: flex;
+  gap: 2.25rem;
+}
+
+.navLink {
+  color: #DDDDDD;
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.2s ease;
+  position: relative;
+  padding: 0.25rem 0;
+}
+
+.navLink:hover {
+  color: #C5A880;
+}
+
+.navLinkActive {
+  color: #C5A880;
+}
+
+.navLinkActive::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #C5A880;
+  border-radius: 2px;
+}
+
+.consultationBtn {
+  background-color: #C5A880;
+  color: #FFFFFF;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 2px;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.consultationBtn:hover {
+  background-color: #b59870;
+}
+
+/* Mobile menu toggle */
+.menuToggle {
+  display: none;
+  background: none;
+  border: none;
+  color: #FFFFFF;
+  cursor: pointer;
+  padding: 0.5rem;
+}
+
+@media (max-width: 768px) {
+  .navLinks {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: #0B0B0C;
+    padding: 1.5rem 2rem;
+    border-bottom: 1px solid rgba(197, 168, 128, 0.15);
+    gap: 1.25rem;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+  }
+
+  .navLinksOpen {
+    display: flex;
+  }
+
+  .menuToggle {
+    display: block;
+  }
+
+  .consultationBtn {
+    display: none; /* Hide on mobile navbar directly, or add inside mobile menu */
+  }
+}
