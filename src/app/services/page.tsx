@@ -110,7 +110,9 @@ export default function ServicesPage() {
           return (
             <div
               key={service.num}
+              id={service.num}
               className={isEven ? styles.serviceRow : styles.serviceRowReverse}
+              style={{ scrollMarginTop: "100px" }}
             >
               <div className={styles.serviceText}>
                 <span className={styles.serviceNum}>{service.num} / Practice Area</span>

@@ -913,37 +913,42 @@
 /* Badge Section */
 .badgeSection {
   width: 100%;
-  background-color: #fafaf8;
+  background-color: #151518;
   padding: 60px 24px;
   display: flex;
   justify-content: center;
   align-items: center;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.03);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .badgeContainer {
   width: 100%;
   max-width: 1200px;
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
-  flex-wrap: wrap;
-  gap: 40px;
 }
 
-.badgeWrapper {
+.affLogosWrapper {
+  width: 100%;
+  max-width: 1100px;
   display: flex;
   justify-content: center;
   align-items: center;
-  opacity: 0.5;
-  filter: grayscale(100%);
+  opacity: 0.9;
   transition: all 0.3s ease;
 }
 
-.badgeWrapper:hover {
+.affLogosWrapper:hover {
   opacity: 1;
-  filter: grayscale(0%);
-  transform: scale(1.04);
+  transform: scale(1.02);
+}
+
+.affLogosImg {
+  width: 100%;
+  height: auto;
+  max-height: 120px;
+  object-fit: contain;
 }
 
 /* CTA Banner Section */

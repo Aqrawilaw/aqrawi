@@ -107,4 +107,37 @@ button, input, textarea, select {
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
 }
 
+/* Hide Google Translate Top Banner and Tooltips */
+body > .skiptranslate,
+iframe.goog-te-banner-frame,
+.goog-te-banner-frame,
+.goog-te-banner,
+#goog-gt-tt {
+  display: none !important;
+  visibility: hidden !important;
+}
+
+body {
+  top: 0 !important;
+  position: static !important;
+}
+
+html {
+  margin-top: 0 !important;
+}
+
+#goog-gt-tt,
+.goog-te-balloon-frame,
+.goog-tooltip,
+.goog-tooltip:hover {
+  display: none !important;
+  visibility: hidden !important;
+}
+
+.goog-text-highlight {
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
 
