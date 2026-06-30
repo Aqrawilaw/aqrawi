@@ -1,0 +1,297 @@
+.contactPage {
+  --gold: #C5A880;
+  --gold-hover: #b59870;
+  --dark-bg: #0B0B0C;
+  --light-bg: #FFFFFF;
+  --cream-bg: #F9F8F6;
+  --grey-bg: #F5F5F5;
+  --text-dark: #222222;
+  --text-muted: #666666;
+  --text-light: #FFFFFF;
+
+  background-color: var(--light-bg);
+  color: var(--text-dark);
+  font-family: var(--font-sans);
+  min-height: 100vh;
+}
+
+/* Contact Hero */
+.hero {
+  background-image: linear-gradient(rgba(11, 11, 12, 0.55), rgba(11, 11, 12, 0.55)), url('/images/about-page/about-bg.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 8rem 2rem;
+  color: var(--text-light);
+}
+
+.heroContent {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.heroTitle {
+  font-size: 3.5rem;
+  font-weight: 800;
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+
+/* Cards Section */
+.cardsSection {
+  background-color: var(--light-bg);
+  padding: 5rem 2rem;
+}
+
+.cardsGrid {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2.5rem;
+}
+
+.contactCard {
+  background-color: var(--light-bg);
+  padding: 2.5rem 1.5rem;
+  text-align: center;
+  border-radius: 4px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+  border: 1px solid rgba(197, 168, 128, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contactCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(197, 168, 128, 0.1);
+}
+
+.cardIcon {
+  color: var(--gold);
+  margin-bottom: 1.25rem;
+}
+
+.cardTitle {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 0.75rem;
+}
+
+.cardText {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: var(--text-muted);
+}
+
+.cardLink {
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.cardLink:hover {
+  color: var(--gold);
+}
+
+/* Message Section */
+.messageSection {
+  background-color: var(--cream-bg);
+  padding: 7rem 2rem;
+  border-top: 1px solid rgba(197, 168, 128, 0.1);
+}
+
+.messageContent {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.messageHeader {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.messageHeaderRed {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #E74C3C;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+}
+
+.messageHeaderTitle {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--text-dark);
+  margin-bottom: 1rem;
+}
+
+.messageDivider {
+  width: 80px;
+  height: 2px;
+  background-color: var(--gold);
+  margin: 1.5rem auto 0 auto;
+}
+
+.formGrid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 5rem;
+  align-items: flex-start;
+}
+
+.formCard {
+  background-color: var(--light-bg);
+  padding: 3.5rem;
+  border-radius: 4px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.02);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.formRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.formGroup {
+  margin-bottom: 1.5rem;
+}
+
+.input {
+  width: 100%;
+  padding: 0.9rem 1.2rem;
+  font-size: 0.95rem;
+  border: 1px solid #DDDDDD;
+  border-radius: 3px;
+  background-color: #FFFFFF;
+  color: var(--text-dark);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px rgba(197, 168, 128, 0.15);
+}
+
+.textarea {
+  composes: input;
+  min-height: 150px;
+  resize: vertical;
+}
+
+.submitBtn {
+  background: linear-gradient(135deg, var(--gold) 0%, var(--gold-hover) 100%);
+  color: var(--text-light);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 2px;
+  cursor: pointer;
+  text-transform: uppercase;
+  width: 100%;
+  transition: transform 0.1s ease, opacity 0.2s ease;
+}
+
+.submitBtn:hover {
+  opacity: 0.95;
+}
+
+.submitSuccess {
+  background-color: #2ECC71;
+  color: #FFFFFF;
+  padding: 1rem 1.5rem;
+  border-radius: 4px;
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+/* Info Column */
+.infoColumn {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-top: 1rem;
+}
+
+.infoColumnTitle {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 1rem;
+}
+
+.infoColumnDivider {
+  width: 50px;
+  height: 2px;
+  background-color: var(--gold);
+  margin-bottom: 1.5rem;
+}
+
+.infoColumnText {
+  font-size: 1.05rem;
+  line-height: 1.75;
+  color: var(--text-muted);
+  margin-bottom: 2rem;
+}
+
+/* Map Section */
+.mapSection {
+  position: relative;
+  width: 100%;
+  height: 450px;
+  background-color: var(--grey-bg);
+  border-top: 1px solid rgba(197, 168, 128, 0.1);
+  overflow: hidden;
+}
+
+.iframeMap {
+  border: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Responsive Overrides */
+@media (max-width: 968px) {
+  .cardsGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+
+  .formGrid {
+    grid-template-columns: 1fr;
+    gap: 4rem;
+  }
+
+  .formCard {
+    padding: 2.5rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .heroTitle {
+    font-size: 2.5rem;
+  }
+
+  .cardsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .messageHeaderTitle {
+    font-size: 2rem;
+  }
+
+  .formRow {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}

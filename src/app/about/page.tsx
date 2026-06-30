@@ -38,7 +38,7 @@ export default function AboutPage() {
 
           <div className={styles.portraitWrapper}>
             <img
-              src="/portrait_lawyer.png"
+              src="/images/about-page/person1.webp"
               alt="Senior Attorney Portrait"
               className={styles.portraitImg}
             />
@@ -50,7 +50,7 @@ export default function AboutPage() {
       <div className={styles.bannerContainer}>
         <div className={styles.meetingBanner}>
           <img
-            src="/office_meeting.png"
+            src="/images/about-page/lawyers-meeting.webp"
             alt="Lawyers discussing case in office"
             className={styles.meetingImg}
           />

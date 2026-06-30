@@ -83,8 +83,11 @@
 
 /* Hero Section */
 .hero {
-  background-color: var(--hero-bg);
-  padding: 5rem 2rem;
+  background-image: linear-gradient(rgba(11, 11, 12, 0.55), rgba(11, 11, 12, 0.55)), url('/images/about-page/about-bg.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 8rem 2rem;
   color: var(--text-light);
 }
 

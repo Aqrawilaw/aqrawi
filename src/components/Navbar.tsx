@@ -13,23 +13,7 @@ export default function Navbar() {
   const handleContactClick = (e: React.MouseEvent) => {
     e.preventDefault();
     setIsOpen(false);
-    
-    // Determine the scroll target based on page
-    if (pathname === "/") {
-      const el = document.getElementById("contact");
-      if (el) {
-        el.scrollIntoView({ behavior: "smooth" });
-      }
-    } else {
-      // On other pages, scroll to contact info section at bottom
-      const el = document.getElementById("contact-info");
-      if (el) {
-        el.scrollIntoView({ behavior: "smooth" });
-      } else {
-        // Fallback: redirect to homepage contact section
-        router.push("/#contact");
-      }
-    }
+    router.push("/contact");
   };
 
   const toggleMenu = () => setIsOpen(!isOpen);
@@ -83,8 +67,8 @@ export default function Navbar() {
             Services
           </a>
           <a
-            href="#contact"
-            className={styles.navLink}
+            href="/contact"
+            className={`${styles.navLink} ${pathname === "/contact" ? styles.navLinkActive : ""}`}
             onClick={handleContactClick}
           >
             Contact

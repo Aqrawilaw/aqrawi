@@ -17,10 +17,14 @@
 
 /* Services Hero */
 .hero {
-  background-color: var(--cream-bg);
-  padding: 6rem 2rem;
+  background-image: linear-gradient(rgba(11, 11, 12, 0.6), rgba(11, 11, 12, 0.6)), url('/images/services-page/services-bg.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 8rem 2rem;
   text-align: center;
   border-bottom: 1px solid rgba(197, 168, 128, 0.1);
+  color: var(--text-light);
 }
 
 .heroContent {
@@ -31,7 +35,7 @@
 .heroTitle {
   font-size: 3.5rem;
   font-weight: 800;
-  color: var(--text-dark);
+  color: var(--text-light);
   margin-bottom: 1.5rem;
   letter-spacing: -0.02em;
 }
@@ -39,7 +43,7 @@
 .heroSubtitle {
   font-size: 1.2rem;
   line-height: 1.6;
-  color: var(--text-muted);
+  color: #DDDDDD;
   font-weight: 400;
 }
 

@@ -2,6 +2,7 @@
 
 import React from "react";
 import styles from "./LegalHelp.module.css";
+import { CONTACT_INFO } from "@/constants/contact";
 
 export default function LegalHelp() {
   return (
@@ -13,8 +14,8 @@ export default function LegalHelp() {
           <div className={styles.contactCol}>
             <h3>Free Consultation</h3>
             <p>
-              <a href="tel:18001234567" className={styles.contactLink}>
-                +1 (800) 123-4567
+              <a href={`tel:${CONTACT_INFO.phone}`} className={styles.contactLink}>
+                {CONTACT_INFO.phoneFormatted}
               </a>
             </p>
           </div>
@@ -22,8 +23,8 @@ export default function LegalHelp() {
           <div className={styles.contactCol}>
             <h3>Email Us At</h3>
             <p>
-              <a href="mailto:info@aqrawilaw.com" className={styles.contactLink}>
-                info@aqrawilaw.com
+              <a href={`mailto:${CONTACT_INFO.email}`} className={styles.contactLink}>
+                {CONTACT_INFO.email}
               </a>
             </p>
           </div>
@@ -31,8 +32,8 @@ export default function LegalHelp() {
           <div className={styles.contactCol}>
             <h3>Visit Us At</h3>
             <p>
-              123 Main Street, Suite 400<br />
-              New York, NY 10001
+              {CONTACT_INFO.addressLine1}<br />
+              {CONTACT_INFO.addressLine2}
             </p>
           </div>
         </div>
