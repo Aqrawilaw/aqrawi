@@ -212,7 +212,7 @@
 .hero {
   width: 100%;
   max-width: 1200px;
-  min-height: calc(100vh - 120px);
+  min-height: calc(100vh - 80px);
   padding: 60px 24px;
   display: flex;
   flex-direction: column;
@@ -740,7 +740,7 @@
 .servicesGrid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 60px 40px;
+  gap: 40px;
   width: 100%;
   max-width: 1000px;
 }
@@ -750,45 +750,56 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
-}
-
-.iconCircle {
-  width: 96px;
-  height: 96px;
-  border-radius: 50%;
-  background-color: #ffffff;
-  border: 1px solid rgba(191, 149, 63, 0.25);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.03);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 20px;
+  background: #ffffff;
+  padding: 40px 24px;
+  border-radius: 8px;
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
   transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
-.serviceItem:hover .iconCircle {
+.serviceItem:hover {
   transform: translateY(-6px);
+  box-shadow: 0 16px 40px rgba(191, 149, 63, 0.08);
+  border-color: rgba(191, 149, 63, 0.25);
+}
+
+.iconCircle {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-color: #fafaf8;
+  border: 1px solid rgba(191, 149, 63, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 24px;
+  transition: all 0.3s ease;
+}
+
+.serviceItem:hover .iconCircle {
+  background-color: rgba(191, 149, 63, 0.08);
   border-color: #bf953f;
-  box-shadow: 0 16px 32px rgba(191, 149, 63, 0.15);
 }
 
 .serviceLabel {
   font-family: var(--font-sans);
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 700;
   letter-spacing: 1.5px;
-  color: #2b2b2b;
+  color: #111111;
   text-transform: uppercase;
 }
 
 /* FAQ Accordion Section */
 .faqSection {
   width: 100%;
-  background-color: #2b2b2b; /* Match header */
+  background-color: #ffffff;
   padding: 100px 24px 160px; /* Space for stats overlap */
   display: flex;
   justify-content: center;
   position: relative;
+  border-top: 1px solid rgba(0, 0, 0, 0.02);
 }
 
 .faqContainer {
@@ -796,7 +807,7 @@
   max-width: 1200px;
   display: grid;
   grid-template-columns: 0.8fr 1.2fr;
-  gap: 60px;
+  gap: 80px;
   align-items: flex-start;
 }
 
@@ -817,7 +828,7 @@
   font-family: var(--font-serif);
   font-size: clamp(32px, 5vw, 48px);
   font-weight: 800;
-  color: #ffffff;
+  color: #111111;
   line-height: 1.15;
   text-transform: uppercase;
 }
@@ -830,7 +841,7 @@
 }
 
 .accordionItem {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
   padding-bottom: 16px;
 }
 
@@ -844,7 +855,7 @@
   font-family: var(--font-sans);
   font-size: 16px;
   font-weight: 700;
-  color: #ffffff;
+  color: #2b2b2b;
   transition: color 0.2s ease;
   text-align: left;
 }
@@ -863,7 +874,7 @@
   font-family: var(--font-sans);
   font-size: 14px;
   line-height: 1.6;
-  color: #cccccc;
+  color: #555555;
   padding: 8px 0 16px 0;
   display: none;
 }
@@ -886,12 +897,13 @@
 .statsContainer {
   width: 100%;
   max-width: 1000px;
-  background-color: #ffffff;
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.15);
+  background-color: #151518;
+  border: 1px solid rgba(191, 149, 63, 0.25);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
   display: grid;
   grid-template-columns: 1fr 1fr;
   padding: 45px 0;
-  border-radius: 4px;
+  border-radius: 6px;
 }
 
 .statCol {
@@ -902,14 +914,14 @@
 }
 
 .statCol:first-child {
-  border-right: 1px solid #eeeeee;
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .statNum {
   font-family: var(--font-sans);
   font-size: clamp(36px, 6vw, 54px);
   font-weight: 800;
-  color: #111111;
+  color: #bf953f;
   line-height: 1.1;
   margin-bottom: 8px;
 }
@@ -918,7 +930,7 @@
   font-family: var(--font-sans);
   font-size: 13px;
   font-weight: 700;
-  color: #777777;
+  color: #ffffff;
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
@@ -926,12 +938,12 @@
 /* Badge Section */
 .badgeSection {
   width: 100%;
-  background-color: #e8e8e6;
+  background-color: #fafaf8;
   padding: 60px 24px;
   display: flex;
   justify-content: center;
   align-items: center;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.03);
 }
 
 .badgeContainer {
@@ -948,13 +960,15 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  opacity: 0.85;
-  transition: all 0.2s ease;
+  opacity: 0.5;
+  filter: grayscale(100%);
+  transition: all 0.3s ease;
 }
 
 .badgeWrapper:hover {
   opacity: 1;
-  transform: scale(1.05);
+  filter: grayscale(0%);
+  transform: scale(1.04);
 }
 
 /* CTA Banner Section */
@@ -1055,24 +1069,6 @@
   text-align: left;
 }
 
-.attorneyName {
-  font-family: var(--font-sans);
-  font-size: 19px;
-  font-weight: 700;
-  color: #111111;
-  margin-bottom: 4px;
-}
-
-.attorneyTitle {
-  font-family: var(--font-sans);
-  font-size: 13px;
-  font-weight: 600;
-  color: #666666;
-  margin-bottom: 24px;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-
 .attorneyPhoto {
   width: 220px;
   height: 220px;
@@ -1082,18 +1078,33 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: var(--font-serif);
-  font-size: 36px;
-  font-weight: 700;
-  color: #bf953f;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
   transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  margin-bottom: 20px;
+  overflow: hidden;
 }
 
 .attorneyCard:hover .attorneyPhoto {
   transform: translateY(-4px);
   border-color: #bf953f;
   box-shadow: 0 16px 36px rgba(191, 149, 63, 0.2);
+}
+
+.attorneyName {
+  font-family: var(--font-sans);
+  font-size: 20px;
+  font-weight: 700;
+  color: #111111;
+  margin-bottom: 4px;
+}
+
+.attorneyTitle {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 600;
+  color: #bf953f;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 /* New Contact Us Section */
@@ -1216,21 +1227,29 @@
 .socialLinks {
   display: flex;
   gap: 12px;
+  margin-top: 16px;
 }
 
 .socialBox {
-  width: 32px;
-  height: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
   border: 1.5px solid #cccccc;
-  border-radius: 3px;
+  border-radius: 50%;
+  color: #cccccc;
   cursor: pointer;
+  background-color: rgba(255, 255, 255, 0.02);
   transition: all 0.2s ease;
 }
 
 .socialBox:hover {
   border-color: #bf953f;
-  background-color: rgba(191, 149, 63, 0.05);
-  transform: translateY(-1px);
+  background-color: rgba(191, 149, 63, 0.1);
+  color: #bf953f;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(191, 149, 63, 0.25);
 }
 
 @media (max-width: 992px) {

@@ -5,6 +5,7 @@ import Logo from "./components/Logo";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import styles from "./page.module.css";
+import CountUp from "@/components/CountUp";
 
 interface ServiceTab {
   id: string;
@@ -105,19 +106,34 @@ export default function Home() {
     setFormState((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!formState.name || !formState.email || !formState.message) return;
 
     setIsSubmitting(true);
-    // Simulate API request
-    setTimeout(() => {
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formState),
+      });
+
+      if (response.ok) {
+        setIsSubmitted(true);
+        setFormState({ name: "", email: "", phone: "", message: "" });
+        // Reset success message after 5 seconds
+        setTimeout(() => setIsSubmitted(false), 5000);
+      } else {
+        alert("There was an issue submitting the form. Please try again.");
+      }
+    } catch (err) {
+      console.error(err);
+      alert("There was an issue submitting the form. Please try again.");
+    } finally {
       setIsSubmitting(false);
-      setIsSubmitted(true);
-      setFormState({ name: "", email: "", phone: "", message: "" });
-      // Reset success message after 5 seconds
-      setTimeout(() => setIsSubmitted(false), 5000);
-    }, 1200);
+    }
   };
 
   return (
@@ -129,7 +145,7 @@ export default function Home() {
       <main className={styles.main}>
         {/* Centered Hero Section */}
         <section className={`${styles.hero} animate-fade-in`}>
-          <Logo size={140} showText={true} centerText={true} />
+          <Logo size={240} showText={true} centerText={true} />
           <h1 className={styles.heroTitle}>Free Consultation</h1>
           <p className={styles.heroQuote}>
             &ldquo;The first step to getting your life back on track? A free
@@ -162,14 +178,26 @@ export default function Home() {
               </p>
               <div className={styles.signatureContainer}>
                 <span className={styles.signatureLabel}>Walat</span>
-                <span className={styles.signatureName}>Walat Aqrawi</span>
+                <img
+                  src="/images/home-page/signature.webp"
+                  alt="Walat Aqrawi Signature"
+                  style={{
+                    position: "absolute",
+                    left: "10px",
+                    top: "30px",
+                    height: "75px",
+                    width: "auto",
+                    zIndex: 1,
+                    pointerEvents: "none",
+                  }}
+                />
                 <div className={styles.signatureTitle}>WALAT AQRAWI</div>
               </div>
             </div>
             <div className={styles.whoImageContainer}>
               <div className={styles.whoImageWrapper}>
                 <img
-                  src="/lawyers_meeting.png"
+                  src="/images/home-page/who-we-are.webp"
                   alt="Aqrawi & Associates attorneys"
                   className={styles.whoImage}
                 />
@@ -561,7 +589,7 @@ export default function Home() {
                     >
                       <span>{item.question}</span>
                       <span className={styles.accordionIcon}>
-                        {isOpen ? "▲" : "▼"}
+                        {isOpen ? "▴" : "▾"}
                       </span>
                     </div>
                     <div
@@ -580,11 +608,15 @@ export default function Home() {
         <section className={styles.statsSection}>
           <div className={styles.statsContainer}>
             <div className={styles.statCol}>
-              <div className={styles.statNum}>5,000+</div>
+              <div className={styles.statNum}>
+                <CountUp end={5000} suffix="+" />
+              </div>
               <div className={styles.statLabel}>Client Consultations</div>
             </div>
             <div className={styles.statCol}>
-              <div className={styles.statNum}>90%</div>
+              <div className={styles.statNum}>
+                <CountUp end={90} suffix="%" />
+              </div>
               <div className={styles.statLabel}>Successful Cases</div>
             </div>
           </div>
@@ -925,16 +957,28 @@ export default function Home() {
             <div className={styles.attorneysGrid}>
               {/* Profile 1: Walat Aqrawi */}
               <div className={styles.attorneyCard}>
+                <div className={styles.attorneyPhoto} style={{ overflow: "hidden" }}>
+                  <img
+                    src="/images/headshots/Walat Aqrawi.webp"
+                    alt="Walat Aqrawi headshot"
+                    style={{ width: "100%", height: "100%", objectFit: "cover" }}
+                  />
+                </div>
                 <h3 className={styles.attorneyName}>Walat Aqrawi</h3>
                 <span className={styles.attorneyTitle}>Managing Partner</span>
-                <div className={styles.attorneyPhoto}>WA</div>
               </div>
 
               {/* Profile 2: Aaron Aiken */}
               <div className={styles.attorneyCard}>
+                <div className={styles.attorneyPhoto} style={{ overflow: "hidden" }}>
+                  <img
+                    src="/images/headshots/Aaron Aiken.webp"
+                    alt="Aaron Aiken headshot"
+                    style={{ width: "100%", height: "100%", objectFit: "cover" }}
+                  />
+                </div>
                 <h3 className={styles.attorneyName}>Aaron Aiken</h3>
                 <span className={styles.attorneyTitle}>Partner</span>
-                <div className={styles.attorneyPhoto}>AA</div>
               </div>
             </div>
           </div>
@@ -1017,7 +1061,7 @@ export default function Home() {
                 />
 
                 <button type="submit" className={styles.formSubmitBtn}>
-                  Send ▫
+                  Send →
                 </button>
               </form>
             </div>
@@ -1050,11 +1094,18 @@ export default function Home() {
               </a>
 
               <div className={styles.socialLinks}>
-                <div className={styles.socialBox} />
-                <div className={styles.socialBox} />
-                <div className={styles.socialBox} />
-                <div className={styles.socialBox} />
-                <div className={styles.socialBox} />
+                <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className={styles.socialBox} aria-label="Facebook">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+                </a>
+                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className={styles.socialBox} aria-label="Instagram">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                </a>
+                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className={styles.socialBox} aria-label="LinkedIn">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                </a>
+                <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className={styles.socialBox} aria-label="Twitter / X">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/></svg>
+                </a>
               </div>
             </div>
           </div>

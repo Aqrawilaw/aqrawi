@@ -25,19 +25,34 @@ export default function ContactPage() {
     setFormState((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!formState.name || !formState.email || !formState.message) return;
 
     setIsSubmitting(true);
-    // Simulate API request submission
-    setTimeout(() => {
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formState),
+      });
+
+      if (response.ok) {
+        setIsSubmitted(true);
+        setFormState({ name: "", email: "", subject: "", message: "" });
+        // Reset success notification after 5 seconds
+        setTimeout(() => setIsSubmitted(false), 5000);
+      } else {
+        alert("There was an issue submitting the form. Please try again.");
+      }
+    } catch (err) {
+      console.error(err);
+      alert("There was an issue submitting the form. Please try again.");
+    } finally {
       setIsSubmitting(false);
-      setIsSubmitted(true);
-      setFormState({ name: "", email: "", subject: "", message: "" });
-      // Reset success notification after 5 seconds
-      setTimeout(() => setIsSubmitted(false), 5000);
-    }, 1200);
+    }
   };
 
   return (
