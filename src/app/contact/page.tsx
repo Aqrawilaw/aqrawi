@@ -6,7 +6,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import CtaBanner from "@/components/CtaBanner";
 import LegalHelp from "@/components/LegalHelp";
-import { CONTACT_INFO } from "@/constants/contact";
+import { CONTACT_INFO, BRANCHES } from "@/constants/contact";
 
 export default function ContactPage() {
   const [formState, setFormState] = useState({
@@ -19,7 +19,7 @@ export default function ContactPage() {
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   const handleInputChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
     const { name, value } = e.target;
     setFormState((prev) => ({ ...prev, [name]: value }));
@@ -145,10 +145,104 @@ export default function ContactPage() {
             </div>
             <h3 className={styles.cardTitle}>Email</h3>
             <p className={styles.cardText}>
-              <a href={`mailto:${CONTACT_INFO.email}`} className={styles.cardLink}>
+              <a
+                href={`mailto:${CONTACT_INFO.email}`}
+                className={styles.cardLink}
+              >
                 {CONTACT_INFO.email}
               </a>
             </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Branches Section */}
+      <section className={styles.branchesSection}>
+        <div className={styles.branchesContent}>
+          <div className={styles.branchesHeader}>
+            <h2 className={styles.branchesHeaderTitle}>Our Branches</h2>
+            <div className={styles.branchesDivider} />
+          </div>
+
+          <div className={styles.branchesGrid}>
+            {/* US Offices */}
+            <div className={styles.branchCategoryCard}>
+              <h3 className={styles.branchCategoryTitle}>US Offices</h3>
+              <div className={styles.branchList}>
+                {BRANCHES.us.map((branch) => (
+                  <div key={branch.id} className={styles.branchItem}>
+                    <div className={styles.branchMainInfo}>
+                      <span className={styles.branchType}>{branch.type}</span>
+                      <h4 className={styles.branchCity}>{branch.city}</h4>
+                      <p className={styles.branchAddress}>{branch.address}</p>
+                      <p className={styles.branchPhone}>
+                        <strong>Tel: </strong>
+                        <a
+                          href={`tel:${branch.phone}`}
+                          className={styles.branchPhoneLink}
+                        >
+                          {branch.phone}
+                        </a>
+                      </p>
+                    </div>
+                    <div className={styles.branchServices}>
+                      <span className={styles.servicesTitle}>
+                        Quick List of Services:
+                      </span>
+                      <ul className={styles.servicesList}>
+                        {branch.services.map((service, idx) => (
+                          <li key={idx} className={styles.serviceItem}>
+                            {service}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* International Offices */}
+            <div className={styles.branchCategoryCard}>
+              <h3 className={styles.branchCategoryTitle}>
+                International Offices
+              </h3>
+              <div className={styles.branchList}>
+                {BRANCHES.international.map((branch) => (
+                  <div key={branch.id} className={styles.branchItem}>
+                    <div className={styles.branchMainInfo}>
+                      <span className={styles.branchType}>{branch.type}</span>
+                      <h4 className={styles.branchCity}>{branch.city}</h4>
+                      {branch.note && (
+                        <span className={styles.branchNote}>{branch.note}</span>
+                      )}
+                      <p className={styles.branchAddress}>{branch.address}</p>
+                      <p className={styles.branchPhone}>
+                        <strong>Tel: </strong>
+                        <a
+                          href={`tel:${branch.phone}`}
+                          className={styles.branchPhoneLink}
+                        >
+                          {branch.phone}
+                        </a>
+                      </p>
+                    </div>
+                    <div className={styles.branchServices}>
+                      <span className={styles.servicesTitle}>
+                        Quick List of Services:
+                      </span>
+                      <ul className={styles.servicesList}>
+                        {branch.services.map((service, idx) => (
+                          <li key={idx} className={styles.serviceItem}>
+                            {service}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -231,10 +325,16 @@ export default function ContactPage() {
             </form>
 
             <div className={styles.infoColumn}>
-              <h3 className={styles.infoColumnTitle}>Why would you want to contact us?</h3>
+              <h3 className={styles.infoColumnTitle}>
+                Why would you want to contact us?
+              </h3>
               <div className={styles.infoColumnDivider} />
               <p className={styles.infoColumnText}>
-                At Aqrawi and Associates, we are dedicated to securing the maximum compensation for personal injury victims. With a proven track record of success and personalized attention, we will fight for your rights and support you every step of the way. Contact us today for a free consultation.
+                At Aqrawi and Associates, we are dedicated to securing the
+                maximum compensation for personal injury victims. With a proven
+                track record of success and personalized attention, we will
+                fight for your rights and support you every step of the way.
+                Contact us today for a free consultation.
               </p>
             </div>
           </div>
