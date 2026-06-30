@@ -420,10 +420,111 @@
   text-align: center;
 }
 
+.desktopActions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+/* Language selector */
+.langSelector {
+  position: relative;
+}
+
+.langBtn {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 4px;
+  color: #cccccc;
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 600;
+  padding: 8px 12px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+}
+
+.langBtn:hover {
+  border-color: #bf953f;
+  color: #ffffff;
+}
+
+.langDropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  background-color: #1a1a1c;
+  border: 1.5px solid #bf953f;
+  border-radius: 6px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  padding: 6px 0;
+  width: 120px;
+  z-index: 500;
+}
+
+.langDropdown button {
+  background: transparent;
+  border: none;
+  color: #cccccc;
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 550;
+  padding: 10px 16px;
+  text-align: left;
+  cursor: pointer;
+  width: 100%;
+  transition: all 0.15s ease;
+}
+
+.langDropdown button:hover {
+  background-color: rgba(191, 149, 63, 0.1);
+  color: #ffffff;
+}
+
+.langActive {
+  color: #bf953f !important;
+  font-weight: 700 !important;
+}
+
+/* Mobile Lang selector */
+.mobileLangSelector {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 30px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding-top: 24px;
+}
+
+.mobileLangBtn {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  color: #aaaaaa;
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 600;
+  padding: 8px 20px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.mobileLangBtnActive {
+  background: rgba(191, 149, 63, 0.15);
+  border-color: #bf953f;
+  color: #bf953f;
+  font-weight: 700;
+}
+
 /* Media Queries for Navbar responsive behavior */
 @media (max-width: 768px) {
   .navLinks,
-  .navBtn {
+  .desktopActions {
     display: none;
   }
 

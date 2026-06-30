@@ -223,7 +223,7 @@
 }
 
 .heroTitle {
-  font-family: var(--font-serif);
+  font-family: var(--font-sans);
   font-size: clamp(32px, 6vw, 64px);
   font-weight: 800;
   letter-spacing: 2px;
@@ -253,32 +253,7 @@
   text-transform: uppercase;
 }
 
-/* Floating translate button */
-.translateBtn {
-  position: fixed;
-  bottom: 24px;
-  left: 24px;
-  z-index: 1000;
-  background-color: #F27121;
-  color: white;
-  padding: 10px 16px;
-  border-radius: 4px;
-  font-family: var(--font-sans);
-  font-size: 13px;
-  font-weight: 700;
-  border: none;
-  cursor: pointer;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-  transition: all 0.2s ease;
-  display: flex;
-  align-items: center;
-  gap: 4px;
-}
 
-.translateBtn:hover {
-  background-color: #e05e0f;
-  transform: scale(1.03);
-}
 
 
 /* Services Section */
@@ -594,7 +569,7 @@
 }
 
 .whoHeading {
-  font-family: var(--font-serif);
+  font-family: var(--font-sans);
   font-size: clamp(32px, 5vw, 46px);
   font-weight: 800;
   color: #111111;
@@ -718,7 +693,7 @@
 }
 
 .servicesTitle {
-  font-family: var(--font-serif);
+  font-family: var(--font-sans);
   font-size: clamp(28px, 4vw, 38px);
   font-weight: 800;
   color: #111111;
@@ -825,7 +800,7 @@
 }
 
 .faqHeading {
-  font-family: var(--font-serif);
+  font-family: var(--font-sans);
   font-size: clamp(32px, 5vw, 48px);
   font-weight: 800;
   color: #111111;
@@ -1039,7 +1014,7 @@
 }
 
 .attorneysHeading {
-  font-family: var(--font-serif);
+  font-family: var(--font-sans);
   font-size: clamp(32px, 4.5vw, 44px);
   font-weight: 800;
   color: #111111;

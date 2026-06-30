@@ -6,18 +6,9 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import styles from "./page.module.css";
 import CountUp from "@/components/CountUp";
-
-interface ServiceTab {
-  id: string;
-  label: string;
-  tag: string;
-  title: string;
-  description: string;
-  features: string[];
-}
+import { TRANSLATIONS, Language } from "@/constants/translations";
 
 export default function Home() {
-  const [activeTab, setActiveTab] = useState<string>("defense");
   const [activeFaq, setActiveFaq] = useState<number | null>(0);
   const [formState, setFormState] = useState({
     name: "",
@@ -28,79 +19,27 @@ export default function Home() {
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
   const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
 
-  const faqItems = [
-    {
-      question: "How to choose the right lawyer?",
-      answer:
-        "Our personal injury attorneys have recovered millions of dollars on verdicts and settlements. If you have been injured in Houston, contact our law firm for a free consultation.",
-    },
-    {
-      question: "What should I do if I have been injured in a car accident?",
-      answer:
-        "Seek medical attention immediately, report the accident to the police, collect witness information, document the scene with photos, and contact an experienced personal injury attorney before speaking with any insurance adjusters.",
-    },
-    {
-      question: "What can I get of my free consultation?",
-      answer:
-        "In your free consultation, we will review the details of your incident, analyze the liability and insurance coverage, estimate your case's potential value, and outline your legal options with no upfront fees.",
-    },
-    {
-      question: "How much does it cost to hire an attorney?",
-      answer:
-        "We work on a contingency fee basis. This means you pay nothing unless we recover compensation for you. Our fees are paid as a percentage of the final settlement or verdict.",
-    },
-  ];
+  // Translation State
+  const [lang, setLang] = useState<Language>("en");
 
-  const serviceTabs: ServiceTab[] = [
-    {
-      id: "defense",
-      label: "Criminal Defense",
-      tag: "State & Federal Defense",
-      title: "Aggressive Criminal Defense Advocacy",
-      description:
-        "When your freedom is on the line, you need aggressive representation. We provide experienced counsel for individuals facing federal, state, felony, or misdemeanor charges.",
-      features: [
-        "Federal & State Charges",
-        "DUI & Traffic Violations",
-        "Felony & Misdemeanor Defense",
-        "Post-Conviction Advocacy",
-      ],
-    },
-    {
-      id: "injury",
-      label: "Personal Injury",
-      tag: "Accidents & Negligence",
-      title: "Securing the Settlement You Deserve",
-      description:
-        "We represent individuals injured due to the negligence of others. Our firm fights tirelessly to recover damages for medical expenses, lost earnings, and pain and suffering.",
-      features: [
-        "Automobile & Truck Accidents",
-        "Slip, Trip, and Fall Incidents",
-        "Wrongful Death Claims",
-        "Premises Liability Cases",
-      ],
-    },
-    {
-      id: "litigation",
-      label: "Civil Litigation",
-      tag: "Commercial & Property Claims",
-      title: "Strategic Resolution of Legal Disputes",
-      description:
-        "Our legal team represents businesses and individuals in contract disagreements, partner disputes, property issues, and other high-stakes civil litigation matters.",
-      features: [
-        "Breach of Contract Claims",
-        "Commercial Disputes",
-        "Property & Real Estate Litigation",
-        "Arbitration & Mediation Options",
-      ],
-    },
-  ];
+  // Sync language with localStorage and navbar changes
+  useEffect(() => {
+    const savedLang = localStorage.getItem("lang") as Language;
+    if (savedLang && (savedLang === "en" || savedLang === "es" || savedLang === "ar")) {
+      setLang(savedLang);
+    }
 
-  const activeService =
-    serviceTabs.find((tab) => tab.id === activeTab) || serviceTabs[0];
+    const handleLangChange = (e: any) => {
+      setLang(e.detail);
+    };
+    window.addEventListener("languageChange" as any, handleLangChange);
+    return () => {
+      window.removeEventListener("languageChange" as any, handleLangChange);
+    };
+  }, []);
 
   const handleInputChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     const { name, value } = e.target;
     setFormState((prev) => ({ ...prev, [name]: value }));
@@ -126,18 +65,21 @@ export default function Home() {
         // Reset success message after 5 seconds
         setTimeout(() => setIsSubmitted(false), 5000);
       } else {
-        alert("There was an issue submitting the form. Please try again.");
+        alert(t.contactError);
       }
     } catch (err) {
       console.error(err);
-      alert("There was an issue submitting the form. Please try again.");
+      alert(t.contactError);
     } finally {
       setIsSubmitting(false);
     }
   };
 
+  const t = TRANSLATIONS[lang].home;
+  const isRtl = TRANSLATIONS[lang].dir === "rtl";
+
   return (
-    <div className={styles.container}>
+    <div className={styles.container} dir={isRtl ? "rtl" : "ltr"}>
       {/* Navigation */}
       <Navbar />
 
@@ -146,35 +88,21 @@ export default function Home() {
         {/* Centered Hero Section */}
         <section className={`${styles.hero} animate-fade-in`}>
           <Logo size={240} showText={true} centerText={true} />
-          <h1 className={styles.heroTitle}>Free Consultation</h1>
+          <h1 className={styles.heroTitle}>{t.heroTitle}</h1>
           <p className={styles.heroQuote}>
-            &ldquo;The first step to getting your life back on track? A free
-            consultation with Aqrawi and Associates.&rdquo;
+            {t.heroQuote}
           </p>
-          <p className={styles.heroAuthor}>- Aqrawi And Associates</p>
+          <p className={styles.heroAuthor}>{t.heroAuthor}</p>
         </section>
 
         {/* Who We Are Section */}
         <section id="about" className={styles.whoWeAre}>
           <div className={styles.whoContainer}>
             <div className={styles.whoText}>
-              <h2 className={styles.whoHeading}>Who We Are</h2>
+              <h2 className={styles.whoHeading}>{t.whoTitle}</h2>
               <div className={styles.whoDivider} />
               <p className={styles.whoParagraph}>
-                Aqrawi and Associates is a leading personal injury law firm,
-                dedicated to helping clients who have been hurt as a result of
-                someone else's negligence or wrongdoing. Our experienced and
-                compassionate attorneys have a proven track record of success in
-                a variety of personal injury cases, including automobile
-                accidents, slip and fall injuries, medical malpractice, and
-                more. We are committed to pursuing maximum compensation for our
-                clients, to help cover medical expenses, lost wages, and other
-                damages they may have suffered as a result of their injury. With
-                a deep understanding of the law and a commitment to our clients,
-                we work tirelessly to achieve the best possible outcome in every
-                case. At Aqrawi and Associates, we believe that everyone
-                deserves justice, and we are dedicated to fighting for the
-                rights of injury victims and their families.
+                {t.whoParagraph}
               </p>
               <div className={styles.signatureContainer}>
                 <span className={styles.signatureLabel}>Walat</span>
@@ -183,7 +111,8 @@ export default function Home() {
                   alt="Walat Aqrawi Signature"
                   style={{
                     position: "absolute",
-                    left: "10px",
+                    left: isRtl ? "auto" : "10px",
+                    right: isRtl ? "10px" : "auto",
                     top: "30px",
                     height: "75px",
                     width: "auto",
@@ -191,7 +120,7 @@ export default function Home() {
                     pointerEvents: "none",
                   }}
                 />
-                <div className={styles.signatureTitle}>WALAT AQRAWI</div>
+                <div className={styles.signatureTitle}>{t.whoSignatureTitle}</div>
               </div>
             </div>
             <div className={styles.whoImageContainer}>
@@ -218,134 +147,26 @@ export default function Home() {
               d="M100,50 L250,120 L400,80 L550,150 L700,90 L850,180 L1000,100 L1200,160 M250,120 L300,280 L450,320 L550,150 M700,90 L680,250 L850,300 L850,180 M1000,100 L1100,240 L1250,220 M300,280 L150,380 L350,450 L450,320 M680,250 L580,380 L750,420 L850,300 M1100,240 L1000,380 L1150,440 L1250,220 M150,380 L200,520 L400,550 M580,380 L620,530 L800,550 M1000,380 L1050,520 L1200,540"
               stroke="#bf953f"
               strokeWidth="0.6"
-              strokeOpacity="0.08"
+              strokeLinecap="round"
+              strokeDasharray="5 5"
               fill="none"
-            />
-            <circle
-              cx="100"
-              cy="50"
-              r="3.5"
-              fill="#bf953f"
-              fillOpacity="0.15"
-            />
-            <circle cx="250" cy="120" r="4" fill="#bf953f" fillOpacity="0.15" />
-            <circle
-              cx="400"
-              cy="80"
-              r="3.5"
-              fill="#bf953f"
-              fillOpacity="0.15"
-            />
-            <circle
-              cx="550"
-              cy="150"
-              r="4.5"
-              fill="#bf953f"
-              fillOpacity="0.15"
-            />
-            <circle
-              cx="700"
-              cy="90"
-              r="3.5"
-              fill="#bf953f"
-              fillOpacity="0.15"
-            />
-            <circle cx="850" cy="180" r="4" fill="#bf953f" fillOpacity="0.15" />
-            <circle
-              cx="1000"
-              cy="100"
-              r="3.5"
-              fill="#bf953f"
-              fillOpacity="0.15"
-            />
-            <circle
-              cx="1200"
-              cy="160"
-              r="4"
-              fill="#bf953f"
-              fillOpacity="0.15"
-            />
-            <circle
-              cx="300"
-              cy="280"
-              r="3.5"
-              fill="#bf953f"
-              fillOpacity="0.15"
-            />
-            <circle
-              cx="450"
-              cy="320"
-              r="4.5"
-              fill="#bf953f"
-              fillOpacity="0.15"
-            />
-            <circle cx="680" cy="250" r="4" fill="#bf953f" fillOpacity="0.15" />
-            <circle
-              cx="850"
-              cy="300"
-              r="3.5"
-              fill="#bf953f"
-              fillOpacity="0.15"
-            />
-            <circle
-              cx="1100"
-              cy="240"
-              r="3.5"
-              fill="#bf953f"
-              fillOpacity="0.15"
-            />
-            <circle
-              cx="1250"
-              cy="220"
-              r="4"
-              fill="#bf953f"
-              fillOpacity="0.15"
-            />
-            <circle
-              cx="150"
-              cy="380"
-              r="3.5"
-              fill="#bf953f"
-              fillOpacity="0.15"
-            />
-            <circle cx="350" cy="450" r="4" fill="#bf953f" fillOpacity="0.15" />
-            <circle cx="580" cy="380" r="4" fill="#bf953f" fillOpacity="0.15" />
-            <circle
-              cx="750"
-              cy="420"
-              r="4.5"
-              fill="#bf953f"
-              fillOpacity="0.15"
-            />
-            <circle
-              cx="1000"
-              cy="380"
-              r="3.5"
-              fill="#bf953f"
-              fillOpacity="0.15"
-            />
-            <circle
-              cx="1150"
-              cy="440"
-              r="4"
-              fill="#bf953f"
-              fillOpacity="0.15"
+              opacity="0.25"
             />
           </svg>
 
-          <div className={styles.servicesContent}>
-            <h2 className={styles.servicesTitle}>Our Services</h2>
+          <div className={styles.servicesContainer}>
+            <h2 className={styles.servicesTitle}>{t.servicesTitle}</h2>
 
             <div className={styles.servicesGrid}>
               {/* Item 1: CAR ACCIDENTS */}
               <div className={styles.serviceItem}>
                 <div className={styles.iconCircle}>
                   <svg viewBox="0 0 100 100" width="48" height="48" fill="none">
-                    {/* Explosion / Impact */}
+                    {/* Road line */}
                     <path
-                      d="M22 25 L32 35 M12 35 L27 38 M16 18 L30 28 M30 12 L34 26"
+                      d="M10 68 L90 68"
                       stroke="#bf953f"
-                      strokeWidth="3.5"
+                      strokeWidth="4"
                       strokeLinecap="round"
                     />
                     {/* Car Body */}
@@ -371,7 +192,7 @@ export default function Home() {
                     />
                   </svg>
                 </div>
-                <span className={styles.serviceLabel}>Car Accidents</span>
+                <span className={styles.serviceLabel}>{t.servicesList.car}</span>
               </div>
 
               {/* Item 2: TRUCK ACCIDENTS */}
@@ -412,7 +233,7 @@ export default function Home() {
                     />
                   </svg>
                 </div>
-                <span className={styles.serviceLabel}>Truck Accidents</span>
+                <span className={styles.serviceLabel}>{t.servicesList.truck}</span>
               </div>
 
               {/* Item 3: MOTOR CYCLES ACCIDENTS */}
@@ -452,7 +273,7 @@ export default function Home() {
                   </svg>
                 </div>
                 <span className={styles.serviceLabel}>
-                  Motor Cycles Accidents
+                  {t.servicesList.motorcycle}
                 </span>
               </div>
 
@@ -486,7 +307,7 @@ export default function Home() {
                     />
                   </svg>
                 </div>
-                <span className={styles.serviceLabel}>Medical Malpractice</span>
+                <span className={styles.serviceLabel}>{t.servicesList.medical}</span>
               </div>
 
               {/* Item 5: SLIP AND FALL */}
@@ -534,7 +355,7 @@ export default function Home() {
                     />
                   </svg>
                 </div>
-                <span className={styles.serviceLabel}>Slip And Fall</span>
+                <span className={styles.serviceLabel}>{t.servicesList.slip}</span>
               </div>
 
               {/* Item 6: WORK PLACE INJURY */}
@@ -559,7 +380,7 @@ export default function Home() {
                     <rect x="44" y="66" width="12" height="19" fill="#bf953f" />
                   </svg>
                 </div>
-                <span className={styles.serviceLabel}>Work Place Injury</span>
+                <span className={styles.serviceLabel}>{t.servicesList.work}</span>
               </div>
             </div>
           </div>
@@ -571,15 +392,15 @@ export default function Home() {
             <div className={styles.faqTitleContainer}>
               <div className={styles.faqTitleDivider} />
               <h2 className={styles.faqHeading}>
-                Why
+                {t.faqTitle}
                 <br />
-                Choose Us
+                {t.faqTitleSub}
               </h2>
               <div className={styles.faqTitleDivider} />
             </div>
 
             <div className={styles.accordionList}>
-              {faqItems.map((item, idx) => {
+              {t.faqs.map((item, idx) => {
                 const isOpen = activeFaq === idx;
                 return (
                   <div key={idx} className={styles.accordionItem}>
@@ -587,7 +408,7 @@ export default function Home() {
                       className={`${styles.accordionHeader} ${isOpen ? styles.accordionHeaderActive : ""}`}
                       onClick={() => setActiveFaq(isOpen ? null : idx)}
                     >
-                      <span>{item.question}</span>
+                      <span>{item.q}</span>
                       <span className={styles.accordionIcon}>
                         {isOpen ? "▴" : "▾"}
                       </span>
@@ -595,7 +416,7 @@ export default function Home() {
                     <div
                       className={`${styles.accordionContent} ${isOpen ? styles.accordionContentShow : ""}`}
                     >
-                      <p>{item.answer}</p>
+                      <p>{item.a}</p>
                     </div>
                   </div>
                 );
@@ -611,13 +432,13 @@ export default function Home() {
               <div className={styles.statNum}>
                 <CountUp end={5000} suffix="+" />
               </div>
-              <div className={styles.statLabel}>Client Consultations</div>
+              <div className={styles.statLabel}>{t.statsConsultations}</div>
             </div>
             <div className={styles.statCol}>
               <div className={styles.statNum}>
                 <CountUp end={90} suffix="%" />
               </div>
-              <div className={styles.statLabel}>Successful Cases</div>
+              <div className={styles.statLabel}>{t.statsSuccess}</div>
             </div>
           </div>
         </section>
@@ -933,8 +754,7 @@ export default function Home() {
         <section className={styles.ctaBanner}>
           <div className={styles.ctaContainer}>
             <h2 className={styles.ctaText}>
-              &ldquo;Call us today for a FREE and confidential consultation. Our
-              team are here to support you and fight for your rights.&rdquo;
+              {t.ctaText}
             </h2>
             <button
               className={styles.ctaBtn}
@@ -943,7 +763,7 @@ export default function Home() {
                 if (el) el.scrollIntoView({ behavior: "smooth" });
               }}
             >
-              Contact Us
+              {t.ctaBtn}
             </button>
           </div>
         </section>
@@ -951,7 +771,7 @@ export default function Home() {
         {/* Attorneys Profile Section */}
         <section id="about-us" className={styles.attorneysSection}>
           <div className={styles.attorneysContainer}>
-            <h2 className={styles.attorneysHeading}>Attorneys</h2>
+            <h2 className={styles.attorneysHeading}>{t.attorneysTitle}</h2>
             <div className={styles.attorneysDivider} />
 
             <div className={styles.attorneysGrid}>
@@ -965,7 +785,7 @@ export default function Home() {
                   />
                 </div>
                 <h3 className={styles.attorneyName}>Walat Aqrawi</h3>
-                <span className={styles.attorneyTitle}>Managing Partner</span>
+                <span className={styles.attorneyTitle}>{t.attorneysWalatRole}</span>
               </div>
 
               {/* Profile 2: Aaron Aiken */}
@@ -978,7 +798,7 @@ export default function Home() {
                   />
                 </div>
                 <h3 className={styles.attorneyName}>Aaron Aiken</h3>
-                <span className={styles.attorneyTitle}>Partner</span>
+                <span className={styles.attorneyTitle}>{t.attorneysAaronRole}</span>
               </div>
             </div>
           </div>
@@ -990,17 +810,13 @@ export default function Home() {
             {/* Left Column: Form */}
             <div className={styles.contactText}>
               <h2 className={styles.infoHeading} style={{ color: "#d4af37" }}>
-                Contact Us
+                {t.contactTitle}
               </h2>
               <p
                 className={styles.whoParagraph}
                 style={{ marginBottom: "32px" }}
               >
-                At <strong>Aqrawi and Associates law firm</strong>, we
-                understand the impact that a personal injury can have on your
-                life. That's why we're here to help you get back on track. With
-                years of experience and a dedicated team of personal injury
-                lawyers, we know what it takes to win.
+                {t.contactParagraph}
               </p>
 
               <form onSubmit={handleSubmit} className={styles.contactForm}>
@@ -1009,8 +825,7 @@ export default function Home() {
                     className={styles.submitSuccess}
                     style={{ marginBottom: "16px" }}
                   >
-                    ✓ Thank you! Your case details have been sent. We will reach
-                    out shortly.
+                    {t.contactSuccess}
                   </div>
                 )}
 
@@ -1021,7 +836,7 @@ export default function Home() {
                   value={formState.name}
                   onChange={handleInputChange}
                   className={styles.formInput}
-                  placeholder="Your name"
+                  placeholder={t.contactFormName}
                   required
                   disabled={isSubmitting}
                 />
@@ -1033,7 +848,7 @@ export default function Home() {
                   value={formState.email}
                   onChange={handleInputChange}
                   className={styles.formInput}
-                  placeholder="Your email"
+                  placeholder={t.contactFormEmail}
                   required
                   disabled={isSubmitting}
                 />
@@ -1045,7 +860,7 @@ export default function Home() {
                   value={formState.phone}
                   onChange={handleInputChange}
                   className={styles.formInput}
-                  placeholder="Your phone"
+                  placeholder={t.contactFormPhone}
                   disabled={isSubmitting}
                 />
 
@@ -1055,40 +870,28 @@ export default function Home() {
                   value={formState.message}
                   onChange={handleInputChange}
                   className={`${styles.formInput} ${styles.formTextarea}`}
-                  placeholder="Your message"
+                  placeholder={t.contactFormMessage}
                   required
                   disabled={isSubmitting}
                 />
 
                 <button type="submit" className={styles.formSubmitBtn}>
-                  Send →
+                  {isSubmitting ? "..." : t.contactFormBtn}
                 </button>
               </form>
             </div>
 
             {/* Right Column: Give Us A Call */}
             <div className={styles.contactInfo}>
-              <h2 className={styles.infoHeading}>Give Us A Call</h2>
+              <h2 className={styles.infoHeading}>{t.giveCallTitle}</h2>
               <p
                 className={styles.whoParagraph}
                 style={{ marginBottom: "36px" }}
               >
-                If you've been involved in a personal injury, the team at{" "}
-                <strong>Aqrawi and Associates</strong> law firm is here to help.
-                We understand that the aftermath of an accident can be
-                overwhelming and stressful, which is why we offer free
-                consultations to anyone in need of legal advice. During this
-                consultation, you'll have the opportunity to discuss the details
-                of your case with one of our knowledgeable personal injury
-                lawyers. They'll listen to your story, answer any questions you
-                may have, and help you understand your rights and options. Our
-                goal is to provide you with the support and guidance you need
-                during this difficult time, so don't hesitate to reach out to
-                us. Call us today at <strong>713-757-7777</strong> to schedule
-                your <strong>FREE CONSULTATION</strong>.
+                {t.giveCallParagraph}
               </p>
 
-              <span className={styles.phoneLabel}>Available at 9am to 6pm</span>
+              <span className={styles.phoneLabel}>{t.availableLabel}</span>
               <a href="tel:7137577777" className={styles.phoneNum}>
                 713-757-7777
               </a>
@@ -1111,16 +914,6 @@ export default function Home() {
           </div>
         </section>
       </main>
-
-      {/* Floating Translate Button */}
-      <button
-        className={styles.translateBtn}
-        onClick={() =>
-          alert("Language translation services are currently being configured.")
-        }
-      >
-        Translate »
-      </button>
 
       {/* Footer */}
       <Footer />

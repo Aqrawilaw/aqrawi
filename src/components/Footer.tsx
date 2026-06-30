@@ -1,12 +1,35 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Logo from "@/app/components/Logo";
 import styles from "./Footer.module.css";
+import { TRANSLATIONS, Language } from "@/constants/translations";
 
 export default function Footer() {
+  const [lang, setLang] = useState<Language>("en");
+
+  // Sync language with localStorage and navbar changes
+  useEffect(() => {
+    const savedLang = localStorage.getItem("lang") as Language;
+    if (savedLang && (savedLang === "en" || savedLang === "es" || savedLang === "ar")) {
+      setLang(savedLang);
+    }
+
+    const handleLangChange = (e: any) => {
+      setLang(e.detail);
+    };
+    window.addEventListener("languageChange" as any, handleLangChange);
+    return () => {
+      window.removeEventListener("languageChange" as any, handleLangChange);
+    };
+  }, []);
+
+  const t = TRANSLATIONS[lang].footer;
+  const nav = TRANSLATIONS[lang].nav;
+  const isRtl = TRANSLATIONS[lang].dir === "rtl";
+
   return (
-    <footer className={styles.footer}>
+    <footer className={styles.footer} dir={isRtl ? "rtl" : "ltr"}>
       <div className={styles.footerContainer}>
         {/* Top footer sections */}
         <div className={styles.footerGrid}>
@@ -16,7 +39,7 @@ export default function Footer() {
               <Logo size={180} />
             </div>
             <p className={styles.footerTagline}>
-              Aqrawi & Associates is a premier law firm PLLC committed to providing exceptional legal representation and counsel. We fight tirelessly to secure the justice and compensation you deserve.
+              {t.tagline}
             </p>
             <div className={styles.socialLinks}>
               <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className={styles.socialBox} aria-label="Facebook">
@@ -36,37 +59,37 @@ export default function Footer() {
 
           {/* Column 2: Navigation Links */}
           <div className={styles.footerCol}>
-            <h3 className={styles.colHeading}>Quick Links</h3>
+            <h3 className={styles.colHeading}>{t.quickLinks}</h3>
             <ul className={styles.linkList}>
               <li>
-                <a href="/" className={styles.footerLink}>Home</a>
+                <a href="/" className={styles.footerLink}>{nav.home}</a>
               </li>
               <li>
-                <a href="/about" className={styles.footerLink}>About Us</a>
+                <a href="/about" className={styles.footerLink}>{nav.aboutUs}</a>
               </li>
               <li>
-                <a href="/services" className={styles.footerLink}>Services</a>
+                <a href="/services" className={styles.footerLink}>{nav.services}</a>
               </li>
               <li>
-                <a href="/contact" className={styles.footerLink}>Contact Us</a>
+                <a href="/contact" className={styles.footerLink}>{nav.contact}</a>
               </li>
             </ul>
           </div>
 
           {/* Column 3: Contact Details */}
           <div className={styles.footerCol}>
-            <h3 className={styles.colHeading}>Houston Headquarter</h3>
+            <h3 className={styles.colHeading}>{t.hq}</h3>
             <p className={styles.contactText}>
               1706 S Texas 6<br />
               Houston, TX 77077
             </p>
             <p className={styles.contactText}>
-              <strong>Phone:</strong> <a href="tel:7137577777" className={styles.inlineLink}>713-757-7777</a><br />
-              <strong>Email:</strong> <a href="mailto:info@aqrawilaw.com" className={styles.inlineLink}>info@aqrawilaw.com</a><br />
-              <strong>Fax:</strong> 281-605-5805
+              <strong>{t.phone}:</strong> <a href="tel:7137577777" className={styles.inlineLink}>713-757-7777</a><br />
+              <strong>{t.email}:</strong> <a href="mailto:info@aqrawilaw.com" className={styles.inlineLink}>info@aqrawilaw.com</a><br />
+              <strong>{t.fax}:</strong> 281-605-5805
             </p>
             <p className={styles.contactText}>
-              <strong>Hours:</strong> Mon - Fri: 9am - 6pm
+              <strong>{t.hours}:</strong> {t.hoursVal}
             </p>
           </div>
         </div>
@@ -77,12 +100,12 @@ export default function Footer() {
         {/* Bottom footer copyright and policies */}
         <div className={styles.footerBottom}>
           <div className={styles.copyright}>
-            Copyright © {new Date().getFullYear()} Aqrawi Law Firm | All Rights Reserved
+            Copyright © {new Date().getFullYear()} Aqrawi Law Firm | {t.copyright}
           </div>
           <div className={styles.policyLinks}>
-            <a href="#" className={styles.policyLink}>Privacy Policy</a>
+            <a href="#" className={styles.policyLink}>{t.privacy}</a>
             <span className={styles.policySeparator}>•</span>
-            <a href="#" className={styles.policyLink}>Terms of Use</a>
+            <a href="#" className={styles.policyLink}>{t.terms}</a>
           </div>
         </div>
       </div>
