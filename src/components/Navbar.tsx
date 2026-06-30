@@ -9,6 +9,20 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
   const router = useRouter();
+  const [scrolled, setScrolled] = useState<boolean>(false);
+
+  // Monitor scroll for header background styling
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 20) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const handleContactClick = (e: React.MouseEvent) => {
     e.preventDefault();
