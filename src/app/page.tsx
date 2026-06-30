@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Logo from "./components/Logo";
 import styles from "./page.module.css";
 
 interface ServiceTab {
@@ -13,11 +14,12 @@ interface ServiceTab {
 }
 
 export default function Home() {
-  const [activeTab, setActiveTab] = useState<string>("web");
+  const [activeTab, setActiveTab] = useState<string>("defense");
   const [scrolled, setScrolled] = useState<boolean>(false);
   const [formState, setFormState] = useState({
     name: "",
     email: "",
+    phone: "",
     message: "",
   });
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
@@ -38,28 +40,28 @@ export default function Home() {
 
   const serviceTabs: ServiceTab[] = [
     {
-      id: "web",
-      label: "Engineering",
-      tag: "Full-Stack Development",
-      title: "High-Performance Web Solutions",
-      description: "We engineer modern, fast, and secure web applications using state-of-the-art technologies. From robust databases to responsive frontend architectures, we deliver polished user experiences.",
-      features: ["Next.js & React Specialists", "Edge-Ready Infrastructure", "Performant Database Architectures", "Optimized Web Vitals"],
+      id: "defense",
+      label: "Criminal Defense",
+      tag: "State & Federal Defense",
+      title: "Aggressive Criminal Defense Advocacy",
+      description: "When your freedom is on the line, you need aggressive representation. We provide experienced counsel for individuals facing federal, state, felony, or misdemeanor charges.",
+      features: ["Federal & State Charges", "DUI & Traffic Violations", "Felony & Misdemeanor Defense", "Post-Conviction Advocacy"],
     },
     {
-      id: "ai",
-      label: "Intelligence",
-      tag: "AI & Automation",
-      title: "Next-Generation Intelligent Systems",
-      description: "Leverage the power of modern machine learning and large language models. We build automated workflows, intelligent agents, and custom search integrations tailored to your business needs.",
-      features: ["Custom LLM Integration", "Agentic Workflow Automation", "Semantic Search & Vector DBs", "Structured Output Parsing"],
+      id: "injury",
+      label: "Personal Injury",
+      tag: "Accidents & Negligence",
+      title: "Securing the Settlement You Deserve",
+      description: "We represent individuals injured due to the negligence of others. Our firm fights tirelessly to recover damages for medical expenses, lost earnings, and pain and suffering.",
+      features: ["Automobile & Truck Accidents", "Slip, Trip, and Fall Incidents", "Wrongful Death Claims", "Premises Liability Cases"],
     },
     {
-      id: "design",
-      label: "Brand Identity",
-      tag: "UI/UX & Branding",
-      title: "Visually Stunning User Experiences",
-      description: "Design that commands attention. We create clean, modern, and accessible user interfaces that tell your brand's story. Every micro-interaction is optimized to increase user engagement and delight.",
-      features: ["Premium Interactive Interfaces", "Bespoke Design Systems", "Responsive & Mobile-First", "High-fidelity Prototypes"],
+      id: "litigation",
+      label: "Civil Litigation",
+      tag: "Commercial & Property Claims",
+      title: "Strategic Resolution of Legal Disputes",
+      description: "Our legal team represents businesses and individuals in contract disagreements, partner disputes, property issues, and other high-stakes civil litigation matters.",
+      features: ["Breach of Contract Claims", "Commercial Disputes", "Property & Real Estate Litigation", "Arbitration & Mediation Options"],
     },
   ];
 
@@ -79,7 +81,7 @@ export default function Home() {
     setTimeout(() => {
       setIsSubmitting(false);
       setIsSubmitted(true);
-      setFormState({ name: "", email: "", message: "" });
+      setFormState({ name: "", email: "", phone: "", message: "" });
       // Reset success message after 5 seconds
       setTimeout(() => setIsSubmitted(false), 5000);
     }, 1200);
@@ -91,12 +93,27 @@ export default function Home() {
       <header className={`${styles.header} ${scrolled ? styles.headerScrolled : ""}`}>
         <nav className={styles.nav}>
           <div className={styles.logo}>
-            Aqrawi<span className={styles.logoDot}></span>
+            <Logo size={42} showText={true} centerText={true} />
           </div>
           <div className={styles.navLinks}>
+            <a href="#" className={styles.navLink}>Home</a>
+            <div className={styles.navItemDropdown}>
+              <span className={styles.navLink}>About ▫</span>
+              <div className={styles.dropdownMenu}>
+                <a href="#about" className={styles.dropdownItem}>About us</a>
+                <div className={`${styles.dropdownItem} ${styles.hasSubmenu}`}>
+                  <span>Our Team</span>
+                  <span>▫</span>
+                  <div className={styles.submenu}>
+                    <a href="#staff" className={styles.dropdownItem}>Staff</a>
+                    <a href="#management" className={styles.dropdownItem}>Management</a>
+                    <a href="#associates" className={styles.dropdownItem}>Assocites</a>
+                  </div>
+                </div>
+              </div>
+            </div>
             <a href="#services" className={styles.navLink}>Services</a>
-            <a href="#solutions" className={styles.navLink}>Solutions</a>
-            <a href="#contact" className={styles.navLink}>Inquire</a>
+            <a href="#contact" className={styles.navLink}>Contact</a>
           </div>
           <button 
             className={styles.navBtn}
@@ -105,7 +122,7 @@ export default function Home() {
               if (el) el.scrollIntoView({ behavior: "smooth" });
             }}
           >
-            Get in touch
+            Free Evaluation
           </button>
         </nav>
       </header>
@@ -113,85 +130,88 @@ export default function Home() {
       {/* Main Content */}
       <main className={styles.main}>
         
-        {/* Hero Section */}
+        {/* Centered Hero Section */}
         <section className={`${styles.hero} animate-fade-in`}>
-          <div className={styles.badge}>
-            <span className={styles.badgeDot}></span>
-            Now booking projects for Q3 2026
-          </div>
-          <h1 className={styles.title}>
-            Building <span className={styles.gradientText}>State-of-the-Art</span> Digital Systems
+          <Logo size={140} showText={true} centerText={true} />
+          <h1 className={styles.heroTitle}>
+            Free Consultation
           </h1>
-          <p className={styles.subtitle}>
-            Aqrawi is a premier development and design consultancy crafting high-performance web applications, intelligent integrations, and premium brand experiences.
+          <p className={styles.heroQuote}>
+            &ldquo;The first step to getting your life back on track? A free consultation with Aqrawi and Associates.&rdquo;
           </p>
-          <div className={styles.ctas}>
-            <button 
-              className={styles.btnPrimary}
-              onClick={() => {
-                const el = document.getElementById("contact");
-                if (el) el.scrollIntoView({ behavior: "smooth" });
-              }}
-            >
-              Start Your Project
-              <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M8.14645 3.14645C8.34171 2.95118 8.65829 2.95118 8.85355 3.14645L12.8536 7.14645C13.0488 7.34171 13.0488 7.65829 12.8536 7.85355L8.85355 11.8536C8.65829 12.0488 8.34171 12.0488 8.14645 11.8536C7.95118 11.6583 7.95118 11.3417 8.14645 11.1464L11.2929 8H2.5C2.22386 8 2 7.77614 2 7.5C2 7.22386 2.22386 7 2.5 7H11.2929L8.14645 3.85355C7.95118 3.65829 7.95118 3.34171 8.14645 3.14645Z" fill="currentColor" fillRule="evenodd" clipRule="evenodd"></path>
-              </svg>
-            </button>
-            <button 
-              className={styles.btnSecondary}
-              onClick={() => {
-                const el = document.getElementById("services");
-                if (el) el.scrollIntoView({ behavior: "smooth" });
-              }}
-            >
-              Explore Services
-            </button>
+          <p className={styles.heroAuthor}>
+            - Aqrawi And Associates
+          </p>
+        </section>
+
+        {/* Who We Are Section */}
+        <section id="about" className={styles.whoWeAre}>
+          <div className={styles.whoContainer}>
+            <div className={styles.whoText}>
+              <h2 className={styles.whoHeading}>Who We Are</h2>
+              <div className={styles.whoDivider} />
+              <p className={styles.whoParagraph}>
+                Aqrawi and Associates is a leading personal injury law firm, dedicated to helping clients who have been hurt as a result of someone else's negligence or wrongdoing. Our experienced and compassionate attorneys have a proven track record of success in a variety of personal injury cases, including automobile accidents, slip and fall injuries, medical malpractice, and more. We are committed to pursuing maximum compensation for our clients, to help cover medical expenses, lost wages, and other damages they may have suffered as a result of their injury. With a deep understanding of the law and a commitment to our clients, we work tirelessly to achieve the best possible outcome in every case. At Aqrawi and Associates, we believe that everyone deserves justice, and we are dedicated to fighting for the rights of injury victims and their families.
+              </p>
+              <div className={styles.signatureContainer}>
+                <span className={styles.signatureLabel}>Walat</span>
+                <span className={styles.signatureName}>Walat Aqrawi</span>
+              </div>
+            </div>
+            <div className={styles.whoImageContainer}>
+              <div className={styles.whoImageWrapper}>
+                <img 
+                  src="/lawyers_meeting.png" 
+                  alt="Aqrawi & Associates attorneys" 
+                  className={styles.whoImage}
+                />
+              </div>
+            </div>
           </div>
         </section>
 
-        {/* Services Grid Section */}
+        {/* Practice Areas Grid Section */}
         <section id="services" className={styles.section}>
           <div className={styles.sectionHeader}>
-            <h2 className={styles.sectionTitle}>Bespoke Digital Services</h2>
+            <h2 className={styles.sectionTitle}>Our Practice Areas</h2>
             <p className={styles.sectionSubtitle}>
-              Tailored software engineering and architectural expertise built with modern workflows.
+              Exceptional legal representation tailored to protect your rights, business, and family.
             </p>
           </div>
 
           <div className={styles.grid}>
             <div className={`${styles.card} glass-card`}>
-              <div className={styles.cardIcon}>💻</div>
-              <h3 className={styles.cardTitle}>Full-Stack Apps</h3>
+              <div className={styles.cardIcon}>🛡️</div>
+              <h3 className={styles.cardTitle}>Criminal Defense</h3>
               <p className={styles.cardDesc}>
-                Responsive web applications built with Next.js, optimized React architectures, and robust backend integrations.
+                Protecting your rights and liberty with skilled representation against state and federal allegations.
               </p>
             </div>
 
             <div className={`${styles.card} glass-card`}>
-              <div className={styles.cardIcon}>⚡</div>
-              <h3 className={styles.cardTitle}>Cloud Architectures</h3>
+              <div className={styles.cardIcon}>⚖️</div>
+              <h3 className={styles.cardTitle}>Personal Injury</h3>
               <p className={styles.cardDesc}>
-                Serverless setups, databases, edge deployment, and cloud infrastructure engineered for scaling and security.
+                Fighter advocate representation securing full compensation for accident victims of negligence.
               </p>
             </div>
 
             <div className={`${styles.card} glass-card`}>
-              <div className={styles.cardIcon}>✨</div>
-              <h3 className={styles.cardTitle}>Interactive UI/UX</h3>
+              <div className={styles.cardIcon}>📜</div>
+              <h3 className={styles.cardTitle}>Civil Litigation</h3>
               <p className={styles.cardDesc}>
-                Crafted layouts with smooth micro-animations, tailored color systems, and modern typography configurations.
+                Strategic resolution of complex corporate conflicts, contract breaches, and property disputes.
               </p>
             </div>
           </div>
         </section>
 
-        {/* Solutions / Tabbed Section */}
+        {/* Practice Areas Details / Tabbed Section */}
         <section id="solutions" className={styles.section}>
           <div className={styles.sectionHeader}>
-            <h2 className={styles.sectionTitle}>Engineered Core Competencies</h2>
+            <h2 className={styles.sectionTitle}>Strategic Legal Counsel</h2>
             <p className={styles.sectionSubtitle}>
-              Select a solution track below to see how we deliver value to complex tech projects.
+              Explore our core litigation strengths and representation standards.
             </p>
           </div>
 
@@ -227,19 +247,19 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Contact/Inquiry Section */}
+        {/* Contact/Case Evaluation Section */}
         <section id="contact" className={`${styles.section} ${styles.contactSection}`}>
           <div className={styles.sectionHeader}>
-            <h2 className={styles.sectionTitle}>Inquire About Your Project</h2>
+            <h2 className={styles.sectionTitle}>Request A Free Case Evaluation</h2>
             <p className={styles.sectionSubtitle}>
-              Tell us about your digital needs. We typically respond with a project outline and estimate within 24 hours.
+              Describe your legal situation below. We review all submissions within 24 hours to schedule your free consultation.
             </p>
           </div>
 
           <form onSubmit={handleSubmit} className={`${styles.form} glass`}>
             {isSubmitted && (
               <div className={styles.submitSuccess}>
-                ✓ Thank you! Your inquiry has been received. We will reach out shortly.
+                ✓ Thank you! Your case evaluation request has been received. We will contact you shortly.
               </div>
             )}
             
@@ -274,35 +294,57 @@ export default function Home() {
             </div>
 
             <div className={styles.formGroup}>
-              <label htmlFor="message" className={styles.label}>Project Details</label>
+              <label htmlFor="phone" className={styles.label}>Phone Number</label>
+              <input
+                type="tel"
+                id="phone"
+                name="phone"
+                value={formState.phone}
+                onChange={handleInputChange}
+                className={styles.input}
+                placeholder="Your phone number"
+                disabled={isSubmitting}
+              />
+            </div>
+
+            <div className={styles.formGroup}>
+              <label htmlFor="message" className={styles.label}>Case Details</label>
               <textarea
                 id="message"
                 name="message"
                 value={formState.message}
                 onChange={handleInputChange}
-                className={`${styles.input} styles.textarea`}
-                placeholder="Describe your timeline, features, and budget goals..."
+                className={`${styles.input} ${styles.textarea}`}
+                placeholder="Briefly describe your situation, legal questions, and urgency..."
                 required
                 disabled={isSubmitting}
               />
             </div>
 
             <button type="submit" className={styles.submitBtn} disabled={isSubmitting}>
-              {isSubmitting ? "Sending Inquiry..." : "Submit Inquiry"}
+              {isSubmitting ? "Submitting Case..." : "Request Case Evaluation"}
             </button>
           </form>
         </section>
       </main>
 
+      {/* Floating Translate Button */}
+      <button 
+        className={styles.translateBtn}
+        onClick={() => alert("Language translation services are currently being configured.")}
+      >
+        Translate »
+      </button>
+
       {/* Footer */}
       <footer className={styles.footer}>
         <div className={styles.footerContent}>
           <div className={styles.footerCopyright}>
-            © {new Date().getFullYear()} Aqrawi. All rights reserved.
+            © {new Date().getFullYear()} Aqrawi & Associates Law Firm PLLC. All rights reserved.
           </div>
           <div className={styles.footerLinks}>
-            <a href="#services" className={styles.footerLink}>Services</a>
-            <a href="#solutions" className={styles.footerLink}>Solutions</a>
+            <a href="#" className={styles.footerLink}>Home</a>
+            <a href="#services" className={styles.footerLink}>Practice Areas</a>
             <a href="#contact" className={styles.footerLink}>Contact</a>
           </div>
         </div>
@@ -310,3 +352,4 @@ export default function Home() {
     </div>
   );
 }
+

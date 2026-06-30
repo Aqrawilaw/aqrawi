@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Playfair_Display, Inter, Mrs_Saint_Delafield } from "next/font/google";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -12,9 +12,28 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const playfair = Playfair_Display({
+  variable: "--font-playfair",
+  subsets: ["latin"],
+  display: "swap",
+});
+
+const inter = Inter({
+  variable: "--font-inter",
+  subsets: ["latin"],
+  display: "swap",
+});
+
+const signature = Mrs_Saint_Delafield({
+  variable: "--font-signature",
+  weight: "400",
+  subsets: ["latin"],
+  display: "swap",
+});
+
 export const metadata: Metadata = {
-  title: "Aqrawi | Premium Digital Engineering & Design Consultancy",
-  description: "Aqrawi builds state-of-the-art web applications, intelligent automation integrations, and premium brand designs.",
+  title: "Aqrawi & Associates | Law Firm PLLC",
+  description: "Aqrawi & Associates is a premier law firm PLLC committed to providing exceptional legal representation and counsel. Contact us for a free consultation.",
 };
 
 export default function RootLayout({
@@ -23,8 +42,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
+    <html lang="en" className={`${inter.variable} ${playfair.variable} ${signature.variable} ${geistSans.variable} ${geistMono.variable}`}>
       <body>{children}</body>
     </html>
   );
 }
+
+
