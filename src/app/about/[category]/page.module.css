@@ -1,0 +1,324 @@
+.teamPage {
+  --gold: #c5a880;
+  --gold-hover: #b59870;
+  --dark-bg: #0b0b0c;
+  --light-bg: #ffffff;
+  --cream-bg: #f9f8f6;
+  --grey-bg: #f5f5f5;
+  --text-dark: #222222;
+  --text-muted: #666666;
+  --text-light: #ffffff;
+
+  background-color: var(--light-bg);
+  color: var(--text-dark);
+  font-family: var(--font-sans);
+  min-height: 100vh;
+}
+
+/* Hero Section */
+.hero {
+  background-image:
+    linear-gradient(rgba(11, 11, 12, 0.55), rgba(11, 11, 12, 0.55)),
+    url("/images/about-page/about-bg.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 8rem 2rem;
+  color: var(--text-light);
+}
+
+.heroContent {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.heroTitle {
+  font-size: 3.5rem;
+  font-weight: 800;
+  margin: 0;
+  letter-spacing: -0.02em;
+  text-transform: capitalize;
+}
+
+/* Grid Section */
+.gridSection {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 6rem 2rem;
+}
+
+.teamGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 4rem;
+}
+
+.memberCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.memberCard:hover {
+  transform: translateY(-4px);
+}
+
+.imageWrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+  margin-bottom: 2rem;
+  background-color: var(--grey-bg);
+}
+
+.memberImg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 2;
+  transition: transform 0.5s ease;
+}
+
+.imageWrapper:hover .memberImg {
+  transform: scale(1.03);
+}
+
+.avatarFallback {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #1C1C1E 0%, #2A2A2E 100%);
+  color: var(--gold);
+  border: 1px solid rgba(197, 168, 128, 0.15);
+  z-index: 1;
+}
+
+.fallbackIcon {
+  color: rgba(197, 168, 128, 0.25);
+  margin-bottom: 0.5rem;
+}
+
+.fallbackInitials {
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  font-family: var(--font-serif);
+}
+
+.memberName {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 0.5rem;
+}
+
+.memberPosition {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  font-weight: 500;
+  margin-bottom: 1.5rem;
+}
+
+.bioBtn {
+  background-color: transparent;
+  color: var(--gold);
+  border: 1px solid var(--gold);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  padding: 0.6rem 2.25rem;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: all 0.2s ease;
+}
+
+.bioBtn:hover {
+  background-color: var(--gold);
+  color: var(--text-light);
+}
+
+/* Side slide-out Drawer */
+.drawerOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(8px);
+  z-index: 1000;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.drawerOverlayActive {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 500px;
+  max-width: 100%;
+  height: 100vh;
+  background-color: #151518;
+  color: var(--text-light);
+  box-shadow: -10px 0 40px rgba(0, 0, 0, 0.4);
+  z-index: 1001;
+  transform: translateX(100%);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  flex-direction: column;
+}
+
+.drawerOpen {
+  transform: translateX(0);
+}
+
+.closeBtn {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  background: none;
+  border: none;
+  color: var(--text-light);
+  cursor: pointer;
+  padding: 0.5rem;
+  z-index: 10;
+  transition: color 0.2s ease;
+}
+
+.closeBtn:hover {
+  color: var(--gold);
+}
+
+.drawerContent {
+  padding: 4rem 3rem;
+  overflow-y: auto;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.drawerImage {
+  position: relative;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid var(--gold);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  margin-bottom: 2rem;
+  background-color: #242424;
+}
+
+.drawerImg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 2;
+}
+
+.drawerAvatarFallback {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #1C1C1E 0%, #2A2A2E 100%);
+  color: var(--gold);
+  z-index: 1;
+}
+
+.drawerName {
+  font-size: 2.25rem;
+  font-weight: 800;
+  color: var(--text-light);
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+
+.drawerPosition {
+  font-size: 1.1rem;
+  color: var(--gold);
+  font-weight: 600;
+  margin-bottom: 2rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  text-align: center;
+}
+
+.drawerDivider {
+  width: 50px;
+  height: 1px;
+  background-color: rgba(255, 255, 255, 0.1);
+  margin-bottom: 2rem;
+}
+
+.drawerBio {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: #cccccc;
+  text-align: left;
+  width: 100%;
+}
+
+.drawerBio p {
+  margin-bottom: 1.5rem;
+}
+
+.drawerBio p:last-child {
+  margin-bottom: 0;
+}
+
+/* Responsive Overrides */
+@media (max-width: 968px) {
+  .teamGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .heroTitle {
+    font-size: 2.5rem;
+  }
+
+  .teamGrid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .drawer {
+    width: 100%;
+  }
+
+  .drawerContent {
+    padding: 3rem 1.5rem;
+  }
+}

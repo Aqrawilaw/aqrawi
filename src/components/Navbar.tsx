@@ -30,8 +30,6 @@ export default function Navbar() {
     router.push("/contact");
   };
 
-  const toggleMenu = () => setIsOpen(!isOpen);
-
   return (
     <header
       className={`${styles.header} ${scrolled ? styles.headerScrolled : ""}`}
@@ -61,7 +59,10 @@ export default function Navbar() {
                     Management
                   </a>
                   <a href="/about/associates" className={styles.dropdownItem}>
-                    Assocites
+                    Associates
+                  </a>
+                  <a href="/about/partners" className={styles.dropdownItem}>
+                    Partners
                   </a>
                 </div>
               </div>
