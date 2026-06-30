@@ -1,0 +1,61 @@
+.legalHelpSection {
+  background-color: #F5F5F5;
+  padding: 6rem 2rem;
+  color: #222222;
+  width: 100%;
+}
+
+.legalHelpContent {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.legalHelpTitle {
+  font-size: 2.25rem;
+  font-weight: 800;
+  margin-bottom: 3.5rem;
+  color: #222222;
+}
+
+.contactGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 4rem;
+}
+
+.contactCol h3 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: #222222;
+}
+
+.contactCol p {
+  font-size: 1.05rem;
+  color: #666666;
+  line-height: 1.5;
+}
+
+.contactLink {
+  color: #C5A880;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.contactLink:hover {
+  color: #b59870;
+}
+
+@media (max-width: 968px) {
+  .contactGrid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .legalHelpTitle {
+    font-size: 1.75rem;
+  }
+}

@@ -2,6 +2,8 @@
 
 import { useState, useEffect } from "react";
 import Logo from "./components/Logo";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 import styles from "./page.module.css";
 
 interface ServiceTab {
@@ -110,42 +112,7 @@ export default function Home() {
   return (
     <div className={styles.container}>
       {/* Navigation */}
-      <header className={`${styles.header} ${scrolled ? styles.headerScrolled : ""}`}>
-        <nav className={styles.nav}>
-          <div className={styles.logo}>
-            <Logo size={42} showText={true} centerText={true} />
-          </div>
-          <div className={styles.navLinks}>
-            <a href="#" className={styles.navLink}>Home</a>
-            <div className={styles.navItemDropdown}>
-              <span className={styles.navLink}>About ▫</span>
-              <div className={styles.dropdownMenu}>
-                <a href="#about" className={styles.dropdownItem}>About us</a>
-                <div className={`${styles.dropdownItem} ${styles.hasSubmenu}`}>
-                  <span>Our Team</span>
-                  <span>▫</span>
-                  <div className={styles.submenu}>
-                    <a href="#staff" className={styles.dropdownItem}>Staff</a>
-                    <a href="#management" className={styles.dropdownItem}>Management</a>
-                    <a href="#associates" className={styles.dropdownItem}>Assocites</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <a href="#services" className={styles.navLink}>Services</a>
-            <a href="#contact" className={styles.navLink}>Contact</a>
-          </div>
-          <button 
-            className={styles.navBtn}
-            onClick={() => {
-              const el = document.getElementById("contact");
-              if (el) el.scrollIntoView({ behavior: "smooth" });
-            }}
-          >
-            Free Evaluation
-          </button>
-        </nav>
-      </header>
+      <Navbar />
 
       {/* Main Content */}
       <main className={styles.main}>
@@ -613,18 +580,7 @@ export default function Home() {
       </button>
 
       {/* Footer */}
-      <footer className={styles.footer}>
-        <div className={styles.footerContent}>
-          <div className={styles.footerCopyright}>
-            © {new Date().getFullYear()} Aqrawi & Associates Law Firm PLLC. All rights reserved.
-          </div>
-          <div className={styles.footerLinks}>
-            <a href="#" className={styles.footerLink}>Home</a>
-            <a href="#services" className={styles.footerLink}>Practice Areas</a>
-            <a href="#contact" className={styles.footerLink}>Contact</a>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }
