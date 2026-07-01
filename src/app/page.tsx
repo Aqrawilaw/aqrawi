@@ -6,6 +6,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import styles from "./page.module.css";
 import CountUp from "@/components/CountUp";
+import { TEAM_MEMBERS, TeamMember } from "@/constants/team";
 
 type Language = "en" | "es" | "ar";
 
@@ -16,6 +17,7 @@ interface FAQItem {
 
 export default function Home() {
   const [activeFaq, setActiveFaq] = useState<number | null>(0);
+  const [selectedMember, setSelectedMember] = useState<TeamMember | null>(null);
   const [formState, setFormState] = useState({
     name: "",
     email: "",
@@ -521,34 +523,28 @@ export default function Home() {
             <div className={styles.attorneysDivider} />
 
             <div className={styles.attorneysGrid}>
-              {/* Profile 1: Walat Aqrawi */}
-              <div className={styles.attorneyCard}>
-                <div className={styles.attorneyPhoto} style={{ overflow: "hidden" }}>
-                  <img
-                    src="/images/headshots/Walat Aqrawi.webp"
-                    alt="Walat Aqrawi headshot"
-                    style={{ width: "100%", height: "100%", objectFit: "cover" }}
-                  />
+              {TEAM_MEMBERS.filter((member) => member.category === "partners").map((member) => (
+                <div
+                  key={member.id}
+                  className={styles.attorneyCard}
+                  onClick={() => setSelectedMember(member)}
+                  style={{ cursor: "pointer" }}
+                >
+                  <div className={styles.attorneyPhoto} style={{ overflow: "hidden" }}>
+                    <img
+                      src={member.image}
+                      alt={`${member.name} headshot`}
+                      style={{ width: "100%", height: "100%", objectFit: "cover" }}
+                    />
+                  </div>
+                  <h3 className={styles.attorneyName}>{member.name}</h3>
+                  <span className={styles.attorneyTitle}>{member.position}</span>
                 </div>
-                <h3 className={styles.attorneyName}>Walat Aqrawi</h3>
-                <span className={styles.attorneyTitle}>Managing Partner</span>
-              </div>
-
-              {/* Profile 2: Aaron Aiken */}
-              <div className={styles.attorneyCard}>
-                <div className={styles.attorneyPhoto} style={{ overflow: "hidden" }}>
-                  <img
-                    src="/images/headshots/Aaron Aiken.webp"
-                    alt="Aaron Aiken headshot"
-                    style={{ width: "100%", height: "100%", objectFit: "cover" }}
-                  />
-                </div>
-                <h3 className={styles.attorneyName}>Aaron Aiken</h3>
-                <span className={styles.attorneyTitle}>Partner</span>
-              </div>
+              ))}
             </div>
           </div>
         </section>
+
 
         {/* Contact/Case Evaluation Section */}
         <section id="contact" className={styles.contactSectionNew}>
@@ -680,6 +676,43 @@ export default function Home() {
 
       {/* Footer */}
       <Footer />
+
+      {/* Attorney Bio Modal Overlay */}
+      {selectedMember && (
+        <div className={styles.modalOverlay} onClick={() => setSelectedMember(null)}>
+          <div className={styles.modalContent} onClick={(e) => e.stopPropagation()}>
+            <button className={styles.modalCloseBtn} onClick={() => setSelectedMember(null)} aria-label="Close bio">
+              <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+              </svg>
+            </button>
+            <div className={styles.modalBody}>
+              <div className={styles.modalPhotoContainer}>
+                <div className={styles.modalPhoto}>
+                  <img
+                    src={selectedMember.image}
+                    alt={selectedMember.name}
+                    style={{ width: "100%", height: "100%", objectFit: "cover" }}
+                  />
+                </div>
+              </div>
+              <div className={styles.modalInfo}>
+                <h3 className={styles.modalName}>{selectedMember.name}</h3>
+                <span className={styles.modalTitle}>{selectedMember.position}</span>
+                <div className={styles.modalDivider} />
+                <div className={styles.modalBio}>
+                  {selectedMember.bio.split("\n\n").map((para, index) => (
+                    <p key={index} className={styles.modalBioParagraph}>
+                      {para}
+                    </p>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

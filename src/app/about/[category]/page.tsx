@@ -78,7 +78,11 @@ export default function TeamCategoryPage() {
         <div className={styles.teamGrid}>
           {members.map((member) => (
             <div key={member.id} className={styles.memberCard}>
-              <div className={styles.imageWrapper}>
+              <div 
+                className={styles.imageWrapper}
+                onClick={() => openBio(member)}
+                style={{ cursor: "pointer" }}
+              >
                 {member.image && (
                   <img
                     src={member.image}
