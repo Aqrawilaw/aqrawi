@@ -8,6 +8,16 @@ import CtaBanner from "@/components/CtaBanner";
 import LegalHelp from "@/components/LegalHelp";
 import { CONTACT_INFO, BRANCHES } from "@/constants/contact";
 
+interface Branch {
+  id: string;
+  type: string;
+  city: string;
+  address: string;
+  phone: string;
+  services: string[];
+  note?: string;
+}
+
 export default function ContactPage() {
   const [formState, setFormState] = useState({
     name: "",
@@ -184,7 +194,7 @@ export default function ContactPage() {
             <div className={styles.branchCategoryCard}>
               <h3 className={styles.branchCategoryTitle}>US Offices</h3>
               <div className={styles.branchList}>
-                {BRANCHES.us.map((branch) => (
+                {BRANCHES.us.map((branch: Branch) => (
                   <div key={branch.id} className={styles.branchItem}>
                     <div className={styles.branchMainInfo}>
                       <span className={styles.branchType}>{branch.type}</span>
@@ -223,7 +233,7 @@ export default function ContactPage() {
                 International Offices
               </h3>
               <div className={styles.branchList}>
-                {BRANCHES.international.map((branch) => (
+                {BRANCHES.international.map((branch: Branch) => (
                   <div key={branch.id} className={styles.branchItem}>
                     <div className={styles.branchMainInfo}>
                       <span className={styles.branchType}>{branch.type}</span>
