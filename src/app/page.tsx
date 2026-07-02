@@ -1,9 +1,9 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import Logo from "./components/Logo";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import HeroSection from "@/components/HeroSection";
 import styles from "./page.module.css";
 import CountUp from "@/components/CountUp";
 import { TEAM_MEMBERS, TeamMember } from "@/constants/team";
@@ -32,7 +32,10 @@ export default function Home() {
 
   useEffect(() => {
     const savedLang = localStorage.getItem("lang") as Language;
-    if (savedLang && (savedLang === "en" || savedLang === "es" || savedLang === "ar")) {
+    if (
+      savedLang &&
+      (savedLang === "en" || savedLang === "es" || savedLang === "ar")
+    ) {
       setLang(savedLang);
     }
 
@@ -46,7 +49,7 @@ export default function Home() {
   }, []);
 
   const handleInputChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
     const { name, value } = e.target;
     setFormState((prev) => ({ ...prev, [name]: value }));
@@ -114,16 +117,8 @@ export default function Home() {
 
       {/* Main Content */}
       <main className={styles.main}>
-        {/* Centered Hero Section */}
-        <section className={`${styles.hero} animate-fade-in`}>
-          <Logo size={240} showText={true} centerText={true} />
-          <h1 className={styles.heroTitle}>Free Consultation</h1>
-          <p className={styles.heroQuote}>
-            &ldquo;The first step to getting your life back on track? A free
-            consultation with Aqrawi and Associates.&rdquo;
-          </p>
-          <p className={styles.heroAuthor}>- Aqrawi And Associates</p>
-        </section>
+        {/* Cinematic Hero Section */}
+        <HeroSection />
 
         {/* Who We Are Section */}
         <section id="about" className={styles.whoWeAre}>
@@ -315,7 +310,9 @@ export default function Home() {
                     />
                   </svg>
                 </div>
-                <span className={styles.serviceLabel}>Motorcycle Accidents</span>
+                <span className={styles.serviceLabel}>
+                  Motorcycle Accidents
+                </span>
               </a>
 
               {/* Item 4: MEDICAL MALPRACTICE */}
@@ -523,28 +520,38 @@ export default function Home() {
             <div className={styles.attorneysDivider} />
 
             <div className={styles.attorneysGrid}>
-              {TEAM_MEMBERS.filter((member) => member.category === "partners").map((member) => (
+              {TEAM_MEMBERS.filter(
+                (member) => member.category === "partners",
+              ).map((member) => (
                 <div
                   key={member.id}
                   className={styles.attorneyCard}
                   onClick={() => setSelectedMember(member)}
                   style={{ cursor: "pointer" }}
                 >
-                  <div className={styles.attorneyPhoto} style={{ overflow: "hidden" }}>
+                  <div
+                    className={styles.attorneyPhoto}
+                    style={{ overflow: "hidden" }}
+                  >
                     <img
                       src={member.image}
                       alt={`${member.name} headshot`}
-                      style={{ width: "100%", height: "100%", objectFit: "cover" }}
+                      style={{
+                        width: "100%",
+                        height: "100%",
+                        objectFit: "cover",
+                      }}
                     />
                   </div>
                   <h3 className={styles.attorneyName}>{member.name}</h3>
-                  <span className={styles.attorneyTitle}>{member.position}</span>
+                  <span className={styles.attorneyTitle}>
+                    {member.position}
+                  </span>
                 </div>
               ))}
             </div>
           </div>
         </section>
-
 
         {/* Contact/Case Evaluation Section */}
         <section id="contact" className={styles.contactSectionNew}>
@@ -656,17 +663,89 @@ export default function Home() {
               </a>
 
               <div className={styles.socialLinks}>
-                <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className={styles.socialBox} aria-label="Facebook">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+                <a
+                  href="https://facebook.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={styles.socialBox}
+                  aria-label="Facebook"
+                >
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+                  </svg>
                 </a>
-                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className={styles.socialBox} aria-label="Instagram">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                <a
+                  href="https://instagram.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={styles.socialBox}
+                  aria-label="Instagram"
+                >
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+                  </svg>
                 </a>
-                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className={styles.socialBox} aria-label="LinkedIn">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                <a
+                  href="https://linkedin.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={styles.socialBox}
+                  aria-label="LinkedIn"
+                >
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+                    <rect x="2" y="9" width="4" height="12" />
+                    <circle cx="4" cy="4" r="2" />
+                  </svg>
                 </a>
-                <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className={styles.socialBox} aria-label="Twitter / X">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/></svg>
+                <a
+                  href="https://twitter.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={styles.socialBox}
+                  aria-label="Twitter / X"
+                >
+                  <svg
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z" />
+                  </svg>
                 </a>
               </div>
             </div>
@@ -679,10 +758,29 @@ export default function Home() {
 
       {/* Attorney Bio Modal Overlay */}
       {selectedMember && (
-        <div className={styles.modalOverlay} onClick={() => setSelectedMember(null)}>
-          <div className={styles.modalContent} onClick={(e) => e.stopPropagation()}>
-            <button className={styles.modalCloseBtn} onClick={() => setSelectedMember(null)} aria-label="Close bio">
-              <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round">
+        <div
+          className={styles.modalOverlay}
+          onClick={() => setSelectedMember(null)}
+        >
+          <div
+            className={styles.modalContent}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              className={styles.modalCloseBtn}
+              onClick={() => setSelectedMember(null)}
+              aria-label="Close bio"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                width="24"
+                height="24"
+                stroke="currentColor"
+                strokeWidth="2"
+                fill="none"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
                 <line x1="18" y1="6" x2="6" y2="18"></line>
                 <line x1="6" y1="6" x2="18" y2="18"></line>
               </svg>
@@ -693,13 +791,19 @@ export default function Home() {
                   <img
                     src={selectedMember.image}
                     alt={selectedMember.name}
-                    style={{ width: "100%", height: "100%", objectFit: "cover" }}
+                    style={{
+                      width: "100%",
+                      height: "100%",
+                      objectFit: "cover",
+                    }}
                   />
                 </div>
               </div>
               <div className={styles.modalInfo}>
                 <h3 className={styles.modalName}>{selectedMember.name}</h3>
-                <span className={styles.modalTitle}>{selectedMember.position}</span>
+                <span className={styles.modalTitle}>
+                  {selectedMember.position}
+                </span>
                 <div className={styles.modalDivider} />
                 <div className={styles.modalBio}>
                   {selectedMember.bio.split("\n\n").map((para, index) => (

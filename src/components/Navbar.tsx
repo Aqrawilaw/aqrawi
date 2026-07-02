@@ -19,8 +19,7 @@ export default function Navbar() {
   const [isMobileOpen, setIsMobileOpen] = useState(false);
   const [mobileAboutOpen, setMobileAboutOpen] = useState(false);
   const [mobileTeamOpen, setMobileTeamOpen] = useState(false);
-  const [scrolled, setScrolled] = useState<boolean>(false);
-  
+
   // Translation state
   const [lang, setLang] = useState<Language>("en");
   const [langMenuOpen, setLangMenuOpen] = useState(false);
@@ -31,7 +30,10 @@ export default function Navbar() {
   // Load language state and inject Google Translate Element
   useEffect(() => {
     const savedLang = localStorage.getItem("lang") as Language;
-    if (savedLang && (savedLang === "en" || savedLang === "es" || savedLang === "ar")) {
+    if (
+      savedLang &&
+      (savedLang === "en" || savedLang === "es" || savedLang === "ar")
+    ) {
       setLang(savedLang);
     }
 
@@ -41,10 +43,11 @@ export default function Navbar() {
         {
           pageLanguage: "en",
           includedLanguages: "es,ar",
-          layout: window.google?.translate?.TranslateElement?.InlineLayout?.SIMPLE,
+          layout:
+            window.google?.translate?.TranslateElement?.InlineLayout?.SIMPLE,
           autoDisplay: false,
         },
-        "google_translate_element"
+        "google_translate_element",
       );
     };
 
@@ -52,7 +55,8 @@ export default function Navbar() {
     if (!document.getElementById("google-translate-script")) {
       const script = document.createElement("script");
       script.id = "google-translate-script";
-      script.src = "https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit";
+      script.src =
+        "https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit";
       script.async = true;
       document.body.appendChild(script);
     }
@@ -60,14 +64,16 @@ export default function Navbar() {
     // Auto-apply saved language once Google Translate dropdown mounts
     if (savedLang && savedLang !== "en") {
       const interval = setInterval(() => {
-        const select = document.querySelector(".goog-te-combo") as HTMLSelectElement;
+        const select = document.querySelector(
+          ".goog-te-combo",
+        ) as HTMLSelectElement;
         if (select) {
           select.value = savedLang;
           select.dispatchEvent(new Event("change"));
           clearInterval(interval);
         }
       }, 150);
-      
+
       // Clear interval after 10s to prevent memory leaks
       setTimeout(() => clearInterval(interval), 10000);
     }
@@ -80,9 +86,14 @@ export default function Navbar() {
 
     // Set Google Translate cookie
     if (newLang === "en") {
-      document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-      document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=" + window.location.hostname + ";";
-      document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=.localhost;";
+      document.cookie =
+        "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+      document.cookie =
+        "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=" +
+        window.location.hostname +
+        ";";
+      document.cookie =
+        "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=.localhost;";
     } else {
       document.cookie = `googtrans=/en/${newLang}; path=/;`;
       document.cookie = `googtrans=/en/${newLang}; path=/; domain=${window.location.hostname};`;
@@ -94,7 +105,9 @@ export default function Navbar() {
     window.dispatchEvent(event);
 
     // Try to trigger translation instantly without page reload
-    const select = document.querySelector(".goog-te-combo") as HTMLSelectElement;
+    const select = document.querySelector(
+      ".goog-te-combo",
+    ) as HTMLSelectElement;
     if (select) {
       select.value = newLang === "en" ? "" : newLang;
       select.dispatchEvent(new Event("change"));
@@ -103,19 +116,6 @@ export default function Navbar() {
       window.location.reload();
     }
   };
-
-  // Monitor scroll for header background styling
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 20) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
   // Close mobile menu on screen resize to desktop
   useEffect(() => {
@@ -161,19 +161,24 @@ export default function Navbar() {
   return (
     <>
       {/* Hidden Google Translate mount element - placed off-screen */}
-      <div 
-        id="google_translate_element" 
-        style={{ position: "absolute", top: "-9999px", left: "-9999px", visibility: "hidden" }} 
+      <div
+        id="google_translate_element"
+        style={{
+          position: "absolute",
+          top: "-9999px",
+          left: "-9999px",
+          visibility: "hidden",
+        }}
       />
 
       <header
-        className={`${styles.header} ${scrolled ? styles.headerScrolled : ""} ${isMobileOpen ? styles.headerMobileOpen : ""}`}
+        className={`${styles.header} ${isMobileOpen ? styles.headerMobileOpen : ""}`}
         dir={isRtl ? "rtl" : "ltr"}
       >
         <nav className={styles.nav}>
           <div className={styles.logo}>
             <a href="/">
-              <Logo size={90} showText={true} centerText={true} />
+              <Logo size={120} showText={true} centerText={true} />
             </a>
           </div>
 
@@ -192,7 +197,9 @@ export default function Navbar() {
                 </a>
                 <div className={`${styles.dropdownItem} ${styles.hasSubmenu}`}>
                   <span>Our Team</span>
-                  <span className={styles.submenuChevron}>{isRtl ? "◂" : "▸"}</span>
+                  <span className={styles.submenuChevron}>
+                    {isRtl ? "◂" : "▸"}
+                  </span>
                   <div className={styles.submenu}>
                     <a href="/about/staff" className={styles.dropdownItem}>
                       Staff
@@ -224,7 +231,10 @@ export default function Navbar() {
 
           {/* Desktop Actions (CTA Button + Language Selector) */}
           <div className={styles.desktopActions}>
-            <button className={styles.navBtn} onClick={handleFreeEvaluationClick}>
+            <button
+              className={styles.navBtn}
+              onClick={handleFreeEvaluationClick}
+            >
               Free Evaluation
             </button>
 
@@ -293,113 +303,124 @@ export default function Navbar() {
                   onClick={() => setMobileAboutOpen(!mobileAboutOpen)}
                 >
                   <span>About</span>
-                  <span className={`${styles.mobileChevron} ${mobileAboutOpen ? styles.rotated : ""}`}>▾</span>
+                  <span
+                    className={`${styles.mobileChevron} ${mobileAboutOpen ? styles.rotated : ""}`}
+                  >
+                    ▾
+                  </span>
                 </button>
 
-              <div
-                className={`${styles.mobileDropdownMenu} ${mobileAboutOpen ? styles.mobileSubmenuOpen : ""}`}
-              >
-                <a
-                  href="/about"
-                  className={styles.mobileDropdownItem}
-                  onClick={() => setIsMobileOpen(false)}
+                <div
+                  className={`${styles.mobileDropdownMenu} ${mobileAboutOpen ? styles.mobileSubmenuOpen : ""}`}
                 >
-                  About Us
-                </a>
-
-                <div className={styles.mobileSubDropdownContainer}>
-                  <button
-                    className={styles.mobileDropdownItemTrigger}
-                    onClick={() => setMobileTeamOpen(!mobileTeamOpen)}
+                  <a
+                    href="/about"
+                    className={styles.mobileDropdownItem}
+                    onClick={() => setIsMobileOpen(false)}
                   >
-                    <span>Our Team</span>
-                    <span className={`${styles.mobileChevron} ${mobileTeamOpen ? styles.rotated : ""}`}>▸</span>
-                  </button>
+                    About Us
+                  </a>
 
-                  <div
-                    className={`${styles.mobileSubSubmenu} ${mobileTeamOpen ? styles.mobileSubmenuOpen : ""}`}
-                  >
-                    <a
-                      href="/about/staff"
-                      className={styles.mobileSubDropdownItem}
-                      onClick={() => setIsMobileOpen(false)}
+                  <div className={styles.mobileSubDropdownContainer}>
+                    <button
+                      className={styles.mobileDropdownItemTrigger}
+                      onClick={() => setMobileTeamOpen(!mobileTeamOpen)}
                     >
-                      Staff
-                    </a>
-                    <a
-                      href="/about/management"
-                      className={styles.mobileSubDropdownItem}
-                      onClick={() => setIsMobileOpen(false)}
+                      <span>Our Team</span>
+                      <span
+                        className={`${styles.mobileChevron} ${mobileTeamOpen ? styles.rotated : ""}`}
+                      >
+                        ▸
+                      </span>
+                    </button>
+
+                    <div
+                      className={`${styles.mobileSubSubmenu} ${mobileTeamOpen ? styles.mobileSubmenuOpen : ""}`}
                     >
-                      Management
-                    </a>
-                    <a
-                      href="/about/associates"
-                      className={styles.mobileSubDropdownItem}
-                      onClick={() => setIsMobileOpen(false)}
-                    >
-                      Associates
-                    </a>
-                    <a
-                      href="/about/partners"
-                      className={styles.mobileSubDropdownItem}
-                      onClick={() => setIsMobileOpen(false)}
-                    >
-                      Partners
-                    </a>
+                      <a
+                        href="/about/staff"
+                        className={styles.mobileSubDropdownItem}
+                        onClick={() => setIsMobileOpen(false)}
+                      >
+                        Staff
+                      </a>
+                      <a
+                        href="/about/management"
+                        className={styles.mobileSubDropdownItem}
+                        onClick={() => setIsMobileOpen(false)}
+                      >
+                        Management
+                      </a>
+                      <a
+                        href="/about/associates"
+                        className={styles.mobileSubDropdownItem}
+                        onClick={() => setIsMobileOpen(false)}
+                      >
+                        Associates
+                      </a>
+                      <a
+                        href="/about/partners"
+                        className={styles.mobileSubDropdownItem}
+                        onClick={() => setIsMobileOpen(false)}
+                      >
+                        Partners
+                      </a>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
 
-            <a
-              href="/services"
-              className={styles.mobileNavLink}
-              onClick={() => setIsMobileOpen(false)}
-            >
-              Services
-            </a>
-
-            <a
-              href="/contact"
-              className={`${styles.mobileNavLink} ${pathname === "/contact" ? styles.mobileNavLinkActive : ""}`}
-              onClick={(e) => {
-                handleContactClick(e);
-                setIsMobileOpen(false);
-              }}
-            >
-              Contact
-            </a>
-
-            <button className={styles.mobileNavBtn} onClick={handleFreeEvaluationClick}>
-              Free Evaluation
-            </button>
-
-            {/* Mobile Language Selector Widget */}
-            <div className={`${styles.mobileLangSelector} notranslate`}>
-              <button
-                onClick={() => selectLang("en")}
-                className={`${styles.mobileLangBtn} ${lang === "en" ? styles.mobileLangBtnActive : ""}`}
+              <a
+                href="/services"
+                className={styles.mobileNavLink}
+                onClick={() => setIsMobileOpen(false)}
               >
-                EN
-              </button>
-              <button
-                onClick={() => selectLang("es")}
-                className={`${styles.mobileLangBtn} ${lang === "es" ? styles.mobileLangBtnActive : ""}`}
+                Services
+              </a>
+
+              <a
+                href="/contact"
+                className={`${styles.mobileNavLink} ${pathname === "/contact" ? styles.mobileNavLinkActive : ""}`}
+                onClick={(e) => {
+                  handleContactClick(e);
+                  setIsMobileOpen(false);
+                }}
               >
-                ES
-              </button>
+                Contact
+              </a>
+
               <button
-                onClick={() => selectLang("ar")}
-                className={`${styles.mobileLangBtn} ${lang === "ar" ? styles.mobileLangBtnActive : ""}`}
+                className={styles.mobileNavBtn}
+                onClick={handleFreeEvaluationClick}
               >
-                العربية
+                Free Evaluation
               </button>
+
+              {/* Mobile Language Selector Widget */}
+              <div className={`${styles.mobileLangSelector} notranslate`}>
+                <button
+                  onClick={() => selectLang("en")}
+                  className={`${styles.mobileLangBtn} ${lang === "en" ? styles.mobileLangBtnActive : ""}`}
+                >
+                  EN
+                </button>
+                <button
+                  onClick={() => selectLang("es")}
+                  className={`${styles.mobileLangBtn} ${lang === "es" ? styles.mobileLangBtnActive : ""}`}
+                >
+                  ES
+                </button>
+                <button
+                  onClick={() => selectLang("ar")}
+                  className={`${styles.mobileLangBtn} ${lang === "ar" ? styles.mobileLangBtnActive : ""}`}
+                >
+                  العربية
+                </button>
+              </div>
             </div>
           </div>
-        </div>
-      </nav>
-    </header>
-  </>
+        </nav>
+      </header>
+    </>
   );
 }

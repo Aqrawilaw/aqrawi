@@ -10,9 +10,6 @@
   align-items: center;
   justify-content: center;
   transition: all 0.3s ease;
-}
-
-.headerScrolled {
   background: rgba(10, 10, 12, 0.8) !important;
   backdrop-filter: blur(16px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
