@@ -16,7 +16,13 @@ export const BRANCHES = {
       city: "Houston, TX",
       address: "1706 S Texas 6, Houston, TX 77077",
       phone: "713-757-7777",
-      services: ["Car Accidents", "Truck & 18-Wheelers", "Slip and Fall", "Worker Compensation", "Medical Malpractice"],
+      services: [
+        "Car Accidents",
+        "Truck & 18-Wheelers",
+        "Slip and Fall",
+        "Worker Compensation",
+        "Medical Malpractice",
+      ],
     },
     {
       id: "laredo",
@@ -32,7 +38,11 @@ export const BRANCHES = {
       city: "San Antonio, TX",
       address: "110 San Antonio Ave, Suite 300, San Antonio, TX 78205",
       phone: "210-757-7772",
-      services: ["Car & Truck Accidents", "Slip and Fall", "Workplace Injury Claims"],
+      services: [
+        "Car & Truck Accidents",
+        "Slip and Fall",
+        "Workplace Injury Claims",
+      ],
     },
   ],
   international: [
@@ -41,18 +51,24 @@ export const BRANCHES = {
       type: "International Office",
       city: "Baghdad, Iraq",
       address: "Karada District, Baghdad, Iraq",
-      note: "By Appointment Only",
-      phone: "+964 770 123 4567",
-      services: ["Cross-Border Corporate Strategy", "International Trade Law", "Regulatory Consultations"],
+      phone: "+964 781 914 1999",
+      services: [
+        "Cross-Border Corporate Strategy",
+        "International Trade Law",
+        "Regulatory Consultations",
+      ],
     },
     {
       id: "dohok",
       type: "International Office",
       city: "Dohok, Kurdistan Iraq",
       address: "Kro District, Dohok, Kurdistan, Iraq",
-      note: "By Appointment Only",
       phone: "+964 750 987 6543",
-      services: ["Foreign Investment Consults", "Commercial Dispute Arbitration", "Corporate Registrations"],
+      services: [
+        "Foreign Investment Consults",
+        "Commercial Dispute Arbitration",
+        "Corporate Registrations",
+      ],
     },
   ],
 };
