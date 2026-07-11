@@ -39,8 +39,8 @@ export default function ServicesPage() {
     },
     {
       num: "05",
-      title: "Worker Compensations",
-      desc: "If you have been injured at work, you are legally entitled to benefits. We guide you step-by-step through the worker's compensation filing process, represent you in appeals, and ensure you receive proper medical treatment and wage replacement support.",
+      title: "Factory Accidents",
+      desc: "If you have sustained a factory injury, it's important to take prompt action to protect your rights. We can help you understand your options for compensation and guide you through the legal process.",
       img: "/images/services-page/img5.webp",
       alt: "Construction Workers in Safety Gear",
     },
@@ -120,12 +120,26 @@ export default function ServicesPage() {
                 <p className={styles.serviceDesc}>{service.desc}</p>
                 <button
                   onClick={() => {
-                    const el = document.getElementById("contact-info");
-                    if (el) el.scrollIntoView({ behavior: "smooth" });
+                    if (service.title === "Slip and Fall") {
+                      window.location.href = "/services/slip-and-fall";
+                    } else if (service.title === "Factory Accidents") {
+                      window.location.href = "/services/factory-accidents";
+                    } else if (service.title === "Car Accidents") {
+                      window.location.href = "/services/car-accidents";
+                    } else if (service.title === "Trucks and 18-Wheelers Accidents") {
+                      window.location.href = "/services/truck-accidents";
+                    } else if (service.title === "Motorcycle Accidents") {
+                      window.location.href = "/services/motorcycle-accidents";
+                    } else if (service.title === "Medical Malpractice") {
+                      window.location.href = "/services/medical-malpractice";
+                    } else {
+                      const el = document.getElementById("contact-info");
+                      if (el) el.scrollIntoView({ behavior: "smooth" });
+                    }
                   }}
                   className={styles.serviceBtn}
                 >
-                  Inquire Now
+                  {service.title === "Slip and Fall" || service.title === "Factory Accidents" || service.title === "Car Accidents" || service.title === "Trucks and 18-Wheelers Accidents" || service.title === "Motorcycle Accidents" || service.title === "Medical Malpractice" ? "Learn More" : "Inquire Now"}
                 </button>
               </div>
 

@@ -418,7 +418,7 @@ export default function Home() {
                     <rect x="44" y="66" width="12" height="19" fill="#bf953f" />
                   </svg>
                 </div>
-                <span className={styles.serviceLabel}>Workplace Injury</span>
+                <span className={styles.serviceLabel}>Factory Accidents</span>
               </a>
             </div>
           </div>
