@@ -81,12 +81,16 @@ export default function TeamCategoryPage() {
       {/* Team Grid Section */}
       <section className={styles.gridSection}>
         <div className={styles.teamGrid}>
-          {members.map((member) => {
+          {members.map((member, index) => {
             const hasNoImage = !member.image || imageErrors[member.id];
             return (
-              <div key={member.id} className={styles.memberCard}>
+              <div 
+                key={member.id} 
+                className={styles.memberCard}
+                style={{ animationDelay: `${index * 0.07}s` }}
+              >
                 <div 
-                  className={`${styles.imageWrapper} ${hasNoImage ? styles.noImageWrapper : ""}`}
+                  className={styles.imageWrapper}
                   onClick={() => openBio(member)}
                   style={{ cursor: "pointer" }}
                 >
@@ -161,34 +165,44 @@ export default function TeamCategoryPage() {
 
         {selectedMember && (
           <div className={styles.drawerContent}>
-            <div className={styles.drawerImage}>
-              {selectedMember.image && (
-                <img
-                  src={selectedMember.image}
-                  alt={selectedMember.name}
-                  className={styles.drawerImg}
-                  onError={(e) => {
-                    e.currentTarget.style.display = "none";
-                  }}
-                />
-              )}
-              <div className={styles.drawerAvatarFallback}>
-                <svg
-                  width="40"
-                  height="40"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="1.2"
-                  className={styles.fallbackIcon}
-                >
-                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
-                  <circle cx="12" cy="7" r="4" />
-                </svg>
-                <span className={styles.fallbackInitials}>
-                  {getInitials(selectedMember.name)}
-                </span>
+            <div className={styles.drawerImageContainer}>
+              <div className={styles.drawerImage}>
+                {selectedMember.image && (
+                  <img
+                    src={selectedMember.image}
+                    alt={selectedMember.name}
+                    className={styles.drawerImg}
+                    onError={(e) => {
+                      e.currentTarget.style.display = "none";
+                    }}
+                  />
+                )}
+                <div className={styles.drawerAvatarFallback}>
+                  <svg
+                    width="40"
+                    height="40"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.2"
+                    className={styles.fallbackIcon}
+                  >
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                    <circle cx="12" cy="7" r="4" />
+                  </svg>
+                  <span className={styles.fallbackInitials}>
+                    {getInitials(selectedMember.name)}
+                  </span>
+                </div>
               </div>
+              <svg className={styles.circleSvg} viewBox="0 0 100 100">
+                <circle
+                  cx="50"
+                  cy="50"
+                  r="48"
+                  className={styles.circlePath}
+                />
+              </svg>
             </div>
             
             <h2 className={styles.drawerName}>{selectedMember.name}</h2>
