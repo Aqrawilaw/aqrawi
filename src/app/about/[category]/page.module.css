@@ -68,7 +68,6 @@
 .imageWrapper {
   position: relative;
   width: 100%;
-  aspect-ratio: 1 / 1;
   border-radius: 4px;
   overflow: hidden;
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
@@ -76,13 +75,15 @@
   background-color: var(--grey-bg);
 }
 
+.noImageWrapper {
+  aspect-ratio: 3 / 4;
+}
+
 .memberImg {
-  position: absolute;
-  top: 0;
-  left: 0;
+  position: relative;
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: auto;
+  display: block;
   z-index: 2;
   transition: transform 0.5s ease;
 }
@@ -228,6 +229,7 @@
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
   margin-bottom: 2rem;
   background-color: #242424;
+  flex-shrink: 0;
 }
 
 .drawerImg {

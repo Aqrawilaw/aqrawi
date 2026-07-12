@@ -20,6 +20,11 @@ export default function TeamCategoryPage() {
   const params = useParams();
   const category = params?.category as string;
   const [selectedMember, setSelectedMember] = useState<TeamMember | null>(null);
+  const [imageErrors, setImageErrors] = useState<Record<string, boolean>>({});
+
+  const handleImageError = (memberId: string) => {
+    setImageErrors((prev) => ({ ...prev, [memberId]: true }));
+  };
 
   // Validate category route parameter
   const title = CATEGORY_TITLES[category];
@@ -76,48 +81,49 @@ export default function TeamCategoryPage() {
       {/* Team Grid Section */}
       <section className={styles.gridSection}>
         <div className={styles.teamGrid}>
-          {members.map((member) => (
-            <div key={member.id} className={styles.memberCard}>
-              <div 
-                className={styles.imageWrapper}
-                onClick={() => openBio(member)}
-                style={{ cursor: "pointer" }}
-              >
-                {member.image && (
-                  <img
-                    src={member.image}
-                    alt={member.name}
-                    className={styles.memberImg}
-                    onError={(e) => {
-                      e.currentTarget.style.display = "none";
-                    }}
-                  />
-                )}
-                <div className={styles.avatarFallback}>
-                  <svg
-                    width="48"
-                    height="48"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="1.2"
-                    className={styles.fallbackIcon}
-                  >
-                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
-                    <circle cx="12" cy="7" r="4" />
-                  </svg>
-                  <span className={styles.fallbackInitials}>
-                    {getInitials(member.name)}
-                  </span>
+          {members.map((member) => {
+            const hasNoImage = !member.image || imageErrors[member.id];
+            return (
+              <div key={member.id} className={styles.memberCard}>
+                <div 
+                  className={`${styles.imageWrapper} ${hasNoImage ? styles.noImageWrapper : ""}`}
+                  onClick={() => openBio(member)}
+                  style={{ cursor: "pointer" }}
+                >
+                  {member.image && !imageErrors[member.id] && (
+                    <img
+                      src={member.image}
+                      alt={member.name}
+                      className={styles.memberImg}
+                      onError={() => handleImageError(member.id)}
+                    />
+                  )}
+                  <div className={styles.avatarFallback}>
+                    <svg
+                      width="48"
+                      height="48"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="1.2"
+                      className={styles.fallbackIcon}
+                    >
+                      <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                      <circle cx="12" cy="7" r="4" />
+                    </svg>
+                    <span className={styles.fallbackInitials}>
+                      {getInitials(member.name)}
+                    </span>
+                  </div>
                 </div>
+                <h2 className={styles.memberName}>{member.name}</h2>
+                <span className={styles.memberPosition}>{member.position}</span>
+                <button onClick={() => openBio(member)} className={styles.bioBtn}>
+                  Bio
+                </button>
               </div>
-              <h2 className={styles.memberName}>{member.name}</h2>
-              <span className={styles.memberPosition}>{member.position}</span>
-              <button onClick={() => openBio(member)} className={styles.bioBtn}>
-                Bio
-              </button>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </section>
 
