@@ -127,20 +127,21 @@ export default function Home() {
               <h2 className={styles.whoHeading}>Who We Are</h2>
               <div className={styles.whoDivider} />
               <p className={styles.whoParagraph}>
-                Aqrawi and Associates is a leading personal injury law firm,
-                dedicated to helping clients who have been hurt as a result of
-                someone else's negligence or wrongdoing. Our experienced and
-                compassionate attorneys have a proven track record of success in
-                a variety of personal injury cases, including automobile
-                accidents, slip and fall injuries, medical malpractice, and
-                more. We are committed to pursuing maximum compensation for our
-                clients, to help cover medical expenses, lost wages, and other
-                damages they may have suffered as a result of their injury. With
-                a deep understanding of the law and a commitment to our clients,
-                we work tirelessly to achieve the best possible outcome in every
-                case. At Aqrawi and Associates, we believe that everyone
-                deserves justice, and we are dedicated to fighting for the
-                rights of injury victims and their families.
+                <strong>Aqrawi & Associates</strong> is a trusted personal injury and litigation law firm dedicated to protecting the rights of individuals and families who have been harmed by the negligence or wrongdoing of others.
+                <br /><br />
+                Our experienced attorneys handle a wide range of personal injury cases, including automobile accidents, workplace injuries, slip-and-fall incidents, medical malpractice, and other serious injury claims. We represent clients throughout every stage of the legal process, from the initial investigation and settlement negotiations to filing lawsuits and representing clients in court.
+                <br /><br />
+                Our firm is fully prepared to litigate cases when a fair settlement cannot be reached. Our attorneys develop strong legal strategies, gather and present evidence, take depositions, negotiate with insurance companies, and advocate for our clients before judges and juries. We are committed to pursuing the maximum compensation available for medical expenses, lost wages, pain and suffering, and other damages.
+                <br /><br />
+                Aqrawi & Associates is also proud of the diversity of our team. Our multilingual employees assist clients in English, Arabic, Spanish, Kurdish, Urdu, and other languages. This allows us to serve clients from many cultural backgrounds and ensures that they clearly understand their legal rights, options, and the progress of their cases.
+                <br /><br />
+                We believe every client deserves clear communication, personalized attention, and strong legal representation from a law firm they can trust.
+                <br /><br />
+                <strong>There are no upfront attorney’s fees for personal injury cases. You do not pay attorney’s fees unless we win your case.</strong>
+                <br /><br />
+                <span style={{ color: "#bf953f", fontWeight: 700 }}>Integrity. Compassion. Results.</span>
+                <br />
+                <strong>No Fees Unless We Win. We Got Your Back!</strong>
               </p>
               <div className={styles.signatureContainer}>
                 <span className={styles.signatureLabel}>Walat</span>
@@ -158,7 +159,10 @@ export default function Home() {
                     pointerEvents: "none",
                   }}
                 />
-                <div className={styles.signatureTitle}>WALAT AQRAWI</div>
+                <div className={styles.signatureTitle}>
+                  <div>WALAT AQRAWI</div>
+                  <div className={styles.signatureSub}>Founder</div>
+                </div>
               </div>
             </div>
             <div className={styles.whoImageContainer}>
@@ -396,11 +400,11 @@ export default function Home() {
                 <span className={styles.serviceLabel}>Slip And Fall</span>
               </a>
 
-              {/* Item 6: WORK PLACE INJURY */}
+              {/* Item 6: PLANT ACCIDENTS */}
               <a href="/services#05" className={styles.serviceItem}>
                 <div className={styles.iconCircle}>
                   <svg viewBox="0 0 100 100" width="48" height="48" fill="none">
-                    {/* Building outline */}
+                    {/* Industrial Plant / Factory outline */}
                     <rect
                       x="25"
                       y="20"
@@ -409,16 +413,64 @@ export default function Home() {
                       stroke="#bf953f"
                       strokeWidth="4.5"
                     />
-                    {/* Windows */}
                     <rect x="35" y="30" width="10" height="10" fill="#bf953f" />
                     <rect x="55" y="30" width="10" height="10" fill="#bf953f" />
                     <rect x="35" y="48" width="10" height="10" fill="#bf953f" />
                     <rect x="55" y="48" width="10" height="10" fill="#bf953f" />
-                    {/* Door */}
                     <rect x="44" y="66" width="12" height="19" fill="#bf953f" />
                   </svg>
                 </div>
-                <span className={styles.serviceLabel}>Factory Accidents</span>
+                <span className={styles.serviceLabel}>Plant Accidents</span>
+              </a>
+
+              {/* Item 7: WORKPLACE-RELATED INJURIES */}
+              <a href="/services#07" className={styles.serviceItem}>
+                <div className={styles.iconCircle}>
+                  <svg viewBox="0 0 100 100" width="48" height="48" fill="none">
+                    {/* Hard hat / Safety Helmet */}
+                    <path
+                      d="M22 55 C22 35, 78 35, 78 55 Z"
+                      stroke="#bf953f"
+                      strokeWidth="4.5"
+                      fill="none"
+                    />
+                    <rect
+                      x="16"
+                      y="55"
+                      width="68"
+                      height="8"
+                      rx="3"
+                      fill="#bf953f"
+                    />
+                    <path d="M50 35 L50 55" stroke="#bf953f" strokeWidth="4" />
+                  </svg>
+                </div>
+                <span className={styles.serviceLabel}>
+                  Workplace-Related Injuries
+                </span>
+              </a>
+
+              {/* Item 8: ANIMAL-RELATED INJURIES, INCLUDING DOG BITES */}
+              <a href="/services#08" className={styles.serviceItem}>
+                <div className={styles.iconCircle}>
+                  <svg viewBox="0 0 100 100" width="48" height="48" fill="none">
+                    {/* Shield with Paw icon */}
+                    <path
+                      d="M50 18 L78 32 L78 60 C78 74 50 86 50 86 C50 86 22 74 22 60 L22 32 Z"
+                      stroke="#bf953f"
+                      strokeWidth="4.5"
+                      fill="none"
+                    />
+                    <circle cx="50" cy="46" r="6" fill="#bf953f" />
+                    <circle cx="38" cy="38" r="3.5" fill="#bf953f" />
+                    <circle cx="62" cy="38" r="3.5" fill="#bf953f" />
+                    <circle cx="34" cy="52" r="3.5" fill="#bf953f" />
+                    <circle cx="66" cy="52" r="3.5" fill="#bf953f" />
+                  </svg>
+                </div>
+                <span className={styles.serviceLabel}>
+                  Animal-Related Injuries
+                </span>
               </a>
             </div>
           </div>
@@ -468,15 +520,19 @@ export default function Home() {
           <div className={styles.statsContainer}>
             <div className={styles.statCol}>
               <div className={styles.statNum}>
-                <CountUp end={5000} suffix="+" />
+                <CountUp end={10000} suffix="+" />
               </div>
               <div className={styles.statLabel}>Client Consultations</div>
             </div>
             <div className={styles.statCol}>
               <div className={styles.statNum}>
-                <CountUp end={90} suffix="%" />
+                <CountUp end={7000} suffix="+" />
               </div>
-              <div className={styles.statLabel}>Successful Cases</div>
+              <div className={styles.statLabel}>Clients Served</div>
+            </div>
+            <div className={styles.statCol}>
+              <div className={styles.statNum}>$0</div>
+              <div className={styles.statLabel}>Consultation Cost</div>
             </div>
           </div>
         </section>
@@ -489,6 +545,11 @@ export default function Home() {
                 src="/images/home-page/afflogos.webp"
                 alt="Aqrawi & Associates Affiliations and Memberships"
                 className={styles.affLogosImg}
+              />
+              <img
+                src="/images/home-page/newaffiliation.jpeg"
+                alt="Aqrawi & Associates New Affiliation Logo"
+                className={styles.newAffLogoImg}
               />
             </div>
           </div>
@@ -516,7 +577,7 @@ export default function Home() {
         {/* Attorneys Profile Section */}
         <section id="about-us" className={styles.attorneysSection}>
           <div className={styles.attorneysContainer}>
-            <h2 className={styles.attorneysHeading}>Attorneys</h2>
+            <h2 className={styles.attorneysHeading}>Partners</h2>
             <div className={styles.attorneysDivider} />
 
             <div className={styles.attorneysGrid}>
@@ -540,6 +601,10 @@ export default function Home() {
                         width: "100%",
                         height: "100%",
                         objectFit: "cover",
+                        objectPosition:
+                          member.id === "walat-aqrawi"
+                            ? "center 12%"
+                            : "center top",
                       }}
                     />
                   </div>
@@ -549,6 +614,70 @@ export default function Home() {
                   </span>
                 </div>
               ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Major Settlement Results Section */}
+        <section className={styles.settlementsSection}>
+          <div className={styles.settlementsContainer}>
+            <h2 className={styles.settlementsHeading}>
+              Major Settlement Results
+            </h2>
+            <p className={styles.settlementsSubtitle}>
+              Our experienced personal injury attorneys have recovered millions
+              of dollars for injury victims across Texas through aggressive
+              trial representation and strategic negotiation.
+            </p>
+
+            <div className={styles.settlementsGrid}>
+              {/* Result 1 */}
+              <div className={styles.settlementCard}>
+                <span className={styles.settlementBadge}>
+                  Individual Settlement
+                </span>
+                <div className={styles.settlementAmount}>
+                  Exceeding $4 Million
+                </div>
+                <h3 className={styles.settlementCategory}>
+                  Medical Malpractice & Severe Injury
+                </h3>
+                <p className={styles.settlementDesc}>
+                  Achieved as co-counsel in a complex medical malpractice trial
+                  verdict representing an injured client against corporate
+                  healthcare providers.
+                </p>
+              </div>
+
+              {/* Result 2 */}
+              <div className={styles.settlementCard}>
+                <span className={styles.settlementBadge}>
+                  Individual Settlement
+                </span>
+                <div className={styles.settlementAmount}>
+                  Exceeding $3 Million
+                </div>
+                <h3 className={styles.settlementCategory}>
+                  Catastrophic Personal Injury
+                </h3>
+                <p className={styles.settlementDesc}>
+                  Secured in high-stakes personal injury litigation to cover
+                  lifetime medical expenses, lost earnings, and recovery
+                  damages.
+                </p>
+              </div>
+            </div>
+
+            {/* Legal Disclaimer */}
+            <div className={styles.disclaimerBox}>
+              <p className={styles.disclaimerText}>
+                * <strong>Legal Disclaimer:</strong> The case results and
+                settlement amounts displayed above represent past individual
+                results achieved by our attorneys. Previous results do not
+                guarantee, warrant, or predict a similar outcome in any future
+                legal matter. Every case is unique and must be evaluated on its
+                own factual and legal merits.
+              </p>
             </div>
           </div>
         </section>

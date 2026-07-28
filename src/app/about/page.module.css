@@ -87,7 +87,7 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  padding: 8rem 2rem;
+  padding: 13.5rem 2rem 6rem;
   color: var(--text-light);
 }
 
@@ -138,15 +138,18 @@
 
 .portraitWrapper {
   position: relative;
-  border-radius: 4px;
+  border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
   background-color: var(--grey-bg);
-  aspect-ratio: 1 / 1;
+  width: 100%;
+  aspect-ratio: 2 / 3;
+  align-self: center;
 }
 
 .portraitImg {
   object-fit: cover;
+  object-position: center 10%;
   width: 100%;
   height: 100%;
   transition: transform 0.5s ease;
@@ -157,45 +160,53 @@
 }
 
 /* Landscape Banner */
-.bannerContainer {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 2rem;
-}
-
-.meetingBanner {
-  position: relative;
-  width: 100%;
-  border-radius: 4px;
-  overflow: hidden;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
-  background-color: var(--grey-bg);
-  aspect-ratio: 16 / 9;
-}
-
-.meetingImg {
-  object-fit: cover;
-  width: 100%;
-  height: 100%;
-}
-
-/* Why Choose Us */
+/* Why Choose Us Section */
 .whyChooseSection {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 6rem 2rem;
-  text-align: center;
+  padding: 5rem 2rem;
+}
+
+.whyChooseContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3.5rem;
+  align-items: center;
+}
+
+.whyChooseImageWrapper {
+  width: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+  background: #111114;
+  aspect-ratio: 1 / 1;
+}
+
+.whyChooseImg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: center 12%;
+  transition: transform 0.5s ease;
+}
+
+.whyChooseContent {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
 }
 
 .whyChooseHeader {
-  max-width: 800px;
-  margin: 0 auto 4rem auto;
+  margin-bottom: 2rem;
+  text-align: left;
 }
 
 .whyChooseHeader h2 {
   font-size: 2.25rem;
   font-weight: 800;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.25rem;
   color: var(--text-dark);
 }
 
@@ -208,29 +219,33 @@
 .pillarsGrid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 3rem;
-  margin-top: 2rem;
+  gap: 1rem;
+  margin-top: 1rem;
 }
 
 .pillarCard {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  padding: 2rem;
-  transition: transform 0.3s ease;
+  align-items: flex-start;
+  padding: 1.25rem 1rem;
+  background: rgba(191, 149, 63, 0.05);
+  border: 1px solid rgba(191, 149, 63, 0.15);
+  border-radius: 8px;
+  transition: transform 0.3s ease, border-color 0.3s ease;
 }
 
 .pillarCard:hover {
-  transform: translateY(-5px);
+  transform: translateY(-3px);
+  border-color: rgba(191, 149, 63, 0.4);
 }
 
 .pillarIcon {
-  margin-bottom: 1.5rem;
+  margin-bottom: 0.75rem;
   color: var(--gold);
 }
 
 .pillarTitle {
-  font-size: 1.25rem;
+  font-size: 0.95rem;
   font-weight: 700;
   color: var(--text-dark);
   margin-bottom: 0;
@@ -398,6 +413,11 @@
 
 /* Responsive Overrides */
 @media (max-width: 968px) {
+  .whyChooseContainer {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
   .historyGrid {
     grid-template-columns: 1fr;
     gap: 3rem;
@@ -405,7 +425,7 @@
 
   .pillarsGrid {
     grid-template-columns: 1fr;
-    gap: 2rem;
+    gap: 1.5rem;
   }
 
   .statsGrid {

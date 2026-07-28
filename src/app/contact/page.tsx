@@ -200,6 +200,25 @@ export default function ContactPage() {
                       <span className={styles.branchType}>{branch.type}</span>
                       <h4 className={styles.branchCity}>{branch.city}</h4>
                       <p className={styles.branchAddress}>{branch.address}</p>
+                      {branch.note && (
+                        <div style={{ margin: "6px 0 10px 0" }}>
+                          <span
+                            style={{
+                              display: "inline-block",
+                              backgroundColor: "#b91c1c",
+                              color: "#ffffff",
+                              fontSize: "11px",
+                              fontWeight: 700,
+                              letterSpacing: "0.8px",
+                              textTransform: "uppercase",
+                              padding: "4px 10px",
+                              borderRadius: "3px",
+                            }}
+                          >
+                            {branch.note}
+                          </span>
+                        </div>
+                      )}
                       <p className={styles.branchPhone}>
                         <strong>Tel: </strong>
                         <a

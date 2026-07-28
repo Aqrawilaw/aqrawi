@@ -178,7 +178,7 @@ export default function Navbar() {
         <nav className={styles.nav}>
           <div className={styles.logo}>
             <a href="/">
-              <Logo size={120} showText={true} centerText={true} />
+              <Logo size={350} showText={true} centerText={true} />
             </a>
           </div>
 
@@ -193,7 +193,7 @@ export default function Navbar() {
               </span>
               <div className={styles.dropdownMenu}>
                 <a href="/about" className={styles.dropdownItem}>
-                  About Us
+                  Who We Are
                 </a>
                 <div className={`${styles.dropdownItem} ${styles.hasSubmenu}`}>
                   <span>Our Team</span>
@@ -201,8 +201,8 @@ export default function Navbar() {
                     {isRtl ? "◂" : "▸"}
                   </span>
                   <div className={styles.submenu}>
-                    <a href="/about/staff" className={styles.dropdownItem}>
-                      Staff
+                    <a href="/about/partners" className={styles.dropdownItem}>
+                      Partners
                     </a>
                     <a href="/about/management" className={styles.dropdownItem}>
                       Management
@@ -210,8 +210,8 @@ export default function Navbar() {
                     <a href="/about/associates" className={styles.dropdownItem}>
                       Associates
                     </a>
-                    <a href="/about/partners" className={styles.dropdownItem}>
-                      Partners
+                    <a href="/about/staff" className={styles.dropdownItem}>
+                      Staff
                     </a>
                   </div>
                 </div>
@@ -229,7 +229,7 @@ export default function Navbar() {
             </a>
           </div>
 
-          {/* Desktop Actions (CTA Button + Language Selector) */}
+          {/* Desktop Actions (CTA Buttons + Language Selector) */}
           <div className={styles.desktopActions}>
             <button
               className={styles.navBtn}
@@ -237,6 +237,21 @@ export default function Navbar() {
             >
               Free Evaluation
             </button>
+            <a href="tel:7137577777" className={styles.callTodayBtn}>
+              <svg
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.39 2 2 0 0 1 3.6 1.21h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.82a16 16 0 0 0 6.29 6.29l.98-.98a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" />
+              </svg>
+              <span>Call Today</span>
+            </a>
 
             {/* Language Selector Dropdown */}
             <div className={`${styles.langSelector} notranslate`}>
@@ -318,7 +333,7 @@ export default function Navbar() {
                     className={styles.mobileDropdownItem}
                     onClick={() => setIsMobileOpen(false)}
                   >
-                    About Us
+                    Who We Are
                   </a>
 
                   <div className={styles.mobileSubDropdownContainer}>
@@ -338,11 +353,11 @@ export default function Navbar() {
                       className={`${styles.mobileSubSubmenu} ${mobileTeamOpen ? styles.mobileSubmenuOpen : ""}`}
                     >
                       <a
-                        href="/about/staff"
+                        href="/about/partners"
                         className={styles.mobileSubDropdownItem}
                         onClick={() => setIsMobileOpen(false)}
                       >
-                        Staff
+                        Partners
                       </a>
                       <a
                         href="/about/management"
@@ -359,11 +374,11 @@ export default function Navbar() {
                         Associates
                       </a>
                       <a
-                        href="/about/partners"
+                        href="/about/staff"
                         className={styles.mobileSubDropdownItem}
                         onClick={() => setIsMobileOpen(false)}
                       >
-                        Partners
+                        Staff
                       </a>
                     </div>
                   </div>

@@ -189,7 +189,7 @@ export default function HeroSection() {
 
           <div className={styles.ctas}>
             <a href="#contact" className={styles.ctaPrimary}>
-              <span>Free Consultation</span>
+              <span>Free Evaluation</span>
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M5 12h14M12 5l7 7-7 7" />
               </svg>
@@ -198,24 +198,24 @@ export default function HeroSection() {
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.39 2 2 0 0 1 3.6 1.21h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.82a16 16 0 0 0 6.29 6.29l.98-.98a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" />
               </svg>
-              713-757-7777
+              <span>Call Today: 713-757-7777</span>
             </a>
           </div>
 
           <div className={styles.trustBadges}>
             <div className={styles.badge}>
-              <span className={styles.badgeNum}>5,000+</span>
+              <span className={styles.badgeNum}>10,000+</span>
+              <span className={styles.badgeLabel}>Client Consultations</span>
+            </div>
+            <div className={styles.badgeDivider} />
+            <div className={styles.badge}>
+              <span className={styles.badgeNum}>7,000+</span>
               <span className={styles.badgeLabel}>Clients Served</span>
             </div>
             <div className={styles.badgeDivider} />
             <div className={styles.badge}>
-              <span className={styles.badgeNum}>90%</span>
-              <span className={styles.badgeLabel}>Win Rate</span>
-            </div>
-            <div className={styles.badgeDivider} />
-            <div className={styles.badge}>
               <span className={styles.badgeNum}>$0</span>
-              <span className={styles.badgeLabel}>Upfront Cost</span>
+              <span className={styles.badgeLabel}>Consultation Cost</span>
             </div>
           </div>
         </div>

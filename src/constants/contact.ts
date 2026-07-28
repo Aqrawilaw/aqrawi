@@ -29,7 +29,8 @@ export const BRANCHES = {
       type: "Satellite Office",
       city: "Laredo, TX",
       address: "802 Laredo St, Laredo, TX 78040",
-      phone: "956-757-7771",
+      phone: "713-757-7777",
+      note: "By Appointment Only",
       services: ["Car Accidents", "Truck Accidents", "Personal Injury Cases"],
     },
     {
@@ -37,7 +38,8 @@ export const BRANCHES = {
       type: "Satellite Office",
       city: "San Antonio, TX",
       address: "110 San Antonio Ave, Suite 300, San Antonio, TX 78205",
-      phone: "210-757-7772",
+      phone: "713-757-7777",
+      note: "By Appointment Only",
       services: [
         "Car & Truck Accidents",
         "Slip and Fall",

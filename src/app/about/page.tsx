@@ -16,124 +16,139 @@ export default function AboutPage() {
       {/* Hero Section */}
       <section className={styles.hero}>
         <div className={styles.heroContent}>
-          <h1 className={styles.heroTitle}>About Us</h1>
+          <h1 className={styles.heroTitle}>Who We Are</h1>
         </div>
       </section>
 
-      {/* Our History Section */}
+      {/* Who We Are Main Section */}
       <section className={styles.section}>
         <div className={styles.historyGrid}>
           <div className={styles.historyText}>
-            <h2>Our History</h2>
+            <h2>Who We Are</h2>
             <p>
-              Aqrawi Law Firm was founded on the principles of integrity, excellence, and unwavering dedication to our clients. For over two decades, our attorneys have provided premier legal representation across multiple practice areas, earning a reputation for aggressive advocacy and sophisticated counsel. We believe that every client deserves dedicated, personalized attention.
+              <strong>Aqrawi & Associates</strong> is a trusted personal injury and litigation law firm dedicated to protecting the rights of individuals and families who have been harmed by the negligence or wrongdoing of others.
             </p>
             <p>
-              Our firm began as a small boutique practice committed to delivering high-caliber results. Over the years, we have expanded our reach and capabilities, successfully handling complex, high-stakes litigation while maintaining the close-knit, client-first approach that has defined us from day one.
+              Our experienced attorneys handle a wide range of personal injury cases, including automobile accidents, workplace injuries, slip-and-fall incidents, medical malpractice, and other serious injury claims. We represent clients throughout every stage of the legal process, from the initial investigation and settlement negotiations to filing lawsuits and representing clients in court.
             </p>
             <p>
-              Today, we continue to build on this legacy, representing individuals, businesses, and organizations in their most critical legal matters. We understand the stress and complexity of legal challenges, and our team is here to support you, protect your interests, and fight for your rights at every step.
+              Our firm is fully prepared to litigate cases when a fair settlement cannot be reached. Our attorneys develop strong legal strategies, gather and present evidence, take depositions, negotiate with insurance companies, and advocate for our clients before judges and juries. We are committed to pursuing the maximum compensation available for medical expenses, lost wages, pain and suffering, and other damages.
+            </p>
+            <p>
+              Aqrawi & Associates is also proud of the diversity of our team. Our multilingual employees assist clients in English, Arabic, Spanish, Kurdish, Urdu, and other languages. This allows us to serve clients from many cultural backgrounds and ensures that they clearly understand their legal rights, options, and the progress of their cases.
+            </p>
+            <p>
+              We believe every client deserves clear communication, personalized attention, and strong legal representation from a law firm they can trust.
+            </p>
+            <p>
+              <strong>There are no upfront attorney’s fees for personal injury cases. You do not pay attorney’s fees unless we win your case.</strong>
+            </p>
+            <p style={{ fontWeight: 600, color: "#bf953f", marginTop: "1rem" }}>
+              Integrity. Compassion. Results.
+            </p>
+            <p style={{ fontWeight: 700, color: "#111111", fontSize: "1.1rem" }}>
+              No Fees Unless We Win. We Got Your Back!
             </p>
           </div>
 
           <div className={styles.portraitWrapper}>
             <img
-              src="/images/about-page/person1.webp"
-              alt="Senior Attorney Portrait"
+              src="/images/about-page/who we are.jpeg"
+              alt="Walat Aqrawi Standing Portrait"
               className={styles.portraitImg}
             />
           </div>
         </div>
       </section>
 
-      {/* Landscape Image Banner */}
-      <div className={styles.bannerContainer}>
-        <div className={styles.meetingBanner}>
-          <img
-            src="/images/about-page/lawyers-meeting.webp"
-            alt="Lawyers discussing case in office"
-            className={styles.meetingImg}
-          />
-        </div>
-      </div>
-
-      {/* Why Choose Us Section */}
+      {/* Why Choose Us & Image Section */}
       <section className={styles.whyChooseSection}>
-        <div className={styles.whyChooseHeader}>
-          <h2>Why Choose Us</h2>
-          <p>
-            At Aqrawi Law Firm, we combine the experience and resources of a large firm with the personal attention and responsiveness of a boutique practice. We are committed to achieving the best possible outcome for our clients through meticulous preparation, aggressive representation, and strategic advocacy. Your success is our sole focus.
-          </p>
-        </div>
-
-        <div className={styles.pillarsGrid}>
-          {/* Pillar 1: Highly Experienced */}
-          <div className={styles.pillarCard}>
-            <div className={styles.pillarIcon}>
-              {/* Scales of Justice Icon */}
-              <svg
-                width="48"
-                height="48"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="1.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <path d="M12 3v17" />
-                <path d="M12 5l-8 3 8 3 8-3-8-3Z" />
-                <path d="M4 8v5c0 3.3 2.7 6 6 6" />
-                <path d="M20 8v5c0 3.3-2.7 6-6 6" />
-                <path d="M3 21h18" />
-              </svg>
-            </div>
-            <h3 className={styles.pillarTitle}>Highly Experienced</h3>
+        <div className={styles.whyChooseContainer}>
+          {/* LEFT: Picture */}
+          <div className={styles.whyChooseImageWrapper}>
+            <img
+              src="/images/headshots/headshotwalat.jpeg"
+              alt="Walat Aqrawi Headshot"
+              className={styles.whyChooseImg}
+            />
           </div>
 
-          {/* Pillar 2: Transparent Fees */}
-          <div className={styles.pillarCard}>
-            <div className={styles.pillarIcon}>
-              {/* Card / Document Price Tag Icon */}
-              <svg
-                width="48"
-                height="48"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="1.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <rect x="3" y="4" width="18" height="16" rx="2" />
-                <path d="M3 10h18" />
-                <path d="M16 14h2" />
-                <path d="M12 14h2" />
-                <path d="M6 14h4" />
-              </svg>
+          {/* RIGHT: Why Choose Us Content */}
+          <div className={styles.whyChooseContent}>
+            <div className={styles.whyChooseHeader}>
+              <h2>Why Choose Us</h2>
+              <p>
+                At Aqrawi Law Firm, we combine the experience and resources of a large firm with the personal attention and responsiveness of a boutique practice. We are committed to achieving the best possible outcome for our clients through meticulous preparation, aggressive representation, and strategic advocacy. Your success is our sole focus.
+              </p>
             </div>
-            <h3 className={styles.pillarTitle}>Transparent Fees</h3>
-          </div>
 
-          {/* Pillar 3: Great Track Record */}
-          <div className={styles.pillarCard}>
-            <div className={styles.pillarIcon}>
-              {/* Briefcase Icon */}
-              <svg
-                width="48"
-                height="48"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="1.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <rect x="2" y="7" width="20" height="14" rx="2" ry="2" />
-                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
-              </svg>
+            <div className={styles.pillarsGrid}>
+              {/* Pillar 1: Highly Experienced */}
+              <div className={styles.pillarCard}>
+                <div className={styles.pillarIcon}>
+                  <svg
+                    width="36"
+                    height="36"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <path d="M12 3v17" />
+                    <path d="M12 5l-8 3 8 3 8-3-8-3Z" />
+                    <path d="M4 8v5c0 3.3 2.7 6 6 6" />
+                    <path d="M20 8v5c0 3.3-2.7 6-6 6" />
+                    <path d="M3 21h18" />
+                  </svg>
+                </div>
+                <h3 className={styles.pillarTitle}>Highly Experienced</h3>
+              </div>
+
+              {/* Pillar 2: Transparent Fees */}
+              <div className={styles.pillarCard}>
+                <div className={styles.pillarIcon}>
+                  <svg
+                    width="36"
+                    height="36"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <rect x="3" y="4" width="18" height="16" rx="2" />
+                    <path d="M3 10h18" />
+                    <path d="M16 14h2" />
+                    <path d="M12 14h2" />
+                    <path d="M6 14h4" />
+                  </svg>
+                </div>
+                <h3 className={styles.pillarTitle}>Transparent Fees</h3>
+              </div>
+
+              {/* Pillar 3: Great Track Record */}
+              <div className={styles.pillarCard}>
+                <div className={styles.pillarIcon}>
+                  <svg
+                    width="36"
+                    height="36"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <rect x="2" y="7" width="20" height="14" rx="2" ry="2" />
+                    <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
+                  </svg>
+                </div>
+                <h3 className={styles.pillarTitle}>Great Track Record</h3>
+              </div>
             </div>
-            <h3 className={styles.pillarTitle}>Great Track Record</h3>
           </div>
         </div>
       </section>
@@ -142,20 +157,20 @@ export default function AboutPage() {
       <section className={styles.statsSection}>
         <div className={styles.statsGrid}>
           <div className={styles.statItem}>
-            <div className={styles.statNum}>5,000+</div>
+            <div className={styles.statNum}>10,000+</div>
             <div className={styles.statLabel}>Client Consultations</div>
           </div>
           <div className={styles.statItem}>
-            <div className={styles.statNum}>99%</div>
-            <div className={styles.statLabel}>Success Rate</div>
+            <div className={styles.statNum}>7,000+</div>
+            <div className={styles.statLabel}>Clients Served</div>
           </div>
           <div className={styles.statItem}>
-            <div className={styles.statNum}>$50M</div>
-            <div className={styles.statLabel}>Client Recoveries</div>
+            <div className={styles.statNum}>$0</div>
+            <div className={styles.statLabel}>Consultation Cost</div>
           </div>
           <div className={styles.statItem}>
-            <div className={styles.statNum}>4,000</div>
-            <div className={styles.statLabel}>Cases Won</div>
+            <div className={styles.statNum}>25+ Years</div>
+            <div className={styles.statLabel}>Legal Experience</div>
           </div>
         </div>
       </section>

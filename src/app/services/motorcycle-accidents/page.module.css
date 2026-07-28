@@ -26,7 +26,7 @@
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
-  margin-top: 80px; /* Assuming navbar height */
+  margin-top: 160px; /* Match 160px navbar height */
 }
 
 .heroOverlay {

@@ -10,10 +10,10 @@ import LegalHelp from "@/components/LegalHelp";
 import { TEAM_MEMBERS, TeamMember } from "@/constants/team";
 
 const CATEGORY_TITLES: Record<string, string> = {
-  staff: "Staff",
+  partners: "Partners",
   management: "Management",
   associates: "Associates",
-  partners: "Partners",
+  staff: "Staff",
 };
 
 export default function TeamCategoryPage() {
@@ -42,6 +42,7 @@ export default function TeamCategoryPage() {
   );
 
   const openBio = (member: TeamMember) => {
+    if (!member.bio) return;
     setSelectedMember(member);
     // Disable body scrolling when drawer is open
     document.body.style.overflow = "hidden";
@@ -92,7 +93,7 @@ export default function TeamCategoryPage() {
                 <div 
                   className={styles.imageWrapper}
                   onClick={() => openBio(member)}
-                  style={{ cursor: "pointer" }}
+                  style={{ cursor: member.bio ? "pointer" : "default" }}
                 >
                   {member.image && !imageErrors[member.id] && (
                     <img
@@ -122,9 +123,11 @@ export default function TeamCategoryPage() {
                 </div>
                 <h2 className={styles.memberName}>{member.name}</h2>
                 <span className={styles.memberPosition}>{member.position}</span>
-                <button onClick={() => openBio(member)} className={styles.bioBtn}>
-                  Bio
-                </button>
+                {member.bio && (
+                  <button onClick={() => openBio(member)} className={styles.bioBtn}>
+                    Bio
+                  </button>
+                )}
               </div>
             );
           })}

@@ -39,10 +39,10 @@ export default function ServicesPage() {
     },
     {
       num: "05",
-      title: "Factory Accidents",
-      desc: "If you have sustained a factory injury, it's important to take prompt action to protect your rights. We can help you understand your options for compensation and guide you through the legal process.",
+      title: "Plant Accidents",
+      desc: "If you have sustained an injury at a plant or industrial facility, it's important to take prompt action to protect your rights. We can help you understand your options for compensation and guide you through the legal process.",
       img: "/images/services-page/img5.webp",
-      alt: "Construction Workers in Safety Gear",
+      alt: "Plant and Industrial Facility Worker",
     },
     {
       num: "06",
@@ -50,6 +50,20 @@ export default function ServicesPage() {
       desc: "When healthcare providers fail to meet professional standards of care, the results can be catastrophic. We represent victims of surgical errors, misdiagnoses, birth injuries, and medication mistakes, fighting to secure justice for your pain.",
       img: "/images/services-page/img6.webp",
       alt: "Surgeon in Operating Room",
+    },
+    {
+      num: "07",
+      title: "Workplace-Related Injuries",
+      desc: "On-the-job accidents can involve workers' compensation claims, third-party liability, and employer safety violations. Our legal team fights to ensure injured workers receive full compensation, medical coverage, and financial recovery.",
+      img: "/images/services-page/img5.webp",
+      alt: "Workplace Injury Construction Site",
+    },
+    {
+      num: "08",
+      title: "Animal-Related Injuries, Including Dog Bites",
+      desc: "Dog bites and animal attacks cause severe physical trauma, infection risks, and emotional scarring. We hold negligent pet owners accountable under Texas law to recover full compensation for emergency care, surgery, and suffering.",
+      img: "/images/services-page/img4.webp",
+      alt: "Safety and Warning Hazards",
     },
   ];
 
@@ -122,8 +136,8 @@ export default function ServicesPage() {
                   onClick={() => {
                     if (service.title === "Slip and Fall") {
                       window.location.href = "/services/slip-and-fall";
-                    } else if (service.title === "Factory Accidents") {
-                      window.location.href = "/services/factory-accidents";
+                    } else if (service.title === "Plant Accidents" || service.title === "Factory Accidents") {
+                      window.location.href = "/services/plant-accidents";
                     } else if (service.title === "Car Accidents") {
                       window.location.href = "/services/car-accidents";
                     } else if (service.title === "Trucks and 18-Wheelers Accidents") {
@@ -133,13 +147,14 @@ export default function ServicesPage() {
                     } else if (service.title === "Medical Malpractice") {
                       window.location.href = "/services/medical-malpractice";
                     } else {
-                      const el = document.getElementById("contact-info");
+                      const el = document.getElementById("contact");
                       if (el) el.scrollIntoView({ behavior: "smooth" });
+                      else window.location.href = "/contact";
                     }
                   }}
                   className={styles.serviceBtn}
                 >
-                  {service.title === "Slip and Fall" || service.title === "Factory Accidents" || service.title === "Car Accidents" || service.title === "Trucks and 18-Wheelers Accidents" || service.title === "Motorcycle Accidents" || service.title === "Medical Malpractice" ? "Learn More" : "Inquire Now"}
+                  {["Slip and Fall", "Plant Accidents", "Factory Accidents", "Car Accidents", "Trucks and 18-Wheelers Accidents", "Motorcycle Accidents", "Medical Malpractice"].includes(service.title) ? "Learn More" : "Inquire Now"}
                 </button>
               </div>
 

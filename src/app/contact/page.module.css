@@ -17,12 +17,15 @@
 
 /* Contact Hero */
 .hero {
-  background-image: linear-gradient(rgba(11, 11, 12, 0.55), rgba(11, 11, 12, 0.55)), url('/images/about-page/about-bg.jpg');
+  background-image: linear-gradient(rgba(11, 11, 12, 0.45), rgba(11, 11, 12, 0.45)), url('/threeFlags.jpeg');
   background-size: cover;
-  background-position: center;
+  background-position: center 30%;
   background-repeat: no-repeat;
-  padding: 8rem 2rem;
+  padding: 16rem 2rem 9rem;
+  min-height: 480px;
   color: var(--text-light);
+  display: flex;
+  align-items: flex-end;
 }
 
 .heroContent {
