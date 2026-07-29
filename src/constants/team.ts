@@ -12,9 +12,9 @@ export const TEAM_MEMBERS: TeamMember[] = [
   {
     id: "walat-aqrawi",
     name: "Walat Aqrawi",
-    position: "Founder",
+    position: "Founding & Managing Partner",
     image: "/images/headshots/headshotwalat.jpeg",
-    bio: "Walat Aqrawi is the Founding Partner of Aqrawi Law Firm. With decades of litigation experience, he has represented clients in high-stakes personal injury, commercial disputes, and complex litigation. He is dedicated to aggressive advocacy, unwavering integrity, and securing maximum recoveries for injury victims and their families.",
+    bio: "Walat Aqrawi is the Founding & Managing Partner of Aqrawi & Associates and a highly respected personal injury attorney with a distinguished legal career in Texas and across the United States. Born in Kurdistan in 1973, he immigrated to the United States from Iraq, driven by a strong commitment to justice, opportunity, and the rule of law.\n\nMr. Aqrawi made history as the first Kurdish-American attorney licensed to practice law in the State of Texas and among the earliest Kurdish immigrants from Iraq to establish a successful legal career in the United States. His journey reflects resilience, leadership, and dedication to the legal profession.\n\nDuring the First Gulf War, he became the first attorney to successfully facilitate the legal immigration of an Iraqi national to the United States—achieving this during a time of extraordinary legal and political complexity. This milestone demonstrated exceptional legal skill and humanitarian commitment.\n\nIn addition to private practice, Mr. Aqrawi has served as legal counsel for multiple foreign consulates in the United States, including the Consulate of the Kingdom of Saudi Arabia in Texas, advising on diplomatic, civil, and legal matters.\n\nRecognized as a top attorney in Texas, his practice focuses on personal injury law, including automobile accidents, catastrophic injuries, liability disputes, and complex insurance negotiations. As Founding & Managing Partner, he remains personally involved in cases to ensure clients receive dedicated, high-quality representation.\n\nMr. Aqrawi’s legal philosophy is rooted in justice, accountability, and compassion, with a continued commitment to protecting the rights of injury victims and their families.",
     category: "partners",
   },
   {
@@ -179,7 +179,7 @@ export const TEAM_MEMBERS: TeamMember[] = [
   {
     id: "patricia-sierra",
     name: "Patricia",
-    position: "Personal Injury Claims Professional",
+    position: "Case Manager",
     image: "",
     bio: "",
     category: "staff",
