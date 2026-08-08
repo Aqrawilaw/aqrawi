@@ -22,6 +22,7 @@ export const BRANCHES = {
         "Slip and Fall",
         "Worker Compensation",
         "Medical Malpractice",
+        "Immigration Services",
       ],
     },
     {

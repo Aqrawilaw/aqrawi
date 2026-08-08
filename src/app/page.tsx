@@ -129,7 +129,7 @@ export default function Home() {
               <p className={styles.whoParagraph}>
                 <strong>Aqrawi & Associates</strong> is a trusted personal injury and litigation law firm dedicated to protecting the rights of individuals and families who have been harmed by the negligence or wrongdoing of others.
                 <br /><br />
-                Our experienced attorneys handle a wide range of personal injury cases, including automobile accidents, workplace injuries, slip-and-fall incidents, medical malpractice, and other serious injury claims. We represent clients throughout every stage of the legal process, from the initial investigation and settlement negotiations to filing lawsuits and representing clients in court.
+                Our experienced attorneys handle a wide range of personal injury and legal matters, including automobile accidents, workplace injuries, slip-and-fall incidents, medical malpractice, immigration claims, and other serious legal representation. We represent clients throughout every stage of the legal process, from initial consultation and negotiations to filing petitions, lawsuits, and court representation.
                 <br /><br />
                 Our firm is fully prepared to litigate cases when a fair settlement cannot be reached. Our attorneys develop strong legal strategies, gather and present evidence, take depositions, negotiate with insurance companies, and advocate for our clients before judges and juries. We are committed to pursuing the maximum compensation available for medical expenses, lost wages, pain and suffering, and other damages.
                 <br /><br />
@@ -471,6 +471,42 @@ export default function Home() {
                 <span className={styles.serviceLabel}>
                   Animal-Related Injuries
                 </span>
+              </a>
+
+              {/* Item 9: IMMIGRATION */}
+              <a href="/services#09" className={styles.serviceItem}>
+                <div className={styles.iconCircle}>
+                  <svg viewBox="0 0 100 100" width="48" height="48" fill="none">
+                    {/* Globe / Passport icon */}
+                    <circle
+                      cx="50"
+                      cy="50"
+                      r="32"
+                      stroke="#bf953f"
+                      strokeWidth="4.5"
+                    />
+                    <path
+                      d="M18 50 H82"
+                      stroke="#bf953f"
+                      strokeWidth="3.5"
+                    />
+                    <ellipse
+                      cx="50"
+                      cy="50"
+                      rx="16"
+                      ry="32"
+                      stroke="#bf953f"
+                      strokeWidth="3.5"
+                    />
+                    <path
+                      d="M30 30 C42 18, 68 22, 78 35"
+                      stroke="#bf953f"
+                      strokeWidth="3"
+                      strokeDasharray="3 3"
+                    />
+                  </svg>
+                </div>
+                <span className={styles.serviceLabel}>Immigration</span>
               </a>
             </div>
           </div>
