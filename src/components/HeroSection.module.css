@@ -341,61 +341,188 @@
   background: rgba(212, 175, 55, 0.2);
 }
 
-/* ========== Scales Side ========== */
-.scalesSide {
+/* ========== Logo Side ========== */
+.logoSide {
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
 }
 
-.scalesWrapper {
+.logoWrapper {
   position: relative;
-  width: min(420px, 90vw);
+  width: min(460px, 90vw);
+  display: flex;
+  align-items: center;
+  justify-content: center;
   will-change: transform;
   transition: transform 0.15s linear;
-  opacity: 0;
-  animation: scalesReveal 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.6s forwards;
 }
 
-@keyframes scalesReveal {
-  from { opacity: 0; transform: translateY(30px) scale(0.92); }
-  to { opacity: 1; transform: translateY(0) scale(1); }
-}
-
-.scalesSvg {
+/* SVG container — starts invisible via shape animations; floats after reveal */
+.logoSvg {
   width: 100%;
   height: auto;
-  filter: drop-shadow(0 0 40px rgba(212, 175, 55, 0.15));
+  position: relative;
+  z-index: 3;
+  overflow: visible;
+  filter:
+    drop-shadow(0 0 28px rgba(212, 175, 55, 0.35))
+    drop-shadow(0 0 60px rgba(212, 175, 55, 0.15));
+  /* Float starts after all shapes are in (~3.5s total reveal) */
+  animation: logoFloat 5s ease-in-out infinite 2.5s;
+  will-change: transform, filter;
 }
 
-.scalesGlow {
+@keyframes logoFloat {
+  0%, 100% {
+    transform: translateY(0px);
+    filter:
+      drop-shadow(0 0 28px rgba(212, 175, 55, 0.35))
+      drop-shadow(0 0 60px rgba(212, 175, 55, 0.15));
+  }
+  50% {
+    transform: translateY(-14px);
+    filter:
+      drop-shadow(0 0 42px rgba(212, 175, 55, 0.55))
+      drop-shadow(0 0 80px rgba(212, 175, 55, 0.25));
+  }
+}
+
+/* ── Small triangles: pop in first ── */
+.svgSmall {
+  transform-box: fill-box;
+  transform-origin: center;
+  opacity: 0;
+  animation: triPop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+/* bottom-left triangle */
+.svgSmall1 { animation-delay: 0.1s; }
+/* bottom-center triangle */
+.svgSmall2 { animation-delay: 0.25s; }
+/* middle triangle */
+.svgSmall3 { animation-delay: 0.4s; }
+
+@keyframes triPop {
+  0%   { opacity: 0; transform: scale(0.2); }
+  70%  { opacity: 1; transform: scale(1.1); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+/* ── Large shapes: wipe top → bottom one by one ── */
+.svgLarge {
+  clip-path: inset(0 0 100% 0);
+  animation: shapeWipe 0.55s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* Left large shape */
+.svgLarge1 { animation-delay: 0.85s; }
+/* Middle large shape */
+.svgLarge2 { animation-delay: 1.3s; }
+/* Right large shape */
+.svgLarge3 { animation-delay: 1.75s; }
+
+@keyframes shapeWipe {
+  from { clip-path: inset(0 0 100% 0); }
+  to   { clip-path: inset(0 0 0%   0); }
+}
+
+/* Rotating orbit rings */
+.logoOrbitRing {
   position: absolute;
-  bottom: -40px;
+  width: 105%;
+  padding-top: 105%;
+  border-radius: 50%;
+  border: 1px solid rgba(212, 175, 55, 0.14);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  animation: orbitSpin 14s linear infinite;
+}
+
+.logoOrbitRing::before {
+  content: "";
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: radial-gradient(circle, #f0d060, #d4af37);
+  border-radius: 50%;
+  top: -4px;
   left: 50%;
   transform: translateX(-50%);
-  width: 280px;
-  height: 80px;
-  background: radial-gradient(ellipse, rgba(212, 175, 55, 0.25) 0%, transparent 70%);
+  box-shadow: 0 0 12px 4px rgba(212, 175, 55, 0.6);
+}
+
+.logoOrbitRing2 {
+  position: absolute;
+  width: 120%;
+  padding-top: 120%;
   border-radius: 50%;
-  filter: blur(20px);
-  animation: glowPulse 3s ease-in-out infinite;
+  border: 1px dashed rgba(212, 175, 55, 0.07);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  animation: orbitSpin 22s linear infinite reverse;
+}
+
+.logoOrbitRing2::before {
+  content: "";
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  background: #d4af37;
+  border-radius: 50%;
+  bottom: -2.5px;
+  left: 50%;
+  transform: translateX(-50%);
+  box-shadow: 0 0 8px 3px rgba(212, 175, 55, 0.4);
+}
+
+@keyframes orbitSpin {
+  from { transform: translate(-50%, -50%) rotate(0deg); }
+  to   { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+
+/* Glow pool beneath the logo */
+.logoGlow {
+  position: absolute;
+  bottom: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 75%;
+  height: 60px;
+  background: radial-gradient(ellipse, rgba(212, 175, 55, 0.3) 0%, transparent 70%);
+  border-radius: 50%;
+  filter: blur(18px);
+  z-index: 2;
+  animation: glowPulse 5s ease-in-out infinite;
 }
 
 @keyframes glowPulse {
   0%, 100% { opacity: 0.5; transform: translateX(-50%) scaleX(1); }
-  50% { opacity: 1; transform: translateX(-50%) scaleX(1.2); }
+  50%       { opacity: 1;   transform: translateX(-50%) scaleX(1.25); }
 }
 
-/* Sparkle animation */
-.sparkle {
-  animation: sparklePulse 2s ease-in-out infinite;
-  transform-origin: center;
+/* Sparkle dots at corners */
+.logoSpark {
+  position: absolute;
+  border-radius: 50%;
+  z-index: 5;
+  animation: sparkPulse 2.4s ease-in-out infinite;
 }
 
-@keyframes sparklePulse {
-  0%, 100% { opacity: 0; transform: scale(0.5); }
-  50% { opacity: 1; transform: scale(1.3); }
+.logoSpark1 { width: 6px; height: 6px; background: #f0d060; top: 8%;  left: 10%; animation-delay: 0s;    box-shadow: 0 0 8px 4px rgba(240,208,96,0.6); }
+.logoSpark2 { width: 4px; height: 4px; background: #d4af37; top: 15%; right: 8%; animation-delay: 0.8s;  box-shadow: 0 0 6px 3px rgba(212,175,55,0.5); }
+.logoSpark3 { width: 5px; height: 5px; background: #f0d060; bottom: 18%; left: 6%;  animation-delay: 1.6s;  box-shadow: 0 0 7px 3px rgba(240,208,96,0.5); }
+.logoSpark4 { width: 3px; height: 3px; background: #d4af37; bottom: 10%; right: 12%; animation-delay: 2.2s;  box-shadow: 0 0 5px 2px rgba(212,175,55,0.4); }
+
+@keyframes sparkPulse {
+  0%, 100% { opacity: 0; transform: scale(0.4); }
+  50%       { opacity: 1; transform: scale(1.6); }
 }
 
 /* ========== Scroll Indicator ========== */
@@ -441,9 +568,14 @@
 
 /* ========== Responsive ========== */
 @media (max-width: 900px) {
+  .hero {
+    padding-top: 230px;
+  }
+
   .content {
     grid-template-columns: 1fr;
     text-align: center;
+    gap: 28px;
   }
 
   .textSide {
@@ -468,23 +600,45 @@
     justify-content: center;
   }
 
-  .scalesSide {
+  .logoSide {
     order: 1;
+    margin-bottom: 12px;
   }
 
-  .scalesWrapper {
-    width: min(280px, 80vw);
+  .logoWrapper {
+    width: min(220px, 65vw);
+  }
+
+  /* Prevent background floating words from cluttering text on tablet/mobile */
+  .particleContainer {
+    display: none;
   }
 }
 
 @media (max-width: 480px) {
   .hero {
-    padding: 90px 20px 60px;
+    padding: 230px 20px 40px;
+    min-height: auto;
+  }
+
+  .logoWrapper {
+    width: min(175px, 55vw);
+  }
+
+  .titleWord,
+  .titleWordGold {
+    font-size: clamp(36px, 9vw, 52px);
+  }
+
+  .subtitle {
+    margin-bottom: 28px;
   }
 
   .ctas {
     flex-direction: column;
     width: 100%;
+    gap: 14px;
+    margin-bottom: 36px;
   }
 
   .ctaPrimary,
@@ -494,6 +648,20 @@
   }
 
   .trustBadges {
-    gap: 16px;
+    flex-wrap: wrap;
+    gap: 16px 24px;
+    justify-content: center;
+  }
+
+  .badge {
+    align-items: center;
+  }
+
+  .badgeDivider {
+    display: none;
+  }
+
+  .scrollIndicator {
+    display: none;
   }
 }

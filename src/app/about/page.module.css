@@ -159,7 +159,43 @@
   transform: scale(1.03);
 }
 
-/* Landscape Banner */
+/* Section Divider */
+.sectionDividerContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1.5rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.25rem;
+}
+
+.goldDividerLine {
+  flex: 1;
+  height: 1.5px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(191, 149, 63, 0.4) 25%,
+    #bf953f 50%,
+    rgba(191, 149, 63, 0.4) 75%,
+    transparent 100%
+  );
+}
+
+.goldDividerBadge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: rgba(191, 149, 63, 0.08);
+  border: 1px solid rgba(191, 149, 63, 0.3);
+  box-shadow: 0 0 12px rgba(191, 149, 63, 0.15);
+  flex-shrink: 0;
+}
+
 /* Why Choose Us Section */
 .whyChooseSection {
   max-width: 1200px;
@@ -413,6 +449,18 @@
 
 /* Responsive Overrides */
 @media (max-width: 968px) {
+  .section {
+    padding: 3.5rem 1.5rem 2rem;
+  }
+
+  .whyChooseSection {
+    padding: 2rem 1.5rem 3.5rem;
+  }
+
+  .sectionDividerContainer {
+    padding: 2rem 1.5rem;
+  }
+
   .whyChooseContainer {
     grid-template-columns: 1fr;
     gap: 2.5rem;

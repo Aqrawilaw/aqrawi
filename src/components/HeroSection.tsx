@@ -36,7 +36,7 @@ function createParticle(id: number): Particle {
 export default function HeroSection() {
   const [mousePos, setMousePos] = useState({ x: 0.5, y: 0.5 });
   const [particles, setParticles] = useState<Particle[]>([]);
-  const [scalesAngle, setScalesAngle] = useState(0);
+
   const [titleVisible, setTitleVisible] = useState(false);
   const rafRef = useRef<number | null>(null);
   const timeRef = useRef(0);
@@ -58,17 +58,12 @@ export default function HeroSection() {
     return () => clearTimeout(t);
   }, []);
 
-  // Animate particles and scales
+  // Animate particles
   useEffect(() => {
     let frame = 0;
     const animate = () => {
       frame++;
       timeRef.current += 0.016;
-      const t = timeRef.current;
-
-      // Perpetual pendulum — two overlapping frequencies for organic feel
-      const angle = Math.sin(t * 0.7) * 10 + Math.sin(t * 0.4) * 4;
-      setScalesAngle(angle);
 
       // Update particles every 2 frames
       if (frame % 2 === 0) {
@@ -220,126 +215,79 @@ export default function HeroSection() {
           </div>
         </div>
 
-        {/* RIGHT — Animated Scales of Justice */}
-        <div className={styles.scalesSide} aria-hidden="true">
+        {/* RIGHT — Animated Logo */}
+        <div className={styles.logoSide} aria-hidden="true">
           <div
-            className={styles.scalesWrapper}
+            className={styles.logoWrapper}
             style={{
               transform: `translate(${parallaxX * -0.2}px, ${parallaxY * -0.1}px)`,
             }}
           >
+            {/* Orbital ring behind logo */}
+            <div className={styles.logoOrbitRing} />
+            <div className={styles.logoOrbitRing2} />
+
+            {/* Logo SVG — inline for per-shape animation */}
             <svg
-              className={styles.scalesSvg}
-              viewBox="0 0 400 500"
-              fill="none"
+              viewBox="0 0 545.92 331.28"
               xmlns="http://www.w3.org/2000/svg"
+              className={styles.logoSvg}
+              aria-label="Aqrawi &amp; Associates Logo"
             >
-              {/* Glow defs */}
               <defs>
-                <radialGradient id="goldGlow" cx="50%" cy="50%" r="50%">
-                  <stop offset="0%" stopColor="#d4af37" stopOpacity="0.4" />
-                  <stop offset="100%" stopColor="#d4af37" stopOpacity="0" />
-                </radialGradient>
-                <filter id="glow">
-                  <feGaussianBlur stdDeviation="4" result="coloredBlur" />
-                  <feMerge>
-                    <feMergeNode in="coloredBlur" />
-                    <feMergeNode in="SourceGraphic" />
-                  </feMerge>
-                </filter>
-                <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stopColor="#f0d060" />
-                  <stop offset="50%" stopColor="#d4af37" />
-                  <stop offset="100%" stopColor="#aa771c" />
+                <linearGradient id="hg1" x1="102.85" y1="64.64" x2="350.29" y2="312.08" gradientUnits="userSpaceOnUse">
+                  <stop offset=".08" stopColor="#cca655" stopOpacity=".7"/>
+                  <stop offset=".16" stopColor="#d9bd71" stopOpacity=".81"/>
+                  <stop offset=".25" stopColor="#e6d48d" stopOpacity=".91"/>
+                  <stop offset=".32" stopColor="#efe19d" stopOpacity=".98"/>
+                  <stop offset=".37" stopColor="#f2e7a4"/>
+                  <stop offset=".49" stopColor="#efe39f"/>
+                  <stop offset=".62" stopColor="#e9d993"/>
+                  <stop offset=".75" stopColor="#dfc87e"/>
+                  <stop offset=".89" stopColor="#d1b061"/>
+                  <stop offset=".93" stopColor="#cca655"/>
                 </linearGradient>
-                <linearGradient id="beamGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-                  <stop offset="0%" stopColor="#d4af37" stopOpacity="1" />
-                  <stop offset="100%" stopColor="#d4af37" stopOpacity="0.3" />
-                </linearGradient>
+                <linearGradient id="hg2" x1="209.1"  y1="64.77"  x2="456.52" y2="312.2"  gradientUnits="userSpaceOnUse" href="#hg1"/>
+                <linearGradient id="hg3" x1="315.85" y1="65.05"  x2="563.34" y2="312.54" gradientUnits="userSpaceOnUse" href="#hg1"/>
+                <linearGradient id="hg4" x1="142.02" y1="274.53" x2="211.66" y2="344.17" gradientUnits="userSpaceOnUse" href="#hg1"/>
+                <linearGradient id="hg5" x1="12.81"  y1="272.02" x2="86.14"  y2="345.35" gradientUnits="userSpaceOnUse" href="#hg1"/>
+                <linearGradient id="hg6" x1="73.17"  y1="145.51" x2="152.58" y2="224.93" gradientUnits="userSpaceOnUse" href="#hg1"/>
               </defs>
 
-              {/* Background glow circle */}
-              <circle cx="200" cy="220" r="160" fill="url(#goldGlow)" />
+              {/* ── LARGE shapes rendered first (bottom z-layer) ── */}
+              {/* Wipe top-to-bottom one by one after small triangles appear */}
+              <polygon className={`${styles.svgLarge} ${styles.svgLarge1}`}
+                points="120.44 90.36 166.36 1.12 331.95 330.42 241.61 330.42 120.44 90.36"
+                fill="url(#hg1)" stroke="#000" strokeMiterlimit="10"/>
+              <polygon className={`${styles.svgLarge} ${styles.svgLarge2}`}
+                points="272.75 1.12 438.3 330.42 347.44 330.42 227.22 91.54 272.75 1.12"
+                fill="url(#hg2)" stroke="#000" strokeMiterlimit="10"/>
+              <polygon className={`${styles.svgLarge} ${styles.svgLarge3}`}
+                points="335.02 91.58 379.78 1.12 545.11 330.78 453.72 330.78 335.02 91.58"
+                fill="url(#hg3)" stroke="#000" strokeMiterlimit="10"/>
 
-              {/* Base / pedestal */}
-              <rect x="180" y="440" width="40" height="10" rx="5" fill="url(#goldGrad)" />
-              <rect x="170" y="448" width="60" height="8" rx="4" fill="url(#goldGrad)" opacity="0.8" />
-
-              {/* Vertical pillar */}
-              <rect x="197" y="100" width="6" height="345" rx="3" fill="url(#beamGrad)" />
-
-              {/* Top ornament */}
-              <circle cx="200" cy="98" r="10" fill="url(#goldGrad)" filter="url(#glow)" />
-              <circle cx="200" cy="98" r="5" fill="#fff8e1" />
-
-              {/* The pivot / fulcrum ring */}
-              <circle cx="200" cy="165" r="8" fill="none" stroke="url(#goldGrad)" strokeWidth="3" />
-              <circle cx="200" cy="165" r="2" fill="url(#goldGrad)" />
-
-              {/* Animated beam + suspended pans — all pivot around fulcrum */}
-              <g transform={`rotate(${scalesAngle}, 200, 165)`}>
-
-                {/* Horizontal beam */}
-                <rect x="58" y="161" width="284" height="8" rx="4" fill="url(#goldGrad)" />
-
-                {/* ── LEFT SIDE ── */}
-                {/* Three suspension strings from beam end down to pan rim */}
-                {/* Left string  (beam-end x=75, pan-rim left x=48) */}
-                <line x1="75"  y1="169" x2="48"  y2="240" stroke="#d4af37" strokeWidth="1.8" strokeLinecap="round" />
-                {/* Center string (beam-end x=80, pan-rim center x=80) */}
-                <line x1="80"  y1="169" x2="80"  y2="240" stroke="#d4af37" strokeWidth="1.8" strokeLinecap="round" />
-                {/* Right string  (beam-end x=85, pan-rim right x=112) */}
-                <line x1="85"  y1="169" x2="112" y2="240" stroke="#d4af37" strokeWidth="1.8" strokeLinecap="round" />
-
-                {/* Left pan dish */}
-                {/* Bowl rim */}
-                <ellipse cx="80" cy="240" rx="36" ry="7" fill="url(#goldGrad)" opacity="0.95" />
-                {/* Bowl curve — gives depth */}
-                <path d="M44 240 Q80 258 116 240" fill="url(#goldGrad)" opacity="0.55" />
-
-
-
-                {/* ── RIGHT SIDE ── */}
-                {/* Three suspension strings */}
-                <line x1="315" y1="169" x2="288" y2="240" stroke="#d4af37" strokeWidth="1.8" strokeLinecap="round" />
-                <line x1="320" y1="169" x2="320" y2="240" stroke="#d4af37" strokeWidth="1.8" strokeLinecap="round" />
-                <line x1="325" y1="169" x2="352" y2="240" stroke="#d4af37" strokeWidth="1.8" strokeLinecap="round" />
-
-                {/* Right pan dish */}
-                <ellipse cx="320" cy="240" rx="36" ry="7" fill="url(#goldGrad)" opacity="0.95" />
-                <path d="M284 240 Q320 258 356 240" fill="url(#goldGrad)" opacity="0.55" />
-
-
-              </g>
-
-              {/* Decorative ring at base of pillar */}
-              <ellipse cx="200" cy="440" rx="30" ry="6" fill="url(#goldGrad)" opacity="0.6" />
-
-              {/* Star sparkles around scales */}
-              <g className={styles.sparkle} style={{ animationDelay: "0s" }}>
-                <circle cx="130" cy="120" r="2" fill="#d4af37" opacity="0.8" />
-                <line x1="130" y1="114" x2="130" y2="126" stroke="#d4af37" strokeWidth="1" opacity="0.6" />
-                <line x1="124" y1="120" x2="136" y2="120" stroke="#d4af37" strokeWidth="1" opacity="0.6" />
-              </g>
-              <g className={styles.sparkle} style={{ animationDelay: "0.8s" }}>
-                <circle cx="285" cy="140" r="1.5" fill="#f0d060" opacity="0.9" />
-                <line x1="285" y1="135" x2="285" y2="145" stroke="#f0d060" strokeWidth="1" opacity="0.5" />
-                <line x1="280" y1="140" x2="290" y2="140" stroke="#f0d060" strokeWidth="1" opacity="0.5" />
-              </g>
-              <g className={styles.sparkle} style={{ animationDelay: "1.6s" }}>
-                <circle cx="155" cy="320" r="1.5" fill="#d4af37" opacity="0.7" />
-                <line x1="155" y1="315" x2="155" y2="325" stroke="#d4af37" strokeWidth="1" opacity="0.5" />
-                <line x1="150" y1="320" x2="160" y2="320" stroke="#d4af37" strokeWidth="1" opacity="0.5" />
-              </g>
-              <g className={styles.sparkle} style={{ animationDelay: "2.4s" }}>
-                <circle cx="330" cy="300" r="2" fill="#f0d060" opacity="0.8" />
-                <line x1="330" y1="294" x2="330" y2="306" stroke="#f0d060" strokeWidth="1" opacity="0.6" />
-                <line x1="324" y1="300" x2="336" y2="300" stroke="#f0d060" strokeWidth="1" opacity="0.6" />
-              </g>
+              {/* ── SMALL triangles rendered last (top z-layer) ── */}
+              {/* Pop in first — bottom-left, bottom-center, middle */}
+              <polygon className={`${styles.svgSmall} ${styles.svgSmall1}`}
+                points=".81 330.42 101.07 330.42 48.01 236.82 .81 330.42"
+                fill="url(#hg5)" stroke="#000" strokeMiterlimit="10"/>
+              <polygon className={`${styles.svgSmall} ${styles.svgSmall2}`}
+                points="124.39 330.42 178.78 237.77 225.41 330.42 124.39 330.42"
+                fill="url(#hg4)" stroke="#000" strokeMiterlimit="10"/>
+              <polygon className={`${styles.svgSmall} ${styles.svgSmall3}`}
+                points="112.64 106.04 60.14 211.42 166.08 211.42 112.64 106.04"
+                fill="url(#hg6)" stroke="#000" strokeMiterlimit="10"/>
             </svg>
 
-            {/* Glow beneath scales */}
-            <div className={styles.scalesGlow} />
+
+            {/* Sparkle dots */}
+            <span className={`${styles.logoSpark} ${styles.logoSpark1}`} />
+            <span className={`${styles.logoSpark} ${styles.logoSpark2}`} />
+            <span className={`${styles.logoSpark} ${styles.logoSpark3}`} />
+            <span className={`${styles.logoSpark} ${styles.logoSpark4}`} />
+
+            {/* Glow beneath logo */}
+            <div className={styles.logoGlow} />
           </div>
         </div>
       </div>

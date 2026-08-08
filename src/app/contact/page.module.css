@@ -263,28 +263,6 @@
   height: 100%;
 }
 
-/* Responsive Overrides */
-@media (max-width: 968px) {
-  .cardsGrid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 2rem;
-  }
-
-  .formGrid {
-    grid-template-columns: 1fr;
-    gap: 4rem;
-  }
-
-  .formCard {
-    padding: 2.5rem;
-  }
-
-  .branchesGrid {
-    grid-template-columns: 1fr;
-    gap: 5rem;
-  }
-}
-
 /* Branches Section Styles */
 .branchesSection {
   background-color: var(--light-bg);
@@ -454,6 +432,45 @@
   top: -1px;
 }
 
+/* Responsive Overrides */
+@media (max-width: 968px) {
+  .cardsGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+
+  .formGrid {
+    grid-template-columns: 1fr;
+    gap: 3.5rem;
+  }
+
+  .formCard {
+    padding: 2.5rem;
+  }
+
+  .branchesSection {
+    padding: 4rem 1.5rem;
+  }
+
+  .branchesHeader {
+    margin-bottom: 3rem;
+  }
+
+  .branchesGrid {
+    grid-template-columns: 1fr;
+    gap: 3.5rem;
+  }
+
+  .branchCategoryTitle {
+    width: 100%;
+    margin-bottom: 2rem;
+  }
+
+  .branchList {
+    gap: 2.5rem;
+  }
+}
+
 @media (max-width: 600px) {
   .heroTitle {
     font-size: 2.5rem;
@@ -463,7 +480,8 @@
     grid-template-columns: 1fr;
   }
 
-  .messageHeaderTitle {
+  .messageHeaderTitle,
+  .branchesHeaderTitle {
     font-size: 2rem;
   }
 
@@ -472,13 +490,21 @@
     gap: 1.5rem;
   }
 
+  .formCard {
+    padding: 1.5rem 1.25rem;
+  }
+
   .branchItem {
     flex-direction: column;
-    gap: 1.5rem;
+    gap: 1.25rem;
     padding-bottom: 2.5rem;
   }
 
   .branchServices {
+    width: 100%;
     padding: 1.25rem;
+    background-color: var(--cream-bg);
+    border: 1px solid rgba(197, 168, 128, 0.2);
+    border-radius: 6px;
   }
 }

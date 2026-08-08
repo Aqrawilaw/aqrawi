@@ -665,7 +665,7 @@
 
 .whoImageWrapper {
   width: 100%;
-  border: 2px solid #bf953f;
+  border-radius: 8px;
   box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12);
   display: block;
   overflow: hidden;
@@ -892,7 +892,9 @@
   max-width: 1100px;
   background: linear-gradient(145deg, #18181c 0%, #0d0d10 100%);
   border: 1px solid rgba(191, 149, 63, 0.35);
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 25px rgba(191, 149, 63, 0.08);
+  box-shadow:
+    0 20px 50px rgba(0, 0, 0, 0.5),
+    0 0 25px rgba(191, 149, 63, 0.08);
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   padding: 40px 16px;
@@ -920,7 +922,12 @@
   top: 15%;
   height: 70%;
   width: 1px;
-  background: linear-gradient(to bottom, transparent, rgba(191, 149, 63, 0.35), transparent);
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(191, 149, 63, 0.35),
+    transparent
+  );
 }
 
 .statNum {
@@ -1183,14 +1190,18 @@
 .settlementCard {
   background: linear-gradient(145deg, #16161a 0%, #0e0e11 100%);
   border: 1px solid rgba(191, 149, 63, 0.3);
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  box-shadow:
+    0 15px 35px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
   padding: 40px 30px;
   border-radius: 12px;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  transition: transform 0.3s ease, border-color 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease;
 }
 
 .settlementCard:hover {

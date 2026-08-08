@@ -168,7 +168,7 @@ export default function Home() {
             <div className={styles.whoImageContainer}>
               <div className={styles.whoImageWrapper}>
                 <img
-                  src="/images/home-page/who-we-are.webp"
+                  src="/images/about-page/who we are.jpeg"
                   alt="Aqrawi & Associates attorneys"
                   className={styles.whoImage}
                 />
