@@ -40,9 +40,9 @@ export default function ServicesPage() {
     {
       num: "05",
       title: "Plant Accidents",
-      desc: "If you have sustained an injury at a plant or industrial facility, it's important to take prompt action to protect your rights. We can help you understand your options for compensation and guide you through the legal process.",
-      img: "/images/services-page/img5.webp",
-      alt: "Plant and Industrial Facility Worker",
+      desc: "Industrial plant accident with fire and emergency response.",
+      img: "/images/services-page/plant-accident.jpg",
+      alt: "Industrial plant accident with fire and emergency response",
     },
     {
       num: "06",

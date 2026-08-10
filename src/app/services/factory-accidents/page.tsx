@@ -129,8 +129,8 @@ export default function PlantAccidentsPage() {
           <div className={styles.rightColumn}>
             <div className={styles.imageCard}>
               <img
-                src="/images/services-page/img5.webp"
-                alt="Plant and Industrial worker"
+                src="/images/services-page/plant-accident.jpg"
+                alt="Industrial plant accident with fire and emergency response"
                 className={styles.image}
                 onError={(e) => {
                   e.currentTarget.style.display = "none";
