@@ -153,8 +153,6 @@ export default function ServicesPage() {
                       window.location.href = "/services/motorcycle-accidents";
                     } else if (service.title === "Medical Malpractice") {
                       window.location.href = "/services/medical-malpractice";
-                    } else if (service.title === "Immigration") {
-                      window.location.href = "/services/immigration";
                     } else {
                       const el = document.getElementById("contact");
                       if (el) el.scrollIntoView({ behavior: "smooth" });
@@ -163,7 +161,7 @@ export default function ServicesPage() {
                   }}
                   className={styles.serviceBtn}
                 >
-                  {["Slip and Fall", "Plant Accidents", "Factory Accidents", "Car Accidents", "Trucks and 18-Wheelers Accidents", "Motorcycle Accidents", "Medical Malpractice", "Immigration"].includes(service.title) ? "Learn More" : "Inquire Now"}
+                  {["Slip and Fall", "Plant Accidents", "Factory Accidents", "Car Accidents", "Trucks and 18-Wheelers Accidents", "Motorcycle Accidents", "Medical Malpractice"].includes(service.title) ? "Learn More" : "Inquire Now"}
                 </button>
               </div>
 

@@ -29,7 +29,7 @@ export default function AboutPage() {
               <strong>Aqrawi & Associates</strong> is a trusted personal injury and litigation law firm dedicated to protecting the rights of individuals and families who have been harmed by the negligence or wrongdoing of others.
             </p>
             <p>
-              Our experienced attorneys handle a wide range of personal injury and legal matters, including automobile accidents, workplace injuries, slip-and-fall incidents, medical malpractice, immigration claims, and other serious legal representation. We represent clients throughout every stage of the legal process, from initial consultation and negotiations to filing petitions, lawsuits, and court representation.
+              Our experienced attorneys handle a wide range of personal injury cases, including automobile accidents, workplace injuries, slip-and-fall incidents, medical malpractice, and other serious injury claims. We represent clients throughout every stage of the legal process, from the initial investigation and settlement negotiations to filing lawsuits and representing clients in court.
             </p>
             <p>
               Our firm is fully prepared to litigate cases when a fair settlement cannot be reached. Our attorneys develop strong legal strategies, gather and present evidence, take depositions, negotiate with insurance companies, and advocate for our clients before judges and juries. We are committed to pursuing the maximum compensation available for medical expenses, lost wages, pain and suffering, and other damages.
