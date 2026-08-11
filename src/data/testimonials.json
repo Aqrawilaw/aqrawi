@@ -1,0 +1,50 @@
+[
+  {
+    "id": "seed-1",
+    "name": "Jessica Hernandez",
+    "email": "jessica@example.com",
+    "title": "Car Accident Client",
+    "rating": 5,
+    "text": "Aqrawi Law Firm represented me after my car accident and I couldn't be happier with the outcome. They were communicative, professional, and fought tirelessly to ensure all my medical bills were paid and I received a fair settlement. Highly recommend!",
+    "initials": "JH",
+    "img": "/profile_jessica.png",
+    "status": "approved",
+    "createdAt": "2026-08-01T10:00:00.000Z"
+  },
+  {
+    "id": "seed-2",
+    "name": "Olufemi Bamigboye",
+    "email": "olufemi@example.com",
+    "title": "Truck Accident Client",
+    "rating": 5,
+    "text": "They handled my commercial truck accident case with absolute expertise. The team navigated the complex corporate litigation and secured a recovery that exceeded our expectations. Truly a professional and dedicated firm.",
+    "initials": "OB",
+    "img": "/profile_olufemi.png",
+    "status": "approved",
+    "createdAt": "2026-08-02T10:00:00.000Z"
+  },
+  {
+    "id": "seed-3",
+    "name": "Michael Ramirez",
+    "email": "michael@example.com",
+    "title": "Slip & Fall Client",
+    "rating": 5,
+    "text": "After my slip and fall injury at work, Aqrawi & Associates took over all communications with insurance adjusters. They got my medical treatment covered immediately and won my settlement. Outstanding legal team!",
+    "initials": "MR",
+    "img": "",
+    "status": "approved",
+    "createdAt": "2026-08-03T10:00:00.000Z"
+  },
+  {
+    "id": "seed-4",
+    "name": "Sarah Al-Hassan",
+    "email": "sarah@example.com",
+    "title": "Immigration & Legal Client",
+    "rating": 5,
+    "text": "The team guided us through our legal process with clarity, compassion, and speed. Being able to communicate in our native language made all the difference. Thank you for standing by us!",
+    "initials": "SA",
+    "img": "",
+    "status": "approved",
+    "createdAt": "2026-08-04T10:00:00.000Z"
+  }
+]
