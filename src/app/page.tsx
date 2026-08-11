@@ -587,6 +587,16 @@ export default function Home() {
                 alt="Aqrawi & Associates New Affiliation Logo"
                 className={styles.newAffLogoImg}
               />
+              <img
+                src="/images/home-page/iraqiLawyers.jpeg"
+                alt="Iraqi Lawyers Association Affiliation"
+                className={styles.newAffLogoImg}
+              />
+              <img
+                src="/images/home-page/kurdistan.jpeg"
+                alt="Kurdistan Bar Association Affiliation"
+                className={styles.newAffLogoImg}
+              />
             </div>
           </div>
         </section>

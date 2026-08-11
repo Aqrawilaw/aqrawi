@@ -976,7 +976,7 @@
   justify-content: center;
   align-items: center;
   gap: 32px;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
   opacity: 0.95;
   transition: all 0.3s ease;
 }

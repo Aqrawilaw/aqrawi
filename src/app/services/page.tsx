@@ -61,9 +61,9 @@ export default function ServicesPage() {
     {
       num: "08",
       title: "Animal-Related Injuries, Including Dog Bites",
-      desc: "Dog bites and animal attacks cause severe physical trauma, infection risks, and emotional scarring. We hold negligent pet owners accountable under Texas law to recover full compensation for emergency care, surgery, and suffering.",
-      img: "/images/services-page/img4.webp",
-      alt: "Safety and Warning Hazards",
+      desc: "Dog bite and animal-related injury",
+      img: "/images/services-page/dog-bite.jpg",
+      alt: "Dog bite and animal-related injury",
     },
     {
       num: "09",
