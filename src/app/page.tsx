@@ -144,21 +144,6 @@ export default function Home() {
                 <strong>No Fees Unless We Win. We Got Your Back!</strong>
               </p>
               <div className={styles.signatureContainer}>
-                <span className={styles.signatureLabel}>Walat</span>
-                <img
-                  src="/images/home-page/signature.webp"
-                  alt="Walat Aqrawi Signature"
-                  style={{
-                    position: "absolute",
-                    left: isRtl ? "auto" : "10px",
-                    right: isRtl ? "10px" : "auto",
-                    top: "30px",
-                    height: "75px",
-                    width: "auto",
-                    zIndex: 1,
-                    pointerEvents: "none",
-                  }}
-                />
                 <div className={styles.signatureTitle}>
                   <div>WALAT AQRAWI</div>
                   <div className={styles.signatureSub}>Founder</div>
@@ -676,40 +661,21 @@ export default function Home() {
               trial representation and strategic negotiation.
             </p>
 
-            <div className={styles.settlementsGrid}>
-              {/* Result 1 */}
+            <div className={styles.settlementsSingleWrapper}>
               <div className={styles.settlementCard}>
                 <span className={styles.settlementBadge}>
-                  Individual Settlement
+                  PERSONAL INJURY
                 </span>
                 <div className={styles.settlementAmount}>
-                  Exceeding $4 Million
+                  Exceeding $50 Million
+                  <span className={styles.settlementAmountSub}>
+                    In Settlements
+                  </span>
                 </div>
-                <h3 className={styles.settlementCategory}>
-                  Medical Malpractice & Severe Injury
-                </h3>
                 <p className={styles.settlementDesc}>
-                  Achieved as co-counsel in a complex medical malpractice trial
-                  verdict representing an injured client against corporate
-                  healthcare providers.
-                </p>
-              </div>
-
-              {/* Result 2 */}
-              <div className={styles.settlementCard}>
-                <span className={styles.settlementBadge}>
-                  Individual Settlement
-                </span>
-                <div className={styles.settlementAmount}>
-                  Exceeding $3 Million
-                </div>
-                <h3 className={styles.settlementCategory}>
-                  Catastrophic Personal Injury
-                </h3>
-                <p className={styles.settlementDesc}>
-                  Secured in high-stakes personal injury litigation to cover
-                  lifetime medical expenses, lost earnings, and recovery
-                  damages.
+                  Recovered for injured clients through strategic advocacy,
+                  aggressive negotiation, and successful personal injury
+                  representation.
                 </p>
               </div>
             </div>
@@ -970,6 +936,10 @@ export default function Home() {
                       width: "100%",
                       height: "100%",
                       objectFit: "cover",
+                      objectPosition:
+                        selectedMember.id === "walat-aqrawi"
+                          ? "center 18%"
+                          : "center top",
                     }}
                   />
                 </div>

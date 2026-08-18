@@ -175,6 +175,12 @@ export default function TeamCategoryPage() {
                     src={selectedMember.image}
                     alt={selectedMember.name}
                     className={styles.drawerImg}
+                    style={{
+                      objectPosition:
+                        selectedMember.id === "walat-aqrawi"
+                          ? "center 18%"
+                          : "center top",
+                    }}
                     onError={(e) => {
                       e.currentTarget.style.display = "none";
                     }}

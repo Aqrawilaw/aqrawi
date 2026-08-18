@@ -279,7 +279,8 @@ export default function ServicesPage() {
       {/* Call to Action Banner */}
       <CtaBanner />
 
-      {/* Client Testimonials Horizontal Tape Section */}
+      {/* Client Testimonials Horizontal Tape Section (Hidden for now) */}
+      {/*
       <section className={styles.testimonialsSection}>
         <div className={styles.testimonialsContent}>
           <div className={styles.testimonialsHeader}>
@@ -297,7 +298,6 @@ export default function ServicesPage() {
           </div>
 
           <div className={styles.tapeTrackWrapper}>
-            {/* Scroll Left Arrow */}
             <button
               className={`${styles.scrollArrow} ${styles.scrollArrowLeft}`}
               onClick={() => scrollTape("left")}
@@ -306,7 +306,6 @@ export default function ServicesPage() {
               ‹
             </button>
 
-            {/* Testimonials Tape Container */}
             <div className={styles.testimonialsTape} ref={tapeRef}>
               {testimonials.map((test, idx) => (
                 <div key={test.id || idx} className={styles.testimonialCard}>
@@ -338,7 +337,6 @@ export default function ServicesPage() {
               ))}
             </div>
 
-            {/* Scroll Right Arrow */}
             <button
               className={`${styles.scrollArrow} ${styles.scrollArrowRight}`}
               onClick={() => scrollTape("right")}
@@ -349,6 +347,7 @@ export default function ServicesPage() {
           </div>
         </div>
       </section>
+      */}
 
       {/* Submission Modal Dialog */}
       {isModalOpen && (
