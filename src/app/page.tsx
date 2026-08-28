@@ -127,19 +127,52 @@ export default function Home() {
               <h2 className={styles.whoHeading}>Who We Are</h2>
               <div className={styles.whoDivider} />
               <p className={styles.whoParagraph}>
-                <strong>Aqrawi & Associates</strong> is a trusted personal injury and litigation law firm dedicated to protecting the rights of individuals and families who have been harmed by the negligence or wrongdoing of others.
-                <br /><br />
-                Our experienced attorneys handle a wide range of personal injury cases, including automobile accidents, workplace injuries, slip-and-fall incidents, medical malpractice, and other serious injury claims. We represent clients throughout every stage of the legal process, from the initial investigation and settlement negotiations to filing lawsuits and representing clients in court.
-                <br /><br />
-                Our firm is fully prepared to litigate cases when a fair settlement cannot be reached. Our attorneys develop strong legal strategies, gather and present evidence, take depositions, negotiate with insurance companies, and advocate for our clients before judges and juries. We are committed to pursuing the maximum compensation available for medical expenses, lost wages, pain and suffering, and other damages.
-                <br /><br />
-                Aqrawi & Associates is also proud of the diversity of our team. Our multilingual employees assist clients in English, Arabic, Spanish, Kurdish, Urdu, and other languages. This allows us to serve clients from many cultural backgrounds and ensures that they clearly understand their legal rights, options, and the progress of their cases.
-                <br /><br />
-                We believe every client deserves clear communication, personalized attention, and strong legal representation from a law firm they can trust.
-                <br /><br />
-                <strong>There are no upfront attorney’s fees for personal injury cases. You do not pay attorney’s fees unless we win your case.</strong>
-                <br /><br />
-                <span style={{ color: "#bf953f", fontWeight: 700 }}>Integrity. Compassion. Results.</span>
+                <strong>Aqrawi & Associates</strong> is a trusted personal
+                injury and litigation law firm dedicated to protecting the
+                rights of individuals and families who have been harmed by the
+                negligence or wrongdoing of others.
+                <br />
+                <br />
+                Our experienced attorneys handle a wide range of personal injury
+                cases, including automobile accidents, workplace injuries,
+                slip-and-fall incidents, medical malpractice, and other serious
+                injury claims. We represent clients throughout every stage of
+                the legal process, from the initial investigation and settlement
+                negotiations to filing lawsuits and representing clients in
+                court.
+                <br />
+                <br />
+                Our firm is fully prepared to litigate cases when a fair
+                settlement cannot be reached. Our attorneys develop strong legal
+                strategies, gather and present evidence, take depositions,
+                negotiate with insurance companies, and advocate for our clients
+                before judges and juries. We are committed to pursuing the
+                maximum compensation available for medical expenses, lost wages,
+                pain and suffering, and other damages.
+                <br />
+                <br />
+                Aqrawi & Associates is also proud of the diversity of our team.
+                Our multilingual employees assist clients in English, Arabic,
+                Spanish, Kurdish, Urdu, and other languages. This allows us to
+                serve clients from many cultural backgrounds and ensures that
+                they clearly understand their legal rights, options, and the
+                progress of their cases.
+                <br />
+                <br />
+                We believe every client deserves clear communication,
+                personalized attention, and strong legal representation from a
+                law firm they can trust.
+                <br />
+                <br />
+                <strong>
+                  There are no upfront attorney’s fees for personal injury
+                  cases. You do not pay attorney’s fees unless we win your case.
+                </strong>
+                <br />
+                <br />
+                <span style={{ color: "#bf953f", fontWeight: 700 }}>
+                  Integrity. Compassion. Results.
+                </span>
                 <br />
                 <strong>No Fees Unless We Win. We Got Your Back!</strong>
               </p>
@@ -470,11 +503,7 @@ export default function Home() {
                       stroke="#bf953f"
                       strokeWidth="4.5"
                     />
-                    <path
-                      d="M18 50 H82"
-                      stroke="#bf953f"
-                      strokeWidth="3.5"
-                    />
+                    <path d="M18 50 H82" stroke="#bf953f" strokeWidth="3.5" />
                     <ellipse
                       cx="50"
                       cy="50"
@@ -591,7 +620,8 @@ export default function Home() {
           <div className={styles.ctaContainer}>
             <h2 className={styles.ctaText}>
               &ldquo;Call us today for a FREE and confidential consultation. Our
-              team are here to support you and fight for your rights.&rdquo;
+              team are right here to support you and fight for your
+              rights.&rdquo;
             </h2>
             <button
               className={styles.ctaBtn}
@@ -663,9 +693,7 @@ export default function Home() {
 
             <div className={styles.settlementsSingleWrapper}>
               <div className={styles.settlementCard}>
-                <span className={styles.settlementBadge}>
-                  PERSONAL INJURY
-                </span>
+                <span className={styles.settlementBadge}>PERSONAL INJURY</span>
                 <div className={styles.settlementAmount}>
                   Exceeding $50 Million
                   <span className={styles.settlementAmountSub}>
