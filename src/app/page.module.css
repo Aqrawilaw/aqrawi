@@ -963,10 +963,11 @@
 
 .newAffLogoImg {
   height: 85px;
-  width: auto;
-  object-fit: contain;
+  width: 85px;
+  object-fit: cover;
   flex-shrink: 0;
-  border-radius: 4px;
+  border-radius: 50%;
+  background-color: #ffffff;
 }
 
 /* CTA Banner Section */
@@ -1462,6 +1463,7 @@
 
   .newAffLogoImg {
     height: 50px;
+    width: 50px;
   }
 }
 
